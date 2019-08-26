@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.therajanmaurya:Sweet-Error:1.0.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/44452c67eb751e7f555f69ddeb8ea470/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/44452c67eb751e7f555f69ddeb8ea470/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.therajanmaurya/Sweet-Error/1.0.0/cb8e38da081ad883041ea43f048c675574da1827/Sweet-Error-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

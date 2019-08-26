@@ -15,6 +15,8 @@ import com.example.mizansen.Network.RequestBuilder;
 import com.example.mizansen.Network.RequestBuilderClass;
 import com.example.mizansen.OtherClass.OtherMetod;
 import com.example.mizansen.R;
+import com.example.mizansen.SplashScreenActivity;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,6 +34,9 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         init();
+
+
+
         password.setText("@dminRB1370");
         username.setText("mizanscene");
 
@@ -47,6 +52,11 @@ public class LoginActivity extends Activity {
         });
 
 
+    }
+
+    void chekLogin(){
+        String check = om.GetSharedPreferences("chek_login","0", LoginActivity.this);
+        om.SetSharedPreferences("chek_login",String.valueOf(Integer.parseInt(check)+1),LoginActivity.this);
     }
 
     void Login(String username, String Password) {
@@ -91,6 +101,8 @@ public class LoginActivity extends Activity {
         username = findViewById(R.id.activitylogin_username);
         password = findViewById(R.id.activitylogin_password);
         login = findViewById(R.id.activitylogin_login);
+
+        chekLogin();
     }
 
 }

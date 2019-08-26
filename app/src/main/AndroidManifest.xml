@@ -42,7 +42,7 @@
 
         <activity android:name=".Activity.AgentsActivity"/>
 
-        <activity android:name=".Activity.IntroActivity" android:theme="@style/Theme.Intro" />
+        <activity android:name=".Activity.DotsActivity"/>
 
     </application>
 
