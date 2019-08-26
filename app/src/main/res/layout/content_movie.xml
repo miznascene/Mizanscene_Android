@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:paddingTop="20dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Activity.MovieActivity"
+    tools:showIn="@layout/activity_movie">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/movie_reting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxHeight="35dp"
+                android:minHeight="35dp"
+                android:numStars="5"
+                android:rating="3"
+                android:stepSize="0.05" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="4.3"
+                    android:textSize="25dp" />
+
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:padding="15dp"
+                    android:text="شما هم امتیاز خود را ثبت کنید"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.example.mizansen.CustomView.TextViewCustom
+            android:id="@+id/movie_descripton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:text="توضیحات در خصوص فیلم"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/gray"
+            android:orientation="horizontal">
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/ic_masks"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/white"
+                android:gravity="center_vertical|center_horizontal|right"
+                android:paddingRight="8dp"
+                android:text="عوامل تولید فیلم"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movie_agentsrecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/gray"
+            android:orientation="horizontal">
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/ic_comments"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/white"
+                android:gravity="center_vertical|center_horizontal|right"
+                android:paddingRight="8dp"
+                android:text="دیدگاه ها"
+                android:textColor="@color/white" />
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_left_arrow"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/white"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingLeft="5dp"
+                android:text="همه دیدگاه ها"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movie_commentmovierecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|center_horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_user"
+                    app:civ_circle_background_color="@color/graylite"
+                    app:civ_border_color="@color/graylite"
+                    app:civ_border_width="2dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:padding="2dp"
+                    android:background="@drawable/card_commend"
+                    android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:background="@null"
+                    android:hint="نظر خودرا در مورد فیلم اینجا بنویسید..."
+                    />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:rotation="180"
+                        android:padding="8dp"
+                        android:tint="@color/graylite_"
+                        android:src="@drawable/ic_send_black_24dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+            
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/gray"
+            android:orientation="horizontal">
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/ic_film_roll"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/white"
+                android:gravity="center_vertical|center_horizontal|right"
+                android:paddingRight="8dp"
+                android:text="سایر قسمت های سریال"
+                android:textColor="@color/white" />
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:id="@+id/movie_moreserial"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_left_arrow"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/white"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingLeft="5dp"
+                android:text="@string/more"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/gray"
+            android:orientation="horizontal">
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/ic_video"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/white"
+                android:gravity="center_vertical|center_horizontal|right"
+                android:paddingRight="8dp"
+                android:text="پیش نمایش"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <VideoView
+                android:id="@+id/movie_videoplyer"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:layout_constraintDimensionRatio="4:3" />
+
+            <ImageView
+                android:id="@+id/movie_playevideo"
+                android:layout_width="223dp"
+                android:layout_height="147dp"
+                android:layout_alignStart="@+id/movie_videoplyer"
+                android:layout_alignTop="@+id/movie_videoplyer"
+                android:layout_alignEnd="@+id/movie_videoplyer"
+                android:layout_alignBottom="@+id/movie_videoplyer"
+                android:layout_marginStart="81dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginEnd="57dp"
+                android:layout_marginBottom="72dp"
+                app:srcCompat="@drawable/ic_play_circle_outline_white_36dp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/gray"
+            android:orientation="horizontal">
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/ic_megaphone"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/white"
+                android:gravity="center_vertical|center_horizontal|right"
+                android:paddingRight="8dp"
+                android:text="پیشنهاد مشابه"
+                android:textColor="@color/white" />
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:id="@+id/movie_moreothermovie"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_left_arrow"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/white"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingLeft="5dp"
+                android:text="@string/more"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movie_othermovie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/gray"
+            android:orientation="horizontal">
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/ic_attach"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/white"
+                android:gravity="center_vertical|center_horizontal|right"
+                android:paddingRight="8dp"
+                android:text="گالری فیلم و تصاویر"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movie_galleryrecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

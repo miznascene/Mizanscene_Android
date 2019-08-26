@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_Showcase"
+        android:title="ویترین"
+        android:icon="@drawable/ic_apps_black_24dp" />
+
+    <item android:id="@+id/action_category"
+        android:title="دسته بندی"
+        android:icon="@drawable/ic_view_list_black_24dp" />
+
+    <item android:id="@+id/action_myvideos"
+        android:title="فیلم های من"
+        android:icon="@drawable/ic_videocam_black_24dp" />
+
+    <item android:id="@+id/action_serch"
+        android:title="جستجو"
+        android:icon="@drawable/ic_search_black_24dp" />
+</menu>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.example.mizansen.CustomView.TextViewCustom
+        android:id="@+id/adapter_channel_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="title" />
+
+    <com.example.mizansen.CustomView.TextViewCustom
+        android:id="@+id/adapter_channel_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="description" />
+
+    <com.example.mizansen.CustomView.TextViewCustom
+        android:id="@+id/adapter_channel_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="id" />
+
+</LinearLayout>

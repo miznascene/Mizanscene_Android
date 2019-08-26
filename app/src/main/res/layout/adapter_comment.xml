@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layoutDirection="rtl"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/adapter_agentmovie_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_user"
+            app:civ_circle_background_color="@color/graylite"
+            app:civ_border_color="@color/graylite"
+            app:civ_border_width="2dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="right|center_vertical"
+            android:layout_marginRight="5dp">
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="14dp"
+                android:text="امین سیاهی"/>
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="10dp"
+                android:text="۱شهریور ۱۳۹۸"/>
+
+        </LinearLayout>
+
+        <com.example.mizansen.CustomView.TextViewCustom
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left|top"
+            android:textSize="14dp"
+            android:text="امتیاز به فیلم 5"
+            android:drawableTint="@color/graylite_"
+            android:drawableLeft="@drawable/ic_star_black_24dp"
+            />
+
+    </LinearLayout>
+
+    <com.example.mizansen.CustomView.TextViewCustom
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="بسیار عالییییییییییی"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/graylite_" />
+
+</LinearLayout>

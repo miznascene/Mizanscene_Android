@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl">
+
+        <com.example.mizansen.CustomView.TextViewCustom
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="بسته ۹۰ روزه"
+            android:textColor="@color/white"
+            android:gravity="center_vertical|center_horizontal|right"/>
+
+        <com.example.mizansen.CustomView.TextViewCustom
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="65,400 تومان"
+            android:textColor="@color/white"
+            android:gravity="center_vertical|center_horizontal|left"/>
+    </LinearLayout>
+
+
+    <com.example.mizansen.CustomView.TextViewCustom
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="1398/10/13 در ساعت ۲۰:۵۶"
+        android:textColor="@color/white"
+        android:gravity="center_vertical|center_horizontal|right"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/gray"/>
+
+</LinearLayout>

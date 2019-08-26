@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adapter_showmovies_imageView1"
+        android:src="@drawable/puma_offer"
+        android:scaleType="fitCenter"
+        app:riv_corner_radius="5dip"
+        app:riv_border_width="2dip"
+        app:riv_border_color="@color/graylite"
+        app:riv_mutate_background="true"
+        app:riv_tile_mode="repeat"
+        app:riv_oval="false"
+        android:layout_height="230dp"
+        android:layout_width="165dp" />
+
+
+    <com.example.mizansen.CustomView.TextViewCustom
+        android:id="@+id/adapter_showmovies_titlefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="title fa"/>
+
+
+</LinearLayout>
