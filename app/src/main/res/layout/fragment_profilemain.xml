@@ -35,7 +35,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:textColor="@color/white"
-            android:background="@color/green"/>
+            android:background="@drawable/backgrund_button_green"/>
 
     </LinearLayout>
 
