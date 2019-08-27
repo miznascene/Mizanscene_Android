@@ -49,10 +49,9 @@ public class PlaceholderFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_fragment_myvideos, container, false);
+            @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        View root = inflater.inflate(R.layout.fragment_fragment_myvideos, container, false);
         pageViewModel.GetRecyclerView(root, R.id.section_recycler,index);
 
 

@@ -1,33 +1,29 @@
 package com.example.mizansen.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.mizansen.Fragment.NumberFragment;
 import com.example.mizansen.R;
-import com.matthewtamlin.android_utilities_library.helpers.BitmapEfficiencyHelper;
-import com.matthewtamlin.android_utilities_library.helpers.ScreenSizeHelper;
 import com.matthewtamlin.sliding_intro_screen_library.background.BackgroundManager;
 import com.matthewtamlin.sliding_intro_screen_library.background.ColorBlender;
 import com.matthewtamlin.sliding_intro_screen_library.buttons.IntroButton;
 import com.matthewtamlin.sliding_intro_screen_library.core.IntroActivity;
-import com.matthewtamlin.sliding_intro_screen_library.pages.ParallaxPage;
 import com.matthewtamlin.sliding_intro_screen_library.transformers.MultiViewParallaxTransformer;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 
-public class DotsActivity extends IntroActivity {
+public class Hintro_Activity extends IntroActivity {
     /**
      * Colors to use for the blended background: blue, pink, purple.
      */
-    private static final int[] BACKGROUND_COLORS = {0xff304FFE, 0xffcc0066, 0xff9900ff};
-
+    private static final int[] BACKGROUND_COLORS = {0xff304FFE, 0xffcc0066, 0xff9900ff, 0xff0099ff};
 
     /**
      * Name of the shared preferences which hold a key for preventing the intro screen from
@@ -63,10 +59,9 @@ public class DotsActivity extends IntroActivity {
      * this method returns. The total ordering of the returned collection is maintained in the
      * display of the pages.
      *
-     * @param savedInstanceState
-     * 		if this activity is being re-initialized after previously being shut down, then this Bundle
-     * 		contains the data this activity most recently saved in {@link
-     * 		#onSaveInstanceState(Bundle)}, otherwise null
+     * @param savedInstanceState if this activity is being re-initialized after previously being shut down, then this Bundle
+     *                           contains the data this activity most recently saved in {@link
+     *                           #onSaveInstanceState(Bundle)}, otherwise null
      * @return the pages to display in the Activity, not null
      */
     @Override
@@ -74,22 +69,11 @@ public class DotsActivity extends IntroActivity {
         // This variable holds the pages while they are being created
         final ArrayList<Fragment> pages = new ArrayList<>();
 
-        // Get the screen dimensions so that Bitmaps can be loaded efficiently
-        final int screenWidth = ScreenSizeHelper.getScreenWidthPx(this);
-        final int screenHeight = ScreenSizeHelper.getScreenHeightPx(this);
-
-        // Load the Bitmap resources into memory
-        final Bitmap frontDots = BitmapEfficiencyHelper.decodeResource(this, R.raw.front,
-                screenWidth, screenHeight);
-        final Bitmap backDots = BitmapEfficiencyHelper.decodeResource(this, R.raw.back,
-                screenWidth, screenHeight);
-
         // Create as many pages as there are background colors
         for (int i = 0; i < BACKGROUND_COLORS.length; i++) {
-            final ParallaxPage newPage = ParallaxPage.newInstance();
-            newPage.setFrontImage(frontDots);
-            newPage.setBackImage(backDots);
-            pages.add(newPage);
+            final NumberFragment fragment = new NumberFragment();
+            fragment.setNumber(i + 1);
+            pages.add(fragment);
         }
 
         return pages;
@@ -103,6 +87,7 @@ public class DotsActivity extends IntroActivity {
      * @return the Behaviour to use for the final button, not null
      */
     @Override
+    @SuppressLint("CommitPrefEdits") // Expected behaviour here
     protected IntroButton.Behaviour generateFinalButtonBehaviour() {
         /* The pending changes to the shared preferences editor will be applied when the
          * introduction is successfully completed. By setting a flag in the pending edits and
@@ -133,7 +118,7 @@ public class DotsActivity extends IntroActivity {
      */
     private void configureTransformer() {
         final MultiViewParallaxTransformer transformer = new MultiViewParallaxTransformer();
-        transformer.withParallaxView(R.id.page_fragment_imageHolderFront, 1.2f);
+        transformer.withParallaxView(R.id.number_fragment_title_holder, 1.2f);
         setPageTransformer(false, transformer);
     }
 

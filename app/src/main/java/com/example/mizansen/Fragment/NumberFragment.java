@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.mizansen.R;
 
 public class NumberFragment extends Fragment {
-    private TextView textView;
+    private TextView title, description;
 
     private int number = 0;
 
@@ -23,20 +23,22 @@ public class NumberFragment extends Fragment {
     public void setNumber(final int number) {
         this.number = number;
 
-        if (textView != null) {
-            textView.setText(Integer.toString(number));
+        if (title != null) {
+            title.setText(Integer.toString(number));
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View root = inflater.inflate(R.layout.number_fragment, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        textView = (TextView) root.findViewById(R.id.number_fragment_text_holder);
-        textView.setText(null);
+        final View root = inflater.inflate(R.layout.fragment_number, container, false);
+
+        title = (TextView) root.findViewById(R.id.number_fragment_title_holder);
+//        description = (TextView) root.findViewById(R.id.number_fragment_title_holder);
+
         Log.d("test", "" + number);
-        textView.setText(Integer.toString(number));
+        title.setText(Integer.toString(number));
+//        description.setText(Integer.toString(number));
 
         return root;
     }

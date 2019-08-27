@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.mizansen.Activity.DotsActivity;
 import com.example.mizansen.Activity.LoginActivity;
 import com.example.mizansen.Activity.MainActivity;
+import com.example.mizansen.Activity.Hintro_Activity;
 import com.example.mizansen.Network.ModelNetwork.ValidationModel;
 import com.example.mizansen.Network.RequestBuilder;
 import com.example.mizansen.Network.RequestBuilderClass;
@@ -85,7 +85,7 @@ public class SplashScreenActivity extends Activity {
         String check = om.GetSharedPreferences("chek_login", "0", SplashScreenActivity.this);
 
         if (check.equals("0")) {
-            startActivity(new Intent(SplashScreenActivity.this, DotsActivity.class));
+            startActivity(new Intent(SplashScreenActivity.this, Hintro_Activity.class));
             finish();
 
         } else {

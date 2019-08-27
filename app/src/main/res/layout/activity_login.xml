@@ -36,7 +36,7 @@
             android:drawablePadding="5dp"
             android:inputType="textPassword" />
 
-        <Button
+        <com.example.mizansen.CustomView.ButtonCustom
             android:id="@+id/activitylogin_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
