@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.mizansen.Fragment.NumberFragment;
+import com.example.mizansen.Fragment.HintroFragment;
 import com.example.mizansen.R;
 import com.matthewtamlin.sliding_intro_screen_library.background.BackgroundManager;
 import com.matthewtamlin.sliding_intro_screen_library.background.ColorBlender;
@@ -71,7 +71,7 @@ public class Hintro_Activity extends IntroActivity {
 
         // Create as many pages as there are background colors
         for (int i = 0; i < BACKGROUND_COLORS.length; i++) {
-            final NumberFragment fragment = new NumberFragment();
+            final HintroFragment fragment = new HintroFragment();
             fragment.setNumber(i + 1);
             pages.add(fragment);
         }

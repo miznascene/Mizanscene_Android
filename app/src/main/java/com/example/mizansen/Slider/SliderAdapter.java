@@ -10,17 +10,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.mizansen.Network.ModelNetwork.SlideshowModel;
 import com.example.mizansen.R;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 import com.squareup.picasso.Picasso;
 
-public class    SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapterVH> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapterVH> {
 
     private Context context;
     private int mCount;
+    List<SlideshowModel> slideshow;
 
-    public SliderAdapter(Context context) {
+    public SliderAdapter(Context context, List<SlideshowModel> SlidShow) {
         this.context = context;
+        this.slideshow = SlidShow;
     }
 
     public void setCount(int count) {
@@ -35,68 +41,33 @@ public class    SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdap
 
     @Override
     public void onBindViewHolder(SliderAdapterVH viewHolder, final int position) {
+        SlideshowModel sm = slideshow.get(position);
 
+        viewHolder.textViewDescription.setText("" + sm.slideshow_text);
+        viewHolder.textViewDescription.setTextSize(16);
+        viewHolder.textViewDescription.setTextColor(Color.WHITE);
+        viewHolder.imageGifContainer.setVisibility(View.GONE);
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "This is item in position " + position, Toast.LENGTH_SHORT).show();
-            }
-        });
+        Picasso.with(context)
+                .load(sm.slideshow_image)
+                .fit()
+                .into(viewHolder.imageViewBackground);
 
+//                viewHolder.textViewDescription.setTextSize(29);
+//                viewHolder.textViewDescription.setTextColor(Color.WHITE);
+//                viewHolder.textViewDescription.setText("Ohhhh! look at this!");
+//                viewHolder.imageGifContainer.setVisibility(View.VISIBLE);
+//
+//                Glide.with(viewHolder.itemView)
+//                        .load(R.drawable.puma_offer)
+//                        .fitCenter()
+//                        .into(viewHolder.imageViewBackground);
+//
+//                Glide.with(viewHolder.itemView)
+//                        .asGif()
+//                        .load(R.drawable.oh_look_at_this)
+//                        .into(viewHolder.imageGifContainer);
 
-        switch (position) {
-            case 0:
-                viewHolder.textViewDescription.setText("This is slider item " + position);
-                viewHolder.textViewDescription.setTextSize(16);
-                viewHolder.textViewDescription.setTextColor(Color.WHITE);
-                viewHolder.imageGifContainer.setVisibility(View.GONE);
-
-                Picasso.with(context)
-                        .load("https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg")
-                        .fit()
-                        .into(viewHolder.imageViewBackground);
-                break;
-            case 2:
-                viewHolder.textViewDescription.setText("This is slider item " + position);
-                viewHolder.textViewDescription.setTextSize(16);
-                viewHolder.textViewDescription.setTextColor(Color.WHITE);
-                viewHolder.imageGifContainer.setVisibility(View.GONE);
-
-                Glide.with(viewHolder.itemView)
-                        .load("https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg")
-                        .fitCenter()
-                        .into(viewHolder.imageViewBackground);
-                break;
-            case 4:
-                viewHolder.textViewDescription.setText("This is slider item " + position);
-                viewHolder.textViewDescription.setTextSize(16);
-                viewHolder.textViewDescription.setTextColor(Color.WHITE);
-                viewHolder.imageGifContainer.setVisibility(View.GONE);
-
-                Glide.with(viewHolder.itemView)
-                        .load("https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg")
-                        .fitCenter()
-                        .into(viewHolder.imageViewBackground);
-                break;
-            default:
-                viewHolder.textViewDescription.setTextSize(29);
-                viewHolder.textViewDescription.setTextColor(Color.WHITE);
-                viewHolder.textViewDescription.setText("Ohhhh! look at this!");
-                viewHolder.imageGifContainer.setVisibility(View.VISIBLE);
-
-                Glide.with(viewHolder.itemView)
-                        .load(R.drawable.puma_offer)
-                        .fitCenter()
-                        .into(viewHolder.imageViewBackground);
-
-                Glide.with(viewHolder.itemView)
-                        .asGif()
-                        .load(R.drawable.oh_look_at_this)
-                        .into(viewHolder.imageGifContainer);
-                break;
-
-        }
 
     }
 

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mizansen.Network.ModelNetwork.MainpageModel;
+import com.example.mizansen.Network.ModelNetwork.TermModel;
 import com.example.mizansen.R;
 import com.example.mizansen.Slider.SliderAdapter;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -26,11 +27,11 @@ import java.util.List;
 
 public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHolder> {
 
-    List<MainpageModel> mainpageModels;
+    MainpageModel mainpageModels;
     String TAG = "TAG_CategoryAdapter";
     Context context;
 
-    public ShowcaseAdapter(List<MainpageModel> _mainpageModels, Context _context) {
+    public ShowcaseAdapter(MainpageModel _mainpageModels, Context _context) {
         mainpageModels = _mainpageModels;
         context = _context;
     }
@@ -56,17 +57,18 @@ public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHo
             holder.more.setVisibility(View.GONE);
 
 
-            SliderAdapter adapter = new SliderAdapter(context);
-            adapter.setCount(6);
+            SliderAdapter adapter = new SliderAdapter(context,mainpageModels.slideshow);
+            adapter.setCount(mainpageModels.slideshow.size());
 
             holder.sliderView.setSliderAdapter(adapter);
 
-            holder.sliderView.setIndicatorAnimation(IndicatorAnimations.WORM); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+            holder.sliderView.setIndicatorAnimation(IndicatorAnimations.WORM);
+            //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
             holder.sliderView.setSliderTransformAnimation(SliderAnimations.FADETRANSFORMATION);
             holder.sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
             holder.sliderView.setIndicatorSelectedColor(Color.WHITE);
             holder.sliderView.setIndicatorUnselectedColor(Color.GRAY);
-            holder.sliderView.setScrollTimeInSec(4); //set scroll delay in seconds :
+            holder.sliderView.setScrollTimeInSec(5); //set scroll delay in seconds :
             holder.sliderView.startAutoCycle();
 
             holder.sliderView.setOnIndicatorClickListener(new DrawController.ClickListener() {
@@ -78,7 +80,7 @@ public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHo
             });
 
         } else {
-            MainpageModel mm = mainpageModels.get(i - 1);
+            TermModel mm = mainpageModels.terms.get(i - 1);
             holder.title.setText(mm.term_name);
 
 
@@ -101,7 +103,7 @@ public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return mainpageModels.size() + 1;
+        return mainpageModels.terms.size() + 1;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

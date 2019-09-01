@@ -68,16 +68,16 @@ public class ShowcaseFragment extends BaseFragment{
     void getData(){
 
         String Token = om.GetSharedPreferences("Token", "null", getContext());
-        Log.i(TAG, "Token is: " + Token);
-        Call<List<MainpageModel>> client = RequestBuilderClass.retrofit.create(RequestBuilder.class).GetMovies("Bearer " + Token,"");
-        client.enqueue(new Callback<List<MainpageModel>>() {
-            @Override
-            public void onResponse(Call<List<MainpageModel>> call, Response<List<MainpageModel>> response) {
-                Log.i(TAG, "Movies received " + response.body());
-                List<MainpageModel> mainpageModels = response.body();
 
-                Log.i(TAG,"term_name :"+mainpageModels.get(0).term_name);
-                Log.i(TAG,"term_movies.get(0).title :"+mainpageModels.get(0).term_movies.get(0).title);
+        Call<MainpageModel> client = RequestBuilderClass.retrofit.create(RequestBuilder.class).GetMovies("Bearer " + Token,"");
+        client.enqueue(new Callback<MainpageModel>() {
+            @Override
+            public void onResponse(Call<MainpageModel> call, Response<MainpageModel> response) {
+                MainpageModel mainpageModels = response.body();
+
+                Log.i(TAG,"term_name :"+mainpageModels.terms.get(0).term_name);
+                Log.i(TAG,"term_movies.get(0).title :"+mainpageModels.terms.get(0).term_movies.get(0).title);
+                Log.i(TAG,"mainpageModels.slideshow.get(0).slideshow_item_id:"+mainpageModels.slideshow.get(0).slideshow_item_id);
 
 //                @SuppressLint("WrongConstant")
                 LinearLayoutManager LLM = new LinearLayoutManager(getContext());
@@ -88,7 +88,7 @@ public class ShowcaseFragment extends BaseFragment{
             }
 
             @Override
-            public void onFailure(Call<List<MainpageModel>> call, Throwable t) {
+            public void onFailure(Call<MainpageModel> call, Throwable t) {
                 Log.i(TAG, "Movies failed: " + t.toString());
                 if(t.toString().equals("timeout"))
                     getData();

@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mizansen.R;
 
-public class NumberFragment extends Fragment {
+public class HintroFragment extends Fragment {
     private TextView title, description;
 
     private int number = 0;
 
-    public NumberFragment() {
+    public HintroFragment() {
         // Required empty public constructor
     }
 
@@ -31,7 +31,7 @@ public class NumberFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        final View root = inflater.inflate(R.layout.fragment_number, container, false);
+        final View root = inflater.inflate(R.layout.fragment_intro, container, false);
 
         title = (TextView) root.findViewById(R.id.number_fragment_title_holder);
 //        description = (TextView) root.findViewById(R.id.number_fragment_title_holder);

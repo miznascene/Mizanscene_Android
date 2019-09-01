@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical|center_horizontal"
+    android:padding="25dp">
+
+    <com.example.mizansen.CustomView.EditTextCustom
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:drawableTint="@color/brown"
+        android:drawableRight="@drawable/ic_user"
+        android:drawablePadding="5dp"
+        android:hint="@string/name"
+        android:inputType="textEmailAddress" />
+
+    <com.example.mizansen.CustomView.EditTextCustom
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:drawableTint="@color/brown"
+        android:drawableRight="@drawable/ic_user"
+        android:drawablePadding="5dp"
+        android:hint="@string/family"
+        android:inputType="textEmailAddress" />
+
+    <com.example.mizansen.CustomView.EditTextCustom
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:drawableTint="@color/brown"
+        android:drawableRight="@drawable/ic_key"
+        android:drawablePadding="5dp"
+        android:hint="@string/password"
+        android:inputType="textEmailAddress" />
+
+    <com.example.mizansen.CustomView.EditTextCustom
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:drawableTint="@color/brown"
+        android:drawableRight="@drawable/ic_key"
+        android:drawablePadding="5dp"
+        android:hint="@string/confirm_password"
+        android:inputType="textEmailAddress" />
+
+
+    <com.example.mizansen.CustomView.ButtonCustom
+        android:id="@+id/verifiycode_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:textColor="@color/graylite"
+        android:gravity="center_horizontal|center_vertical"
+        android:background="@drawable/backgrund_button_green"
+        android:text="@string/Register" />
+
+</LinearLayout>

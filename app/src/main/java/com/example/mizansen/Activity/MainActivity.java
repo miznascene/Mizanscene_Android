@@ -2,6 +2,7 @@ package com.example.mizansen.Activity;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import com.example.mizansen.CustomView.NonSwipeableViewPager;
 import com.example.mizansen.Fragment.BottomBar.CategoryFragment;
 import com.example.mizansen.Fragment.BottomBar.MyVideosFragment;
 import com.example.mizansen.Fragment.BottomBar.ShowcaseFragment;
+import com.example.mizansen.Helper.LanguageHelper;
+import com.example.mizansen.Helper.LocaleHelper;
 import com.example.mizansen.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -34,6 +37,14 @@ public class MainActivity extends FragmentActivity {
     String TAG = "TAG_MainActivity";
 
 
+
+    LanguageHelper languageHelper = new LanguageHelper();
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase, "fa"));
+    }
 
     BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -83,6 +94,10 @@ public class MainActivity extends FragmentActivity {
         navigation = (BottomNavigationView) findViewById(R.id.BottomNavigationView);
         navigation.setSelectedItemId(R.menu.my_navigation_items);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        languageHelper.GetLanguage(MainActivity.this);
+
 
         viewPager = findViewById(R.id.viewPager);
         setupViewPager(viewPager);

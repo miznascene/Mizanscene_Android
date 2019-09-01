@@ -11,6 +11,7 @@
 
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -43,6 +44,12 @@
         <activity android:name=".Activity.AgentsActivity"/>
 
         <activity android:name=".Activity.Hintro_Activity"/>
+
+        <activity android:name=".Activity.VerifiyCodeActivity"/>
+
+        <activity android:name=".Activity.RecoveryPasswordActivity"/>
+
+        <activity android:name=".Activity.RegisterActivity"/>
 
     </application>
 

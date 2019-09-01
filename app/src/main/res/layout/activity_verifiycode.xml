@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical">
+
+    <com.example.mizansen.CustomView.EditTextCustom
+        android:id="@+id/verifiycode_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ic_mail"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+
+    <LinearLayout
+        android:id="@+id/verifiycode_layoutpincode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.chaos.view.PinView
+            android:id="@+id/verifiycode_pincode"
+            style="@style/PinWidget.PinView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColor="@color/graylite"
+            app:hideLineWhenFilled="false"
+            app:itemCount="4"
+            app:viewType="line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr">
+
+        <com.example.mizansen.CustomView.TextViewCustom
+            android:id="@+id/verifiycode_mailtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_gravity="left"
+            android:text=".....@gmail.com" />
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:layout_gravity="left" />
+
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:id="@+id/verifiycode_timedowntext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_gravity="left"
+                android:text="1:00" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <com.example.mizansen.CustomView.ButtonCustom
+        android:id="@+id/verifiycode_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/backgrund_button_green"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="5dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/Get_code"
+        android:textColor="@color/graylite" />
+
+
+    <com.example.mizansen.CustomView.TextViewCustom
+        android:id="@+id/verifiycode_resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:text="@string/ReSend"/>
+
 
 </LinearLayout>
