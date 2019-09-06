@@ -7,11 +7,9 @@ import com.example.mizansen.Network.ModelNetwork.IpAddressModel;
 import com.example.mizansen.Network.ModelNetwork.MainpageModel;
 import com.example.mizansen.Network.ModelNetwork.MovieArvanCloudModel;
 import com.example.mizansen.Network.ModelNetwork.MoviesModel;
+import com.example.mizansen.Network.ModelNetwork.SendValidationToRegisterModel;
 import com.example.mizansen.Network.ModelNetwork.ValidationModel;
-import com.example.mizansen.Network.ModelNetwork.ValidationNetModel;
-import com.example.mizansen.Network.ModelNetwork.ValidtionCodeModel;
-
-import java.util.List;
+import com.example.mizansen.Network.ModelNetwork.VerifycationCodeModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -43,9 +41,9 @@ public interface RequestBuilder {
     Call<MovieArvanCloudModel> GetMovieArvanCloudById(@Header("Authorization") String token, @Path("urlPath") String IdMovieArvanCloud);
 
     @POST("mobile/v1/profile/register")
-    Call<ValidationModel> SendCodeToEmail(@Query("SECRET_MZ_KEY") String SECRET_MZ_KEY, @Body ValidationNetModel email);
+    Call<ValidationModel> SendCodeToEmail(@Query("SECRET_MZ_KEY") String ApiKey, @Body SendValidationToRegisterModel model);
 
     @POST("mobile/v1/profile/verify-code")
-    Call<ValidationModel> ValidatioCodeEmail(@Query("SECRET_MZ_KEY") String SECRET_MZ_KEY, @Body ValidationNetModel email);
+    Call<ValidationModel> ValidationCodeEmail(@Query("SECRET_MZ_KEY") String SECRET_MZ_KEY, @Body VerifycationCodeModel model);
 
 }

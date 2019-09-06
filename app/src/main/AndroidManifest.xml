@@ -51,6 +51,8 @@
 
         <activity android:name=".Activity.RegisterActivity"/>
 
+        <activity android:name=".Activity.SendEmailActivity"/>
+
     </application>
 
 </manifest>

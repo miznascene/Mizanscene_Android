@@ -3,6 +3,7 @@ package com.example.mizansen;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 import com.example.mizansen.Activity.LoginActivity;
@@ -33,11 +34,17 @@ public class SplashScreenActivity extends Activity {
     void ValiDateToken() {
 
         String Token = om.GetSharedPreferences("Token", "null", SplashScreenActivity.this);
-        Log.i(TAG, "Token is: " + Token);
 
         if (Token.equals("null")) {
             // firt start app => goto Login
-            goToPageLogin();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    goToPageLogin();
+                }
+            }, 2000);
+
         } else {
 
             try {
@@ -45,7 +52,6 @@ public class SplashScreenActivity extends Activity {
                 client.enqueue(new Callback<ValidationModel>() {
                     @Override
                     public void onResponse(Call<ValidationModel> call, Response<ValidationModel> response) {
-//                        Log.i(TAG, "splash received " + response.body());
                         ValidationModel validationModel = response.body();
 
                         try {

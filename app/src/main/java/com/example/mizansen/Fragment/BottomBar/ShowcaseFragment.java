@@ -56,7 +56,7 @@ public class ShowcaseFragment extends BaseFragment{
 
         TAG = "TAG_ShowcaseFragment";
 
-        progressBar = view.findViewById(R.id.progressBar);
+//        progressBar = view.findViewById(R.id.progressBar);
         container = view.findViewById(R.id.container);
         recyclerView = view.findViewById(R.id.fragment_showcase_recyclerview);
 

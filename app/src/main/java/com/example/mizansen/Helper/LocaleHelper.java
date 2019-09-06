@@ -20,6 +20,9 @@ public class LocaleHelper {
         return setLocale(context, Lang);
     }
 
+    //                Paper.book().write("language", "en-rUS");
+    //                updateView((String) Paper.book().read("language"));
+
 
     public static Context onAttach(Context context, String defaultLanguage) {
         String Lang = getPeresistedData(context, defaultLanguage);

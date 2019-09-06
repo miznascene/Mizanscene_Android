@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#262626</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#e41515</color>
+    <color name="colorPrimaryDark">#FA4A3B</color>
+    <color name="colorAccent">#FA4A3B</color>
     <color name="white">#FFFFFF</color>
     <color name="gray">#333333</color>
-    <color name="graylite">#505050</color>
+    <color name="graylite">#747373</color>
     <color name="graylite_">#9B9B9B</color>
     <color name="brown">#5C3302</color>
     <color name="green">#20ec58</color>

@@ -18,9 +18,9 @@ public class OtherMetod {
     public String SecretKey = "+a1M0%bg,))|+QP7=pT{rW.WLh8)2GQb;|p|+^K%3r3o6I26tm?TF@ciP-;:--*9";
 
 
-    public boolean validEmail(String Email){
+    public boolean validEmail(String Email) {
 
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                 "A-Z]{2,7}$";
@@ -29,6 +29,16 @@ public class OtherMetod {
         if (Email == null)
             return false;
         return pat.matcher(Email).matches();
+
+    }
+
+    public static boolean validStatus(int status) {
+
+        if (status == 200) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 

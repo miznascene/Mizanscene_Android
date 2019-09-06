@@ -39,7 +39,7 @@ public class MyVideosFragment extends BaseFragment {
         TAG = "TAG_MyVideosFragment";
 
 
-        progressBar = view.findViewById(R.id.progressBar);
+//        progressBar = view.findViewById(R.id.progressBar);
         container = view.findViewById(R.id.container);
 
 

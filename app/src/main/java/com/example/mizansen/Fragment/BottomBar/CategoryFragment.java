@@ -43,7 +43,7 @@ public class CategoryFragment extends BaseFragment {
         //account = Account.listAll(Account.class).get(0);
 
 
-        progressBar = view.findViewById(R.id.progressBar);
+//        progressBar = view.findViewById(R.id.progressBar);
         container = view.findViewById(R.id.container);
         _RecyclerView = view.findViewById(R.id.fragment_category_recycler);
 

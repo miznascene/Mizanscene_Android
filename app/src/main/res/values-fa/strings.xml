@@ -18,7 +18,7 @@
     <string name="simple_view_behavior">com.zoonref.viewbehavior.SimpleViewBehavior</string>
     <string name="animation_view_behavior">com.example.mizansen.CustomView.AnimationViewBehavior</string>
 
-    <string name="forgotpassword">فراموشی رمزعبور؟</string>
+    <string name="forgotpassword">رمز عبور خود را فراموش کرده اید؟</string>
     <string name="Register">ثبت نام</string>
     <string name="ReSend">ارسال مجدد</string>
     <string name="email">ایمیل</string>
@@ -35,5 +35,8 @@
     <string name="change_pass">تغییر رمزعبور</string>
     <string name="Edit">ویرایش</string>
     <string name="ErrorValidEmail">ایمیل را با دقت وارد کنید</string>
+    <string name="ErrorValidPin">پین کد را مجدد وارد کنید</string>
+    <string name="register_login">حساب کاربری ندارید؟همین حالا ثبت نام کنید</string>
+
 
 </resources>
