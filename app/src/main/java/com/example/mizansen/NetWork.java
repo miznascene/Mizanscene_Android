@@ -4,6 +4,7 @@ package com.example.mizansen;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
@@ -42,7 +43,67 @@ public class NetWork {
         }
     }
 
-    public String PostData(String URL, RequestBody formBody, String header, String QueryParameterName, String QueryParameterValue) {
+
+    public String GetData(String URL, String headerName, String headerValue, String QueryParameterName, String QueryParameterValue, String QueryParameterName1, String QueryParameterValue1) {
+        Response response = null;
+        try {
+            HttpUrl url = HttpUrl.parse(URL).newBuilder()
+                    .addQueryParameter(QueryParameterName, QueryParameterValue)
+                    .addQueryParameter(QueryParameterName1, QueryParameterValue1)
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(url)
+                    .header(headerName, headerValue)
+                    .build();
+
+            response = client.newCall(request).execute();
+            return response.body().string();
+
+        } catch (IOException e) {
+            Log.i("TAG_", "" + e.toString());
+            client.connectionPool().evictAll();
+            return "null";
+        } finally {
+            if (null != response) {
+                response.close();
+            }
+        }
+    }
+
+    public String PostData(String URL, RequestBody formBody, String headerName, String headerValue, String QueryParameterName, String QueryParameterValue, String QueryParameterName1, String QueryParameterValue1) {
+        Response response = null;
+        try {
+
+            HttpUrl url = HttpUrl.parse(URL).newBuilder()
+                    .addQueryParameter(QueryParameterName, QueryParameterValue)
+                    .addQueryParameter(QueryParameterName1, QueryParameterValue1)
+                    .build();
+
+
+            Request request = new Request.Builder()
+                    .url(url)
+                    .header(headerName, headerValue)
+                    .post(formBody)
+                    .build();
+
+            response = client.newCall(request).execute();
+            return response.body().string();
+
+        } catch (IOException e) {
+            Log.i(TAG, "error : " + e.toString());
+            client.connectionPool().evictAll();
+            return "null";
+        } finally {
+            if (null != response) {
+                response.close();
+            }
+        }
+    }
+
+
+
+    public String PutData(String URL, RequestBody formBody, String headerName, String headerValue, String QueryParameterName, String QueryParameterValue) {
         Response response = null;
         try {
 
@@ -53,8 +114,8 @@ public class NetWork {
 
             Request request = new Request.Builder()
                     .url(url)
-                    .header("Authorization", header)
-                    .post(formBody)
+                    .header(headerName, headerValue)
+                    .put(formBody)
                     .build();
 
             response = client.newCall(request).execute();

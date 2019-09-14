@@ -1,42 +1,119 @@
 <resources>
 
 
-    <string name="app_name">میزانسن</string>
 
 
-    <string name="tab_text_1">گالری آفلاین</string>
-    <string name="tab_text_2">مشاهده شده ها</string>
-    <string name="tab_text_3">نشانه شده ها</string>
+
+
 
     <string name="lorem">
         لیلا اوتادی دانش‌آموختهٔ کارشناسی معماری داخلی در دانشگاه هنر تهران است. او کار خود را با فیلم سینمایی چشمان سیاه، ساختهٔ ایرج قادری آغاز کرد، اما برای اولین بار با سریال «مهر و ماه» به کارگردانی «سید فیاض موسوی» دیده شد.
     </string>
 
     <string name="hemase">حماسه قهرمانان</string>
-    <string name="more">بیشتر</string>
+
 
     <string name="simple_view_behavior">com.zoonref.viewbehavior.SimpleViewBehavior</string>
     <string name="animation_view_behavior">com.example.mizansen.CustomView.AnimationViewBehavior</string>
 
-    <string name="forgotpassword">رمز عبور خود را فراموش کرده اید؟</string>
-    <string name="Register">ثبت نام</string>
-    <string name="ReSend">ارسال مجدد</string>
-    <string name="email">ایمیل</string>
-    <string name="password">رمزعبور</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--String App -->
+    <string name="app_name">میزانسن</string>
+    <string name="password">رمز عبور خود را وارد کنید</string>
     <string name="confirm_password">تکرار رمزعبور</string>
-    <string name="Login">ورود</string>
-    <string name="serch">جستجو</string>
+    <string name="more">بیشتر</string>
+
+    <!--String Menu -->
+    <string name="search">جستجو</string>
     <string name="my_Movies">فیلم های من</string>
     <string name="category">دسته بندی</string>
     <string name="home">خانه</string>
+
+
+    <!--String Tab -->
+    <string name="tab_text_1">گالری آفلاین</string>
+    <string name="tab_text_2">مشاهده شده ها</string>
+    <string name="tab_text_3">نشانه شده ها</string>
+
+    <!--String Message-->
+    <string name="ErrorValidEmail">ایمیل معتبر وارد کنید</string>
+    <string name="ErrorValidPin">پین کد را مجدد وارد کنید</string>
+    <string name="worng_code">کد وارد شده صحیح نمی باشد.</string>
+    <string name="worng_email_register">ایمیل قبلا ثبت نام شده</string>
+    <string name="worng_email_reset">ایمیل ثبت نام نشده</string>
+    <string name="password_count">حداقل رمز عبور ۶ حرف می باشد</string>
+    <string name="Same_password">رمز عبور یکسان نمی باشد</string>
+    <string name="validation_firstnamelastname">نمی توانید از عدد در نام و نام خانوادگی استفاده کنید،</string>
+    <string name="error_host">خطا در ثبت اطلاعات</string>
+    <string name="sucsses_resetpass">رمز شما با موفقیت تغییر کرد.</string>
+    <string name="resetpass_ok">کد جدید ارسال شد</string>
+    <string name="resetpass_worng">خطا در ارسال کد جدید</string>
+    <string name="registered_ok">ثبت نام شما با موفقیت انجام شد</string>
+
+
+    <!--String LoginActivity -->
+    <string name="Login">ورود</string>
+    <string name="email">ایمیل خود را وارد کنید</string>
+    <string name="forgotpassword">رمز عبور خود را فراموش کرده اید؟</string>
+    <string name="register_login">حساب کاربری ندارید؟ همین حالا ثبت نام کنید</string>
+    <string name="register_login_bold">ثبت نام</string>
+
+    <!--String SendMailActivity -->
+    <string name="Get_code">دریافت کد</string>
+    <string name="title_sendmail_reset_password">برای بازیابی رمز عبور ایمیل خود را وارد کنید.</string>
+    <string name="title_sendmail_register">برای ثبت نام ایمیل خود را وارد کنید.</string>
+
+    <!--String VerifyCodeActivity -->
+    <string name="title_verificode">کد را وارد کنید</string>
+    <string name="ReSend">ارسال کد</string>
+    <string name="getnewcode">دریافت دوباره</string>
+    <string name="Edit">ویرایش</string>
+
+    <!--String RegisterActivity -->
+    <string name="title_register">برای ثبت نام فرم زیر را تکمیل کنید.</string>
     <string name="name">نام</string>
     <string name="family">نام خانوادگی</string>
-    <string name="Get_code">دریافت کد</string>
+    <string name="Register">ثبت نام</string>
+
+    <!--String ResetPasswordActivity -->
     <string name="change_pass">تغییر رمزعبور</string>
-    <string name="Edit">ویرایش</string>
-    <string name="ErrorValidEmail">ایمیل را با دقت وارد کنید</string>
-    <string name="ErrorValidPin">پین کد را مجدد وارد کنید</string>
-    <string name="register_login">حساب کاربری ندارید؟همین حالا ثبت نام کنید</string>
+
+
+    <!--String MainActivity -->
+    <!--String ... -->
+
+
+    <!--String Url Api-->
+    <string name="API_Validation">https://mizanscene.com/wp-json/mobile/v1/profile/login/validate</string>
+    <string name="API_Login">https://mizanscene.com/wp-json/mobile/v1/profile/login</string>
+    <string name="API_SendEmailToRegister">https://mizanscene.com/wp-json/mobile/v1/profile/register</string>
+    <string name="API_SendEmailToResetPass">https://mizanscene.com/wp-json/mobile/v1/profile/reset-password</string>
+    <string name="API_VerifiCode">https://mizanscene.com/wp-json/mobile/v1/profile/verify-code</string>
+    <string name="API_ReSendCode">https://mizanscene.com/wp-json/mobile/v1/profile/reset-code</string>
+    <string name="API_Register">https://mizanscene.com/wp-json/mobile/v1/profile/register</string>
+    <string name="API_ResetPassword">https://mizanscene.com/wp-json/mobile/v1/profile/reset-password</string>
 
 
 </resources>

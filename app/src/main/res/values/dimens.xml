@@ -12,4 +12,7 @@
     <dimen name="image_width">110dp</dimen>
     <dimen name="image_small_width">32dp</dimen>
 
+    <dimen name="size_text_edittext">12dp</dimen>
+    <dimen name="layout_height_buttom">45dp</dimen>
+
 </resources>

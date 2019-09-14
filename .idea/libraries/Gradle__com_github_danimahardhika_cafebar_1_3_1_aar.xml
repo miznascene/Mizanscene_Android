@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.danimahardhika:cafebar:1.3.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ed2e111eb950e72755d5da9a6e3945c3/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ed2e111eb950e72755d5da9a6e3945c3/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ed2e111eb950e72755d5da9a6e3945c3/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

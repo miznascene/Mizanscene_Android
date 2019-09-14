@@ -40,10 +40,5 @@ public interface RequestBuilder {
     @GET("videos/{urlPath}")
     Call<MovieArvanCloudModel> GetMovieArvanCloudById(@Header("Authorization") String token, @Path("urlPath") String IdMovieArvanCloud);
 
-    @POST("mobile/v1/profile/register")
-    Call<ValidationModel> SendCodeToEmail(@Query("SECRET_MZ_KEY") String ApiKey, @Body SendValidationToRegisterModel model);
-
-    @POST("mobile/v1/profile/verify-code")
-    Call<ValidationModel> ValidationCodeEmail(@Query("SECRET_MZ_KEY") String SECRET_MZ_KEY, @Body VerifycationCodeModel model);
 
 }

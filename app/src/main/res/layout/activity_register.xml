@@ -25,9 +25,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="300dp"
-            android:layout_height="340dp"
+            android:layout_height="350dp"
             android:elevation="8dp"
-            app:cardBackgroundColor="@color/graylite"
+            app:cardBackgroundColor="@color/colorBgItem"
             app:cardCornerRadius="10dp">
 
             <LinearLayout
@@ -41,146 +41,89 @@
                 android:padding="20dp">
 
 
-                <com.example.mizansen.CustomView.LinearLayoutCustom
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edittext"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-
-                    <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_margin="5dp"-->
-                        <!--android:src="@drawable/ic_user" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="2dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:background="@color/colorPrimaryDark" />-->
-
-                    <com.example.mizansen.CustomView.EditTextCustom
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:drawableTint="@color/colorPrimaryDark"
-                        android:ems="10"
-                        android:hint="@string/name"
-                        android:inputType="textEmailAddress"
-                        android:padding="5dp" />
-
-                </com.example.mizansen.CustomView.LinearLayoutCustom>
-
-
-                <com.example.mizansen.CustomView.LinearLayoutCustom
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_edittext"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-
-                    <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_margin="5dp"-->
-                        <!--android:src="@drawable/ic_user" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="2dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:background="@color/colorPrimaryDark" />-->
-
-                    <com.example.mizansen.CustomView.EditTextCustom
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="@string/family"
-                        android:inputType="textEmailAddress"
-                        android:padding="5dp" />
-
-                </com.example.mizansen.CustomView.LinearLayoutCustom>
-
-
-                <com.example.mizansen.CustomView.LinearLayoutCustom
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_edittext"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-
-                    <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_margin="5dp"-->
-                        <!--android:src="@drawable/ic_key" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="2dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:background="@color/colorPrimaryDark" />-->
-
-                    <com.example.mizansen.CustomView.EditTextCustom
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:drawablePadding="8dp"
-                        android:ems="10"
-                        android:hint="@string/password"
-                        android:inputType="textEmailAddress"
-                        android:padding="5dp" />
-
-                </com.example.mizansen.CustomView.LinearLayoutCustom>
-
-                <com.example.mizansen.CustomView.LinearLayoutCustom
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_edittext"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-
-                <!--<ImageView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="5dp"-->
-                    <!--android:src="@drawable/ic_key" />-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="2dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:background="@color/colorPrimaryDark" />-->
-
-                <com.example.mizansen.CustomView.EditTextCustom
+                <com.example.mizansen.CustomView.TextViewCustom
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+
+                    android:text="@string/title_register"
+                    android:textColor="@color/colorItem" />
+
+
+                <com.example.mizansen.CustomView.EditTextCustom
+                    android:id="@+id/register_firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext"
+                    android:ems="10"
+                    android:hint="@string/name"
+                    android:inputType="textEmailAddress"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/colorItem"
+                    android:textColorHint="@color/colorItem"
+                    android:textSize="@dimen/size_text_edittext" />
+
+
+                <com.example.mizansen.CustomView.EditTextCustom
+                    android:id="@+id/register_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext"
+                    android:ems="10"
+                    android:hint="@string/family"
+                    android:inputType="textEmailAddress"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/colorItem"
+                    android:textColorHint="@color/colorItem"
+                    android:textSize="@dimen/size_text_edittext" />
+
+
+                <com.example.mizansen.CustomView.EditTextCustom
+                    android:id="@+id/register_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext"
+                    android:drawablePadding="8dp"
+                    android:ems="10"
+                    android:hint="@string/password"
+                    android:inputType="textEmailAddress"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/colorItem"
+                    android:textColorHint="@color/colorItem"
+                    android:textSize="@dimen/size_text_edittext" />
+
+
+                <com.example.mizansen.CustomView.EditTextCustom
+                    android:id="@+id/register_confirmpass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext"
                     android:ems="10"
                     android:hint="@string/confirm_password"
                     android:inputType="textEmailAddress"
-                    android:padding="5dp" />
-
-                </com.example.mizansen.CustomView.LinearLayoutCustom>
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/colorItem"
+                    android:textColorHint="@color/colorItem"
+                    android:textSize="@dimen/size_text_edittext" />
 
 
                 <com.example.mizansen.CustomView.ButtonCustom
-                    android:id="@+id/verifiycode_submit"
+                    android:id="@+id/register_submit"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/layout_height_buttom"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/backgrund_button_green"
                     android:gravity="center_horizontal|center_vertical"
-                    android:padding="5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
                     android:text="@string/Register"
-                    android:textColor="@color/colorPrimaryDark"
-                    />
+                    android:textColor="@color/colorItem"
+                    app:btn_bold_word="@string/Register" />
 
 
             </LinearLayout>

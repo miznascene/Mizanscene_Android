@@ -9,8 +9,8 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="50dp"
         android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="50dp"
         android:src="@drawable/logo" />
 
 
@@ -26,7 +26,7 @@
             android:layout_width="300dp"
             android:layout_height="325dp"
             android:elevation="8dp"
-            app:cardBackgroundColor="@color/graylite"
+            app:cardBackgroundColor="@color/colorBgItem"
             app:cardCornerRadius="10dp">
 
             <LinearLayout
@@ -40,73 +40,69 @@
                 android:padding="20dp">
 
 
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="@color/colorItem"
+                    android:text="@string/title_verificode"/>
+
                 <com.chaos.view.PinView
                     android:id="@+id/verifiycode_pincode"
                     style="@style/PinWidget.PinView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:textColor="@color/white"
                     app:hideLineWhenFilled="false"
                     app:itemCount="4"
                     app:viewType="line" />
 
-                <LinearLayout
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:id="@+id/verifiycode_mailtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layoutDirection="ltr">
-
-                    <com.example.mizansen.CustomView.TextViewCustom
-                        android:id="@+id/verifiycode_mailtext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:padding="8dp"
-                        android:text=".....@gmail.com"
-                        android:textColor="@color/white" />
-
-                    <com.example.mizansen.CustomView.TextViewCustom
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:padding="8dp" />
-
-
-                    <com.example.mizansen.CustomView.TextViewCustom
-                        android:id="@+id/verifiycode_timedowntext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:padding="8dp"
-                        android:textColor="@color/white"
-                        android:text="1:00" />
-
-                </LinearLayout>
+                    android:layout_gravity="left"
+                    android:padding="4dp"
+                    android:text=".....@gmail.com"
+                    android:textColor="@color/colorItem" />
 
 
                 <com.example.mizansen.CustomView.ButtonCustom
                     android:id="@+id/verifiycode_submit"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_height="@dimen/layout_height_buttom"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/backgrund_button_green"
                     android:gravity="center_horizontal|center_vertical"
-                    android:padding="5dp"
-                    android:text="@string/Register"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:visibility="visible"
+                    android:text="@string/ReSend"
+                    app:btn_bold_word="@string/ReSend"
+                    android:textColor="@color/colorItem" />
 
 
                 <com.example.mizansen.CustomView.TextViewCustom
-                    android:id="@+id/verifiycode_resend"
+                    android:id="@+id/verifiycode_resetcode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="@color/white"
-                    android:text="@string/ReSend"
-                    android:visibility="visible" />
+                    android:padding="5dp"
+                    android:text="@string/getnewcode"
+                    android:textColor="@color/colorItem"
+                    android:visibility="gone" />
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:id="@+id/verifiycode_timedowntext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="1:00"
+                    android:textColor="@color/colorItem" />
 
 
             </LinearLayout>

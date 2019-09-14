@@ -12,6 +12,6 @@
         android:icon="@drawable/ic_videocam_black_24dp" />
 
     <item android:id="@+id/action_serch"
-        android:title="@string/serch"
+        android:title="@string/search"
         android:icon="@drawable/ic_search_black_24dp" />
 </menu>

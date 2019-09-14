@@ -12,6 +12,10 @@
     <color name="yellow">#faba01</color>
 
 
+    <color name="colorBlack">#000000</color>
+    <color name="colorItem">#451511</color>
+    <color name="colorBgItem">#E6FB7B70</color>
+
 
     <color name="text_selected">#b0003a</color>
     <color name="text_focused">#E91E63</color>

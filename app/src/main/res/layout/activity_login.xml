@@ -27,7 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:elevation="8dp"
-            app:cardBackgroundColor="@color/graylite"
+            android:alpha="0.9"
+            android:paddingBottom="12dp"
+            app:cardBackgroundColor="@color/colorBgItem"
             app:cardCornerRadius="10dp">
 
             <LinearLayout
@@ -40,6 +42,15 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="@string/Login"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/colorItem"/>
 
                 <com.example.mizansen.CustomView.LinearLayoutCustom
                     android:layout_width="wrap_content"
@@ -53,12 +64,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:tint="@color/colorItem"
                         android:src="@drawable/ic_mail" />
 
                     <TextView
                         android:layout_width="2dp"
                         android:layout_height="match_parent"
-                        android:background="@color/colorPrimaryDark" />
+                        android:background="@color/colorBgItem" />
 
                     <com.example.mizansen.CustomView.EditTextCustom
                         android:id="@+id/activitylogin_username"
@@ -66,14 +78,13 @@
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:drawablePadding="8dp"
+                        android:textSize="@dimen/size_text_edittext"
                         android:ems="10"
-                        android:gravity="right"
                         android:hint="@string/email"
                         android:inputType="textEmailAddress"
                         android:padding="3dp"
                         android:paddingBottom="5dp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textColorHint="@color/colorPrimaryDark" />
+                        android:textColor="@color/colorItem"/>
                 </com.example.mizansen.CustomView.LinearLayoutCustom>
 
                 <com.example.mizansen.CustomView.LinearLayoutCustom
@@ -89,12 +100,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:tint="@color/colorItem"
                         android:src="@drawable/ic_key" />
 
                     <TextView
                         android:layout_width="2dp"
                         android:layout_height="match_parent"
-                        android:background="@color/colorPrimaryDark" />
+                        android:background="@color/colorBgItem" />
 
                     <com.example.mizansen.CustomView.EditTextCustom
                         android:id="@+id/activitylogin_password"
@@ -102,36 +114,39 @@
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:drawablePadding="8dp"
-                        android:drawableTint="@color/colorAccent"
                         android:ems="10"
-                        android:gravity="right"
                         android:hint="@string/password"
+                        android:textSize="@dimen/size_text_edittext"
                         android:inputType="textPassword"
                         android:padding="5dp"
                         android:paddingBottom="5dp"
-                        android:textColor="@color/colorAccent"
-                        android:textColorHint="@color/colorAccent" />
+                        android:textColor="@color/colorItem"/>
                 </com.example.mizansen.CustomView.LinearLayoutCustom>
 
                 <com.example.mizansen.CustomView.TextViewCustom
                     android:id="@+id/activitylogin_forgotpass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:padding="3dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:padding="5dp"
                     android:text="@string/forgotpassword"
-                    android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textColor="@color/colorItem"
+                    android:textSize="10dp"
+                    app:inverse_gravity="true"/>
 
                 <com.example.mizansen.CustomView.ButtonCustom
                     android:id="@+id/activitylogin_login"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_height="@dimen/layout_height_buttom"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:textColor="@color/colorItem"
                     android:background="@drawable/backgrund_button_green"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="@string/Login" />
+                    android:text="@string/Login"
+                    app:btn_bold_word="@string/Login"/>
 
                 <com.example.mizansen.CustomView.TextViewCustom
                     android:id="@+id/activitylogin_register"
@@ -141,8 +156,9 @@
                     android:layout_marginBottom="80dp"
                     android:padding="5dp"
                     android:text="@string/register_login"
-                    android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textColor="@color/colorItem"
+                    android:textSize="11dp"
+                    app:word_bold="@string/register_login_bold"/>
 
             </LinearLayout>
 
@@ -153,7 +169,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="340dp"
+        android:layout_height="344dp"
         android:layout_gravity="bottom"
         android:scaleType="fitXY"
         android:src="@drawable/pirhan" />

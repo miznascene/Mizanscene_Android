@@ -4,16 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Helper.LocaleHelper;
-import com.example.mizansen.Helper.RequstHelper;
+import com.example.mizansen.Helper.MessageHelper;
+import com.example.mizansen.Helper.RequestHelper;
+import com.example.mizansen.Helper.ValidationHelper;
 import com.example.mizansen.Network.ModelNetwork.ValidationModel;
 import com.example.mizansen.OtherClass.OtherMetod;
 import com.example.mizansen.R;
@@ -27,10 +28,11 @@ public class SendEmailActivity extends Activity {
     static String TypePage;
     static Button submit;
     static EditText mail;
+    TextView title;
     LanguageHelper languageHelper = new LanguageHelper();
     static String TAG = "TAG_SendEmailActivity";
     static OtherMetod om = new OtherMetod();
-    RequstHelper requstHelper = new RequstHelper();
+    RequestHelper requstHelper = new RequestHelper();
     ImageView backPage;
 
 
@@ -51,10 +53,10 @@ public class SendEmailActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                if (om.validEmail(mail.getText().toString())) {
+                if (ValidationHelper.validEmail(mail.getText().toString())) {
                     sendCodeByTypePage();
                 } else {
-                    mail.setError(getResources().getString(R.string.ErrorValidEmail));
+                    MessageHelper.Snackbar(SendEmailActivity.this, getResources().getString(R.string.ErrorValidEmail), "");
                 }
 
             }
@@ -72,17 +74,18 @@ public class SendEmailActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        startActivity(new Intent(SendEmailActivity.this, LoginActivity.class));
+        finish();
 
     }
 
     void sendCodeByTypePage() {
-        if (TypePage.equals("forgotpass")) {
-            submit.setVisibility(View.GONE);
-
+        submit.setVisibility(View.GONE);
+        if (TypePage.equals("reset_password")) {
+            requstHelper.SendCodeResetpasswordByMail(getResources().getString(R.string.API_SendEmailToResetPass), "email", mail.getText().toString(), SendEmailActivity.this);
         } else {
-            submit.setVisibility(View.GONE);
             mail.setVisibility(View.INVISIBLE);
-            requstHelper.SendCodeRegisterByMail(new FormBody.Builder().add("email", mail.getText().toString()).build(), "https://mizanscene.com/wp-json/mobile/v1/profile/register", SendEmailActivity.this);
+            requstHelper.SendCodeRegisterByMail(new FormBody.Builder().add("email", mail.getText().toString()).build(), getResources().getString(R.string.API_SendEmailToRegister), SendEmailActivity.this);
 
         }
     }
@@ -91,26 +94,30 @@ public class SendEmailActivity extends Activity {
         Bundle bundle = getIntent().getExtras();
         TypePage = bundle.getString("typePage");
 
+        title = findViewById(R.id.sendemail_title);
         backPage = findViewById(R.id.sendemail_backpage);
         submit = findViewById(R.id.sendemail_submit);
         mail = findViewById(R.id.sendemail_email);
 
         languageHelper.GetLanguage(SendEmailActivity.this);
 
+        if (TypePage.equals("reset_password")) {
+            title.setText(getResources().getString(R.string.title_sendmail_reset_password));
+        } else {
+            title.setText(getResources().getString(R.string.title_sendmail_register));
+        }
+
     }
 
-    public static void ResualtReqeustValidationEmail(ValidationModel validationModel, String Json, Context context) {
+    public static void ResualtReqeustRegisterValidationEmail(ValidationModel validationModel, String Json, Context context) {
 
-        if (om.validStatus(validationModel.status)) {
-            Log.i(TAG, "user_email : " + validationModel.data.user_email);
+        if (ValidationHelper.validStatus(validationModel.status)) {
             goToPageVerifiyCodeActivity(Json, context);
         } else {
-            Log.i(TAG, "message : " + validationModel.message);
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.worng_email_register), "");
             submit.setVisibility(View.VISIBLE);
             mail.setVisibility(View.VISIBLE);
         }
-
-
     }
 
     static void goToPageVerifiyCodeActivity(String Json, Context context) {
@@ -120,7 +127,19 @@ public class SendEmailActivity extends Activity {
                 .putExtra("json", Json);
 
         context.startActivity(intent);
+        ((Activity) context).finish();
 
 
+    }
+
+    public static void ResualtReqeustResetPasswordValidationEmail(ValidationModel validationModel, String Json, Context context) {
+
+        if (ValidationHelper.validStatus(validationModel.status)) {
+            goToPageVerifiyCodeActivity(Json, context);
+        } else {
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.worng_email_reset), "");
+            submit.setVisibility(View.VISIBLE);
+            mail.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -21,5 +21,21 @@
         <attr name="behavior_targetRotateY" format="float"/>
 
         <attr name="behavior_animation" format="reference"/>
+
     </declare-styleable>
+
+    <declare-styleable name="TextViewCustom">
+        <attr name="word_bold" format="string" />
+        <attr name="inverse_gravity" format="boolean"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="ButtonCustom">
+
+        <attr name="btn_font" format="string"/>
+        <attr name="btn_bold_word" format="string"/>
+
+    </declare-styleable>
+
+
 </resources>

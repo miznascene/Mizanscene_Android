@@ -1,38 +1,90 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <string name="lorem">Leila was born in Tehran/Shemrian. At age of 7, she had a chance to begin acting in film. However her family and she thought school was more important for her at the time than acting. She was introduced to stage acting at the age of 18. Leila’s film debut was "Black Eyes" by Iraj Ghaderi. Since then she has starred in many films and recently became the highest paying actress in Iran. She speaks Persian and Turkish fluently and plays tennis, enjoys horseback riding and many other sports.</string>
+    <string name="hemase">Epic Heroes</string>
+    <string name="simple_view_behavior">com.zoonref.viewbehavior.SimpleViewBehavior</string>
+    <string name="animation_view_behavior">com.example.mizansen.CustomView.AnimationViewBehavior</string>
+
+
+
+
+
+    <!--String App -->
     <string name="app_name">Mizansen</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="more">More</string>
+
+    <!--String Menu -->
+    <string name="search">search</string>
+    <string name="my_Movies">my Movies</string>
+    <string name="category">category</string>
+    <string name="home">home</string>
 
 
+    <!--String Tab -->
     <string name="tab_text_1">Gallory Offline</string>
     <string name="tab_text_2">Views</string>
     <string name="tab_text_3">Wishlist</string>
 
-    <string name="lorem">
-Leila was born in Tehran/Shemrian. At age of 7, she had a chance to begin acting in film. However her family and she thought school was more important for her at the time than acting. She was introduced to stage acting at the age of 18. Leila’s film debut was "Black Eyes" by Iraj Ghaderi. Since then she has starred in many films and recently became the highest paying actress in Iran. She speaks Persian and Turkish fluently and plays tennis, enjoys horseback riding and many other sports.</string>
+    <!--String Message-->
+    <string name="ErrorValidEmail">Enter the email correctly</string>
+    <string name="ErrorValidPin">Enter the Pin carefully</string>
+    <string name="worng_code">Code is wrong!</string>
+    <string name="worng_email_register">Email already registered</string>
+    <string name="worng_email_reset">Unregistered email</string>
+    <string name="password_count">The minimum password is 6 characters</string>
+    <string name="Same_password">The password is not the same</string>
+    <string name="validation_firstnamelastname">You cannot use a number in a first and last name</string>
+    <string name="error_host">Error registering information</string>
+    <string name="sucsses_resetpass">Your password has been successfully changed.</string>
+    <string name="resetpass_ok">New code sent</string>
+    <string name="resetpass_worng">Error submitting new code</string>
+    <string name="registered_ok">Your registration has been successful</string>
 
-    <string name="hemase">Epic Heroes</string>
-    <string name="more">More</string>
 
-    <string name="simple_view_behavior">com.zoonref.viewbehavior.SimpleViewBehavior</string>
-    <string name="animation_view_behavior">com.example.mizansen.CustomView.AnimationViewBehavior</string>
-
-    <string name="forgotpassword">Forgotpassword?</string>
-    <string name="Register">Register</string>
-    <string name="ReSend">ReSend Code</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Confirm Password</string>
+    <!--String LoginActivity -->
     <string name="Login">Login</string>
-    <string name="serch">serch</string>
-    <string name="my_Movies">my Movies</string>
-    <string name="category">category</string>
-    <string name="home">home</string>
+    <string name="email">Email</string>
+    <string name="forgotpassword">Forgotpassword?</string>
+    <string name="register_login">Do not have an account? Sign up now</string>
+    <string name="register_login_bold">Sign up</string>
+
+    <!--String SendMailActivity -->
+    <string name="Get_code">Get Code</string>
+    <string name="title_sendmail_reset_password">Enter your email to recover your password.</string>
+    <string name="title_sendmail_register">Enter your email to sign up.</string>
+
+    <!--String VerifyCodeActivity -->
+    <string name="title_verificode">Enter code</string>
+    <string name="ReSend">Send Code</string>
+    <string name="getnewcode" translatable="false">Get the code again</string>
+    <string name="Edit">Edit</string>
+
+    <!--String RegisterActivity -->
+    <string name="title_register">Complete the form below to register.</string>
     <string name="name">name</string>
     <string name="family">family</string>
-    <string name="Get_code">Get Code</string>
+    <string name="Register">Register</string>
+
+    <!--String ResetPasswordActivity -->
     <string name="change_pass">change password</string>
-    <string name="Edit">Edit</string>
-    <string name="ErrorValidEmail">Enter the email carefully</string>
-    <string name="ErrorValidPin">Enter the Pin carefully</string>
-    <string name="register_login" >Do not have an account? Sign up now</string>
+
+
+    <!--String MainActivity -->
+    <!--String ... -->
+
+
+    <!--String Url Api-->
+    <string name="API_Validation">https://mizanscene.com/wp-json/mobile/v1/profile/login/validate</string>
+    <string name="API_Login">https://mizanscene.com/wp-json/mobile/v1/profile/login</string>
+    <string name="API_SendEmailToRegister">https://mizanscene.com/wp-json/mobile/v1/profile/register</string>
+    <string name="API_SendEmailToResetPass">https://mizanscene.com/wp-json/mobile/v1/profile/reset-password</string>
+    <string name="API_VerifiCode">https://mizanscene.com/wp-json/mobile/v1/profile/verify-code</string>
+    <string name="API_ReSendCode">https://mizanscene.com/wp-json/mobile/v1/profile/reset-code</string>
+    <string name="API_Register">https://mizanscene.com/wp-json/mobile/v1/profile/register</string>
+    <string name="API_ResetPassword">https://mizanscene.com/wp-json/mobile/v1/profile/reset-password</string>
+
 
 </resources>

@@ -6,32 +6,42 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.chaos.view.PinView;
+import com.example.mizansen.Helper.JsonHelper;
 import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Helper.LocaleHelper;
-import com.example.mizansen.Helper.RequstHelper;
+import com.example.mizansen.Helper.MessageHelper;
+import com.example.mizansen.Helper.RequestHelper;
+import com.example.mizansen.Helper.ValidationHelper;
+import com.example.mizansen.Network.ModelNetwork.ResetCodeModel;
+import com.example.mizansen.Network.ModelNetwork.ValidationModel;
+import com.example.mizansen.Network.ModelNetwork.ValidtionCodeModel;
 import com.example.mizansen.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import okhttp3.FormBody;
+
 
 public class VerifiyCodeActivity extends Activity {
 
-    String TypePage, Json;
-    Button submit;
-    TextView textMail, textTimeDown, ReSend;
-    int time;
-    Timer myTimer;
+    static String TypePage, Json;
+    static Button submit;
+    TextView textMail;
+    static TextView ResetCode, textTimeDown;
+    static int time;
+    static Timer myTimer;
     LanguageHelper languageHelper = new LanguageHelper();
-    PinView pincode;
-    static String TAG = "TAG_VerifiyCodeActivity";
-    String CodeInput;
-    RequstHelper requstHelper = new RequstHelper();
+    static PinView pincode;
+    RequestHelper requstHelper = new RequestHelper();
+    static String TAG = "TAG_VerifiyCodeActivity", PinCode = "";
+    ValidationModel validationModel = new ValidationModel();
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -55,10 +65,12 @@ public class VerifiyCodeActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() == 4) {
-
-                    goToNextStep();
+                    submit.setVisibility(View.VISIBLE);
+                    PinCode = s.toString();
 
                 } else {
+                    PinCode = "";
+                    submit.setVisibility(View.GONE);
                 }
             }
 
@@ -76,61 +88,84 @@ public class VerifiyCodeActivity extends Activity {
             }
         });
 
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                sendValidationCode(PinCode);
             }
         });
 
-        ReSend.setOnClickListener(new View.OnClickListener() {
+
+        ResetCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ReSend.setVisibility(View.GONE);
-                timeDown();
+                ResetCode.setVisibility(View.GONE);
+
+                ResetCodeCode();
             }
         });
+
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(VerifiyCodeActivity.this, LoginActivity.class));
+        finish();
+    }
 
     void init() {
         Bundle bundle = getIntent().getExtras();
         TypePage = bundle.getString("typePage");
         Json = bundle.getString("json");
 
+        validationModel = JsonHelper.ConvertStringToValidationModel(Json);
+
         pincode = findViewById(R.id.verifiycode_pincode);
         textTimeDown = findViewById(R.id.verifiycode_timedowntext);
         textMail = findViewById(R.id.verifiycode_mailtext);
         submit = findViewById(R.id.verifiycode_submit);
-        ReSend = findViewById(R.id.verifiycode_resend);
+        ResetCode = findViewById(R.id.verifiycode_resetcode);
+
+        textMail.setText(validationModel.data.email);
 
         languageHelper.GetLanguage(VerifiyCodeActivity.this);
 
+        timeDown(VerifiyCodeActivity.this);
+
     }
 
-    void goToNextStep() {
-        if (TypePage.equals("forgotpass")) {
-            startActivity(new Intent(VerifiyCodeActivity.this, RecoveryPasswordActivity.class));
-        } else {
-            startActivity(new Intent(VerifiyCodeActivity.this, RegisterActivity.class));
-        }
+    static void goToNextStep(Context context) {
+        Intent i;
+
+        if (TypePage.equals("reset_password"))
+            i = new Intent(context, ResetPasswordActivity.class);
+        else
+            i = new Intent(context, RegisterActivity.class);
+
+        i.putExtra("json", Json);
+        context.startActivity(i);
+        ((Activity) context).finish();
     }
 
-    void timeDown() {
+    static void timeDown(final Context context) {
         time = 60;
+        textTimeDown.setVisibility(View.VISIBLE);
 
         myTimer = new Timer();
 
         myTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
+                ((Activity) context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         time -= 1;
                         if (time <= 0) {
-                            ReSend.setVisibility(View.VISIBLE);
+                            ResetCode.setVisibility(View.VISIBLE);
+                            textTimeDown.setVisibility(View.GONE);
                             myTimer.cancel();
                         } else {
                             textTimeDown.setText(time + "s");
@@ -145,7 +180,69 @@ public class VerifiyCodeActivity extends Activity {
     }
 
     void sendValidationCode(String PinCod) {
+
+        try {
+            submit.setVisibility(View.GONE);
+            FormBody form = new FormBody.Builder()
+                    .add("user_id", String.valueOf(validationModel.data.user_id))
+                    .add("verification_code", PinCod)
+                    .add("action", TypePage)
+                    .build();
+
+            requstHelper.verify_code(form, getResources().getString(R.string.API_VerifiCode), VerifiyCodeActivity.this);
+
+        } catch (Exception e) {
+            Log.i(TAG, "ResualtValidationCode Error" + e.toString());
+        }
+
     }
 
+    public static void ResualtValidationCode(String json, Context context) {
+
+        ValidtionCodeModel validtionCodeModel = JsonHelper.ConvertStringToValidationCodeModel(json);
+        submit.setVisibility(View.VISIBLE);
+        try {
+            if (ValidationHelper.validStatus(validtionCodeModel.status)) {
+                //Success
+//                if (validtionCodeModel.data.verification)
+                goToNextStep(context);
+            } else {
+                // Error
+                Log.i(TAG, context.getResources().getString(R.string.worng_code));
+                MessageHelper.Snackbar(context, context.getResources().getString(R.string.worng_code), "");
+                pincode.setText("");
+
+            }
+        } catch (Exception e) {
+            Log.i(TAG, "ResualtValidationCode Error" + e.toString());
+        }
+
+
+    }
+
+    void ResetCodeCode() {
+        FormBody form = new FormBody.Builder()
+                .add("user_id", String.valueOf(validationModel.data.user_id))
+                .build();
+        requstHelper.ResetCode(form, getResources().getString(R.string.API_ReSendCode), VerifiyCodeActivity.this);
+    }
+
+    public static void ResualtResetCode(String json, Context context) {
+
+        ResetCodeModel resetCodeModel = JsonHelper.ConvertStringToResetCodeModel(json);
+
+        if (ValidationHelper.validStatus(resetCodeModel.status)) {
+            Log.i(TAG, context.getResources().getString(R.string.resetpass_ok));
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.resetpass_ok), "");
+            timeDown(context);
+
+        } else {
+            Log.i(TAG, context.getResources().getString(R.string.resetpass_worng));
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.resetpass_worng), "");
+            ResetCode.setVisibility(View.VISIBLE);
+
+        }
+
+    }
 
 }

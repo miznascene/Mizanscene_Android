@@ -4,23 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Helper.LocaleHelper;
-import com.example.mizansen.Network.ModelNetwork.AccountModel;
-import com.example.mizansen.Network.ModelNetwork.InputLoginModel;
-import com.example.mizansen.Network.RequestBuilder;
-import com.example.mizansen.Network.RequestBuilderClass;
+import com.example.mizansen.Helper.MessageHelper;
+import com.example.mizansen.Helper.RequestHelper;
+import com.example.mizansen.Helper.ValidationHelper;
 import com.example.mizansen.OtherClass.OtherMetod;
 import com.example.mizansen.R;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
+
 
 public class LoginActivity extends Activity {
 
@@ -30,6 +26,7 @@ public class LoginActivity extends Activity {
     String TAG = "TAG_LoginActivity";
     OtherMetod om = new OtherMetod();
     LanguageHelper languageHelper = new LanguageHelper();
+    RequestHelper requstHelper = new RequestHelper();
 
 
     @Override
@@ -47,24 +44,29 @@ public class LoginActivity extends Activity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToVerifiyCodePage("register");
+                goToSendcodeCodePage("register");
             }
         });
 
         Forgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToVerifiyCodePage("forgotpass");
+                goToSendcodeCodePage("reset_password");
             }
         });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!username.getText().toString().equals("") && password.length() > 6) {
-                    Login(username.getText().toString(), password.getText().toString());
+                if (ValidationHelper.validEmail(username.getText().toString())) {
+                    if (ValidationHelper.validPasswordByLenght(password.getText().toString(), password.getText().toString())) {
+                        Login(username.getText().toString(), password.getText().toString());
+                    } else {
+                        MessageHelper.Snackbar(LoginActivity.this, getResources().getString(R.string.password_count), "");
+                    }
+
                 } else {
-                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
+                    MessageHelper.Snackbar(LoginActivity.this, getResources().getString(R.string.ErrorValidEmail), "");
                 }
             }
         });
@@ -77,41 +79,10 @@ public class LoginActivity extends Activity {
         om.SetSharedPreferences("chek_login", String.valueOf(Integer.parseInt(check) + 1), LoginActivity.this);
     }
 
-    void Login(String username, String Password) {
+    void Login(String Email, String Password) {
 
-        InputLoginModel loginModel = new InputLoginModel();
+        requstHelper.Login(Email, Password, getResources().getString(R.string.API_Login), LoginActivity.this);
 
-        loginModel.password = Password;
-        loginModel.username = username;
-
-        Call<AccountModel> client = RequestBuilderClass.retrofit.create(RequestBuilder.class).login(loginModel);
-        client.enqueue(new Callback<AccountModel>() {
-            @Override
-            public void onResponse(Call<AccountModel> call, Response<AccountModel> response) {
-                Log.i(TAG, "Login received");
-
-                AccountModel accountModel = response.body();
-
-                try {
-                    if (!accountModel.token.equals("")) {
-                        Log.i(TAG, "Token is :" + accountModel.token);
-                        om.SetSharedPreferences("Token", accountModel.token, LoginActivity.this);
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
-                    } else {
-                        //failed
-                    }
-                } catch (Exception e) {
-                    Log.i(TAG, e.toString());
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<AccountModel> call, Throwable t) {
-                Log.i(TAG, t.toString());
-            }
-        });
     }
 
     void init() {
@@ -128,10 +99,11 @@ public class LoginActivity extends Activity {
         chekLogin();
     }
 
-    void goToVerifiyCodePage(String key) {
+    void goToSendcodeCodePage(String key) {
         Intent intent = new Intent(LoginActivity.this, SendEmailActivity.class);
         intent.putExtra("typePage", key);
         startActivity(intent);
+        finish();
     }
 
 }

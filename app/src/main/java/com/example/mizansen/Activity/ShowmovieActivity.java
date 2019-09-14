@@ -30,8 +30,6 @@ public class ShowmovieActivity extends Activity {
 
 
 
-
-
         player.onComplete(new Runnable() {
             @Override
             public void run() {

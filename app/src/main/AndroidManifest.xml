@@ -47,7 +47,7 @@
 
         <activity android:name=".Activity.VerifiyCodeActivity"/>
 
-        <activity android:name=".Activity.RecoveryPasswordActivity"/>
+        <activity android:name=".Activity.ResetPasswordActivity"/>
 
         <activity android:name=".Activity.RegisterActivity"/>
 

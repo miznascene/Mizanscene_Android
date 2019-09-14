@@ -78,7 +78,7 @@ public class LocaleHelper {
 
     }
 
-    private static String getPeresistedData(Context context, String language) {
+    public static String getPeresistedData(Context context, String language) {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         return sharedPreferences.getString(SELECTED_LANGUAGE, language);
