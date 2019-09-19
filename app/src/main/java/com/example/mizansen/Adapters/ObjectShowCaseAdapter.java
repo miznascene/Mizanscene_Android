@@ -53,7 +53,7 @@ public class ObjectShowCaseAdapter extends RecyclerView.Adapter<ObjectShowCaseAd
         } catch (Exception e) {
             Log.i(TAG, "Error :" + e.toString());
             Picasso.with(holder.image.getContext())
-                    .load("https://mizanscene.com/wp-content/uploads/2019/08/hamase-ghahreman-wpv_290x430.jpg")
+                    .load("https://mizanscene.com/wp-content/uploads/2019/09/template-2.png")
                     .fit()
                     .into(holder.image);
         }
@@ -87,14 +87,14 @@ public class ObjectShowCaseAdapter extends RecyclerView.Adapter<ObjectShowCaseAd
 
         @Override
         public void onClick(View view) {
-            int i = getAdapterPosition();
-
-            Intent intent = new Intent(((Activity) context), MovieActivity.class);
-            intent.putExtra("movie_id", String.valueOf(moviesModels.get(i).id));
-            context.startActivity(intent);
-            ((Activity) context).finish();
-
-            Log.i(TAG, "Clicked item title is " + moviesModels.get(i).id);
+//            int i = getAdapterPosition();
+//
+//            Intent intent = new Intent(((Activity) context), MovieActivity.class);
+//            intent.putExtra("movie_id", String.valueOf(moviesModels.get(i).id));
+//            context.startActivity(intent);
+//            ((Activity) context).finish();
+//
+//            Log.i(TAG, "Clicked item title is " + moviesModels.get(i).id);
 
 
         }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.mizansen.Activity.LoginActivity;
 import com.example.mizansen.Activity.ResetPasswordActivity;
 import com.example.mizansen.Activity.RegisterActivity;
 import com.example.mizansen.Activity.SendEmailActivity;
@@ -23,7 +24,7 @@ public class RequestHelper {
     NetWork netWork = new NetWork();
     String TAG = "TAG_RequstHelper";
     JsonHelper jsonHelper = new JsonHelper();
-    LoadingHelper loadingHelper = new LoadingHelper();
+    IndicatorHelper loadingHelper = new IndicatorHelper();
 
 
     // Request is UserActivity => Validation | Login | SendMail | VerifyCode | ResendCode(ResetCode) | Register | ResetPassword
@@ -51,7 +52,7 @@ public class RequestHelper {
 
     public void Login(String email, String password, final String url, final Context context) {
 
-        loadingHelper.CreateLoading(context);
+        loadingHelper.CreateIndicator(context);
 
         new AsyncTask<String, Void, String>() {
 
@@ -63,11 +64,12 @@ public class RequestHelper {
             @Override
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
-                loadingHelper.DismissDialog();
+                loadingHelper.DismissIndicator();
                 Log.i(TAG, "Login result: " + result);
                 try{
                     AccountModel accountmodel = JsonHelper.ConvertStringToAccountModel(result);
-                    SharedPreferencesHelper.SetSharedPreferences("Token",accountmodel.token,context);
+                    SharedPreferencesHelper.SetSharedPreferences("Token",accountmodel.data.token,context);
+                    LoginActivity.ResultRequest(result,context);
                 }catch (Exception e){
 
                 }
@@ -82,7 +84,7 @@ public class RequestHelper {
 
     public void SendCodeRegisterByMail(final RequestBody formBody, final String url, final Context context) {
 
-        loadingHelper.CreateLoading(context);
+        loadingHelper.CreateIndicator(context);
 
         new AsyncTask<String, Void, String>() {
 
@@ -97,7 +99,7 @@ public class RequestHelper {
                 super.onPostExecute(result);
                 Log.i(TAG, "SendCodeRegisterByMail result: " + result);
 
-                loadingHelper.DismissDialog();
+                loadingHelper.DismissIndicator();
                 ValidationModel validationModel = jsonHelper.ConvertStringToValidationModel(result);
 
                 if (ValidationHelper.validStatus(validationModel.status)) {
@@ -116,7 +118,7 @@ public class RequestHelper {
 
     public void SendCodeResetpasswordByMail(final String url, final String QueryParameterName, final String QueryParameterValue, final Context context) {
 
-        loadingHelper.CreateLoading(context);
+        loadingHelper.CreateIndicator(context);
 
         new AsyncTask<String, Void, String>() {
 
@@ -130,7 +132,7 @@ public class RequestHelper {
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
                 Log.i(TAG, "SendCodeResetpasswordByMail result: " + result);
-                loadingHelper.DismissDialog();
+                loadingHelper.DismissIndicator();
 
                 ValidationModel validationModel = jsonHelper.ConvertStringToValidationModel(result);
 
@@ -150,7 +152,7 @@ public class RequestHelper {
 
     public void verify_code(final RequestBody formBody, final String url, final Context context) {
 
-        loadingHelper.CreateLoading(context);
+        loadingHelper.CreateIndicator(context);
 
         new AsyncTask<String, Void, String>() {
 
@@ -164,7 +166,7 @@ public class RequestHelper {
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
 
-                loadingHelper.DismissDialog();
+                loadingHelper.DismissIndicator();
                 Log.i(TAG, "verify_code result: " + result);
 
                 VerifiyCodeActivity.ResualtValidationCode(result, context);
@@ -178,7 +180,7 @@ public class RequestHelper {
 
     public void ResetCode(final RequestBody formBody, final String url, final Context context) {
 
-        loadingHelper.CreateLoading(context);
+        loadingHelper.CreateIndicator(context);
 
         new AsyncTask<String, Void, String>() {
 
@@ -190,7 +192,7 @@ public class RequestHelper {
             @Override
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
-                loadingHelper.DismissDialog();
+                loadingHelper.DismissIndicator();
                 Log.i(TAG, "Register result: " + result);
                 VerifiyCodeActivity.ResualtResetCode(result, context);
 
@@ -203,7 +205,7 @@ public class RequestHelper {
     }
 
     public void Register(final RequestBody formBody, final String url, final Context context) {
-        loadingHelper.CreateLoading(context);
+        loadingHelper.CreateIndicator(context);
 
         new AsyncTask<String, Void, String>() {
 
@@ -217,7 +219,7 @@ public class RequestHelper {
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
 
-                loadingHelper.DismissDialog();
+                loadingHelper.DismissIndicator();
                 Log.i(TAG, "Register result: " + result);
                 RegisterActivity.resultRequst(result, context);
 
@@ -231,7 +233,7 @@ public class RequestHelper {
 
     public void ResetPassword(final RequestBody formBody, final String url, final Context context) {
 
-        loadingHelper.CreateLoading(context);
+        loadingHelper.CreateIndicator(context);
 
         new AsyncTask<String, Void, String>() {
 
@@ -243,7 +245,7 @@ public class RequestHelper {
             @Override
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
-                loadingHelper.DismissDialog();
+                loadingHelper.DismissIndicator();
                 Log.i(TAG, "Register result: " + result);
                 ResetPasswordActivity.resultRequst(result, context);
 

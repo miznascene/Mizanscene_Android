@@ -5,14 +5,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
-
-import androidx.annotation.NonNull;
+import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.mizansen.CustomView.NonSwipeableViewPager;
 import com.example.mizansen.Fragment.BottomBar.CategoryFragment;
 import com.example.mizansen.Fragment.BottomBar.MyVideosFragment;
@@ -20,25 +20,19 @@ import com.example.mizansen.Fragment.BottomBar.ShowcaseFragment;
 import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Helper.LocaleHelper;
 import com.example.mizansen.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.makeramen.roundedimageview.RoundedImageView;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends FragmentActivity {
 
-    BottomNavigationView navigation;
     BottomBarAdapter adapter;
     public NonSwipeableViewPager viewPager;
-    CircleImageView imageView_profile;
+    ImageView imageViewSerarch;
     String TAG = "TAG_MainActivity";
-
-
-
     LanguageHelper languageHelper = new LanguageHelper();
+    MeowBottomNavigation bottomNavigation;
 
 
     @Override
@@ -46,54 +40,60 @@ public class MainActivity extends FragmentActivity {
         super.attachBaseContext(LocaleHelper.onAttach(newBase, "fa"));
     }
 
-    BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-            switch (item.getItemId()) {
-                case R.id.action_Showcase:
-                    viewPager.setCurrentItem(0);
-                    return true;
-                case R.id.action_category:
-                    viewPager.setCurrentItem(1);
-                    return true;
-                case R.id.action_myvideos:
-                    viewPager.setCurrentItem(2);
-                    return true;
-            }
-            return false;
-        }
-    };
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         initView();
 
-
-        imageView_profile.setOnClickListener(new View.OnClickListener() {
+        imageViewSerarch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                finish();
+
+            }
+        });
+
+
+        bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+            @Override
+            public Unit invoke(MeowBottomNavigation.Model p1) {
+                Log.i(TAG, "model " + p1.getId());
+                MenuAction(p1.getId());
+                return Unit.INSTANCE;
             }
         });
 
 
     }
 
-    @SuppressLint({"ResourceType", "WrongViewCast"})
-    void initView(){
+    void MenuAction(int select) {
 
-        imageView_profile = findViewById(R.id.main_profileimage);
-        navigation = (BottomNavigationView) findViewById(R.id.BottomNavigationView);
-        navigation.setSelectedItemId(R.menu.my_navigation_items);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        if (select == 3){
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            finish();
+        }
+
+        viewPager.setCurrentItem(select);
+
+    }
+
+    @SuppressLint({"ResourceType", "WrongViewCast"})
+    void initView() {
+
+        imageViewSerarch = findViewById(R.id.main_search);
+
+
+        bottomNavigation = findViewById(R.id.bottomNavigationView);
+        bottomNavigation.add(new MeowBottomNavigation.Model(0, R.drawable.ic_home));
+
+        bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.ic_category));
+
+        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.ic_mywishlist));
+
+        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_user));
+
+        bottomNavigation.show(0, true);
 
 
         languageHelper.GetLanguage(MainActivity.this);
@@ -119,7 +119,6 @@ public class MainActivity extends FragmentActivity {
         viewPager.setAdapter(adapter);
 
     }
-
 
     public class BottomBarAdapter extends FragmentPagerAdapter {
         private final List<Fragment> fragments = new ArrayList<>();

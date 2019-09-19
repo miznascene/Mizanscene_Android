@@ -18,6 +18,8 @@ import com.example.mizansen.Network.ModelNetwork.RegisterModel;
 import com.example.mizansen.Network.ModelNetwork.ValidationModel;
 import com.example.mizansen.R;
 
+import java.io.IOException;
+
 import okhttp3.FormBody;
 
 public class RegisterActivity extends Activity {
@@ -49,17 +51,29 @@ public class RegisterActivity extends Activity {
                         if (ValidationHelper.validFirstNameAndLastName(lastName.getText().toString())
                                 && ValidationHelper.validFirstNameAndLastName(firstName.getText().toString())) {
 
-                            Register(firstName.getText().toString(), lastName.getText().toString(), password.getText().toString());
+                            try {
+                                if (ValidationHelper.validInternetConnection(RegisterActivity.this)) {
+                                    Register(firstName.getText().toString(), lastName.getText().toString(), password.getText().toString());
+                                } else {
+                                    MessageHelper.Snackbar(RegisterActivity.this, getResources().getString(R.string.ErrorValidInternet), "", R.color.red, R.drawable.messagestyle);
+                                }
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                                MessageHelper.Snackbar(RegisterActivity.this, getResources().getString(R.string.ErrorValidInternet), "", R.color.red, R.drawable.messagestyle);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                MessageHelper.Snackbar(RegisterActivity.this, getResources().getString(R.string.ErrorValidInternet), "", R.color.red, R.drawable.messagestyle);
+                            }
 
                         } else {
-                            MessageHelper.Snackbar(RegisterActivity.this, getResources().getString(R.string.validation_firstnamelastname), "");
+                            MessageHelper.Snackbar(RegisterActivity.this, getResources().getString(R.string.validation_firstnamelastname), "", R.color.red, R.drawable.messagestyle);
                         }
                     } else {
-                        MessageHelper.Snackbar(RegisterActivity.this, getResources().getString(R.string.password_count), "");
+                        MessageHelper.Snackbar(RegisterActivity.this, getResources().getString(R.string.password_count), "", R.color.red, R.drawable.messagestyle);
                     }
 
                 } else {
-                    MessageHelper.Snackbar(RegisterActivity.this, getResources().getString(R.string.Same_password), "");
+                    MessageHelper.Snackbar(RegisterActivity.this, getResources().getString(R.string.Same_password), "", R.color.red, R.drawable.messagestyle);
                 }
             }
         });
@@ -104,11 +118,11 @@ public class RegisterActivity extends Activity {
         RegisterModel rm = JsonHelper.ConvertStringToRegisterModel(Json);
 
         if (ValidationHelper.validStatus(rm.status)) {
-            MessageHelper.Snackbar(context, context.getResources().getString(R.string.registered_ok), "");
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.registered_ok), "", R.color.green, R.drawable.messagestylesuccess);
             ((Activity) context).startActivity(new Intent(context, LoginActivity.class));
             ((Activity) context).finish();
         } else {
-            MessageHelper.Snackbar(context, context.getResources().getString(R.string.error_host), "");
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.error_host), "", R.color.red, R.drawable.messagestyle);
         }
 
 

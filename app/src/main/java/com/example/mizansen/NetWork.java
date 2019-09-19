@@ -101,8 +101,6 @@ public class NetWork {
         }
     }
 
-
-
     public String PutData(String URL, RequestBody formBody, String headerName, String headerValue, String QueryParameterName, String QueryParameterValue) {
         Response response = null;
         try {

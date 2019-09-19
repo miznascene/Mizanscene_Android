@@ -46,8 +46,8 @@
     <string name="more">بیشتر</string>
 
     <!--String Menu -->
-    <string name="search">جستجو</string>
-    <string name="my_Movies">فیلم های من</string>
+    <string name="profile">پروفایل</string>
+    <string name="my_Movies">آرشیو من</string>
     <string name="category">دسته بندی</string>
     <string name="home">خانه</string>
 
@@ -68,9 +68,10 @@
     <string name="validation_firstnamelastname">نمی توانید از عدد در نام و نام خانوادگی استفاده کنید،</string>
     <string name="error_host">خطا در ثبت اطلاعات</string>
     <string name="sucsses_resetpass">رمز شما با موفقیت تغییر کرد.</string>
-    <string name="resetpass_ok">کد جدید ارسال شد</string>
+    <string name="resetpass_ok">کد جدید با موفقیت ارسال شد</string>
     <string name="resetpass_worng">خطا در ارسال کد جدید</string>
     <string name="registered_ok">ثبت نام شما با موفقیت انجام شد</string>
+    <string name="ErrorValidInternet">لطفا اتصال خود را بررسی کنید.</string>
 
 
     <!--String LoginActivity -->

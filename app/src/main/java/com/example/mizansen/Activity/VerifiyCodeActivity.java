@@ -23,6 +23,7 @@ import com.example.mizansen.Network.ModelNetwork.ValidationModel;
 import com.example.mizansen.Network.ModelNetwork.ValidtionCodeModel;
 import com.example.mizansen.R;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -56,6 +57,7 @@ public class VerifiyCodeActivity extends Activity {
         init();
 
 
+
         pincode.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -84,7 +86,10 @@ public class VerifiyCodeActivity extends Activity {
         textMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(VerifiyCodeActivity.this, SendEmailActivity.class);
+                i.putExtra("typePage", TypePage);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -92,7 +97,20 @@ public class VerifiyCodeActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendValidationCode(PinCode);
+                try {
+                    if (ValidationHelper.validInternetConnection(VerifiyCodeActivity.this)){
+                        sendValidationCode(PinCode);
+                    }else{
+                        MessageHelper.Snackbar(VerifiyCodeActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    MessageHelper.Snackbar(VerifiyCodeActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    MessageHelper.Snackbar(VerifiyCodeActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                }
+
             }
         });
 
@@ -100,9 +118,21 @@ public class VerifiyCodeActivity extends Activity {
         ResetCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ResetCode.setVisibility(View.GONE);
+                try {
+                    if (ValidationHelper.validInternetConnection(VerifiyCodeActivity.this)){
+                        ResetCode.setVisibility(View.GONE);
+                        ResetCodeCode();
+                    }else{
+                        MessageHelper.Snackbar(VerifiyCodeActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    MessageHelper.Snackbar(VerifiyCodeActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    MessageHelper.Snackbar(VerifiyCodeActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                }
 
-                ResetCodeCode();
             }
         });
 
@@ -209,7 +239,7 @@ public class VerifiyCodeActivity extends Activity {
             } else {
                 // Error
                 Log.i(TAG, context.getResources().getString(R.string.worng_code));
-                MessageHelper.Snackbar(context, context.getResources().getString(R.string.worng_code), "");
+                MessageHelper.Snackbar(context, context.getResources().getString(R.string.worng_code), "",R.color.red,R.drawable.messagestyle);
                 pincode.setText("");
 
             }
@@ -233,12 +263,12 @@ public class VerifiyCodeActivity extends Activity {
 
         if (ValidationHelper.validStatus(resetCodeModel.status)) {
             Log.i(TAG, context.getResources().getString(R.string.resetpass_ok));
-            MessageHelper.Snackbar(context, context.getResources().getString(R.string.resetpass_ok), "");
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.resetpass_ok), "",R.color.green,R.drawable.messagestylesuccess);
             timeDown(context);
 
         } else {
             Log.i(TAG, context.getResources().getString(R.string.resetpass_worng));
-            MessageHelper.Snackbar(context, context.getResources().getString(R.string.resetpass_worng), "");
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.resetpass_worng), "",R.color.red,R.drawable.messagestyle);
             ResetCode.setVisibility(View.VISIBLE);
 
         }

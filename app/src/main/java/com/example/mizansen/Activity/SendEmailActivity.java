@@ -19,6 +19,8 @@ import com.example.mizansen.Network.ModelNetwork.ValidationModel;
 import com.example.mizansen.OtherClass.OtherMetod;
 import com.example.mizansen.R;
 
+import java.io.IOException;
+
 import okhttp3.FormBody;
 
 
@@ -54,9 +56,23 @@ public class SendEmailActivity extends Activity {
             public void onClick(View view) {
 
                 if (ValidationHelper.validEmail(mail.getText().toString())) {
-                    sendCodeByTypePage();
+
+                    try {
+                        if (ValidationHelper.validInternetConnection(SendEmailActivity.this)){
+                            sendCodeByTypePage();
+                        }else{
+                            MessageHelper.Snackbar(SendEmailActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        MessageHelper.Snackbar(SendEmailActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        MessageHelper.Snackbar(SendEmailActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                    }
+
                 } else {
-                    MessageHelper.Snackbar(SendEmailActivity.this, getResources().getString(R.string.ErrorValidEmail), "");
+                    MessageHelper.Snackbar(SendEmailActivity.this, getResources().getString(R.string.ErrorValidEmail), "",R.color.red,R.drawable.messagestyle);
                 }
 
             }
@@ -114,7 +130,7 @@ public class SendEmailActivity extends Activity {
         if (ValidationHelper.validStatus(validationModel.status)) {
             goToPageVerifiyCodeActivity(Json, context);
         } else {
-            MessageHelper.Snackbar(context, context.getResources().getString(R.string.worng_email_register), "");
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.worng_email_register), "",R.color.red,R.drawable.messagestyle);
             submit.setVisibility(View.VISIBLE);
             mail.setVisibility(View.VISIBLE);
         }
@@ -137,7 +153,7 @@ public class SendEmailActivity extends Activity {
         if (ValidationHelper.validStatus(validationModel.status)) {
             goToPageVerifiyCodeActivity(Json, context);
         } else {
-            MessageHelper.Snackbar(context, context.getResources().getString(R.string.worng_email_reset), "");
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.worng_email_reset), "",R.color.red,R.drawable.messagestyle);
             submit.setVisibility(View.VISIBLE);
             mail.setVisibility(View.VISIBLE);
         }

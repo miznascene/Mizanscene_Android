@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.example.mizansen.Helper.JsonHelper;
 import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Helper.LocaleHelper;
@@ -16,9 +18,10 @@ import com.example.mizansen.Helper.ValidationHelper;
 import com.example.mizansen.Network.ModelNetwork.ErrorModel;
 import com.example.mizansen.Network.ModelNetwork.ValidationModel;
 import com.example.mizansen.R;
+
+import java.io.IOException;
+
 import okhttp3.FormBody;
-
-
 
 
 public class ResetPasswordActivity extends Activity {
@@ -48,19 +51,31 @@ public class ResetPasswordActivity extends Activity {
                 if (ValidationHelper.validPassword(password.getText().toString(), passwordconfirm.getText().toString())) {
 
                     if (ValidationHelper.validPasswordByLenght(password.getText().toString(), passwordconfirm.getText().toString())) {
+                        try {
+                            if (ValidationHelper.validInternetConnection(ResetPasswordActivity.this)){
+                                FormBody form = new FormBody.Builder()
+                                        .add("password", password.getText().toString())
+                                        .add("user_id", String.valueOf(validationModel.data.user_id))
+                                        .build();
+                                requstHelper.ResetPassword(form, getResources().getString(R.string.API_ResetPassword), ResetPasswordActivity.this);
 
-                        FormBody form = new FormBody.Builder()
-                                .add("user_pass", password.getText().toString())
-                                .add("user_id", String.valueOf(validationModel.data.user_id))
-                                .build();
-                        requstHelper.ResetPassword(form, getResources().getString(R.string.API_ResetPassword), ResetPasswordActivity.this);
+                            }else{
+                                MessageHelper.Snackbar(ResetPasswordActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                            MessageHelper.Snackbar(ResetPasswordActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            MessageHelper.Snackbar(ResetPasswordActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                        }
 
                     } else {
-                        MessageHelper.Snackbar(ResetPasswordActivity.this, getResources().getString(R.string.password_count), "");
+                        MessageHelper.Snackbar(ResetPasswordActivity.this, getResources().getString(R.string.password_count), "", R.color.red, R.drawable.messagestyle);
                     }
 
                 } else {
-                    MessageHelper.Snackbar(ResetPasswordActivity.this, getResources().getString(R.string.Same_password), "");
+                    MessageHelper.Snackbar(ResetPasswordActivity.this, getResources().getString(R.string.Same_password), "", R.color.red, R.drawable.messagestyle);
                 }
             }
         });
@@ -95,12 +110,13 @@ public class ResetPasswordActivity extends Activity {
 
         if (ValidationHelper.validStatus(errorModel.status)) {
 
-            MessageHelper.Snackbar(context, context.getResources().getString(R.string.sucsses_resetpass), "");
+            MessageHelper.Snackbar( context, context.getResources().getString(R.string.sucsses_resetpass), "", R.color.green, R.drawable.messagestylesuccess);
             ((Activity) context).startActivity(new Intent(context, LoginActivity.class));
             ((Activity) context).finish();
 
+
         } else {
-            MessageHelper.Snackbar(context, context.getResources().getString(R.string.error_host), "");
+            MessageHelper.Snackbar(context, context.getResources().getString(R.string.error_host), "", R.color.red, R.drawable.messagestyle);
         }
 
     }

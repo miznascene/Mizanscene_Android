@@ -9,12 +9,15 @@ import android.util.Log;
 
 import com.example.mizansen.Activity.LoginActivity;
 import com.example.mizansen.Activity.Hintro_Activity;
+import com.example.mizansen.Activity.MainActivity;
 import com.example.mizansen.Helper.JsonHelper;
 import com.example.mizansen.Helper.RequestHelper;
 import com.example.mizansen.Helper.SharedPreferencesHelper;
 import com.example.mizansen.Helper.ValidationHelper;
 import com.example.mizansen.Network.ModelNetwork.ErrorModel;
 import com.example.mizansen.OtherClass.OtherMetod;
+
+import java.io.IOException;
 
 
 public class SplashScreenActivity extends Activity {
@@ -32,7 +35,7 @@ public class SplashScreenActivity extends Activity {
 
     void ValiDateToken() {
 
-        String Token = "Bearer "+SharedPreferencesHelper.GetSharedPreferences("Token", "null", SplashScreenActivity.this);
+        String Token = "Bearer " + SharedPreferencesHelper.GetSharedPreferences("Token", "null", SplashScreenActivity.this);
 
         Log.i(TAG, "Token " + Token);
         if (Token.equals("null")) {
@@ -46,7 +49,30 @@ public class SplashScreenActivity extends Activity {
             }, 2000);
 
         } else {
-            requstHelper.Validation(Token, getResources().getString(R.string.API_Validation), SplashScreenActivity.this);
+            Intent intent;
+            try {
+
+                if (ValidationHelper.validInternetConnection(SplashScreenActivity.this)) {
+                    requstHelper.Validation(Token, getResources().getString(R.string.API_Validation), SplashScreenActivity.this);
+                } else {
+                    Log.i(TAG, "Internet not connected");
+                    intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            } catch (IOException e) {
+                e.printStackTrace();
+                intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+
         }
 
     }
@@ -66,20 +92,27 @@ public class SplashScreenActivity extends Activity {
         }
     }
 
-    public static void ResultRequst(String json, Context context){
+    public static void ResultRequst(String json, Context context) {
 
         ErrorModel errorModel = JsonHelper.ConvertStringToErrorModel(json);
 
-        Intent intent = new Intent(context,LoginActivity.class);
-        if (ValidationHelper.validStatus(errorModel.status)){
-            //go to MainPage
-            intent = new Intent(context,LoginActivity.class);
+        Intent intent = new Intent(context, LoginActivity.class);
+
+        try {
+            if (ValidationHelper.validStatus(errorModel.status)) {
+                //go to MainPage
+                intent = new Intent(context, MainActivity.class);
+            }
+        } catch (Exception e) {
+
         }
 
-        ((Activity)context).startActivity(intent);
-        ((Activity)context).finish();
+
+        ((Activity) context).startActivity(intent);
+        ((Activity) context).finish();
 
 
     }
+
 
 }

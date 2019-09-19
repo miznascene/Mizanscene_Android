@@ -1,11 +1,19 @@
 package com.example.mizansen.Helper;
 
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+
+import java.io.IOException;
 import java.util.regex.Pattern;
+
 
 public class ValidationHelper {
 
     private static final String Number = "0123456789";
     private static final ValidationHelper ourInstance = new ValidationHelper();
+    static boolean isWifiEnable = false;
+    static boolean isMobileNetworkAvailable = false;
 
     public static ValidationHelper getInstance() {
         return ourInstance;
@@ -95,5 +103,32 @@ public class ValidationHelper {
 
 
     }
+
+    public static boolean validInternetConnection(Context context) throws InterruptedException, IOException {
+        if (validWifiAndDataMobile(context)) {
+            final String command = "ping -c 1 google.com";
+            return Runtime.getRuntime().exec(command).waitFor() == 0;
+        } else {
+            return false;
+        }
+
+    }
+
+    static boolean validWifiAndDataMobile(Context context) {
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        isWifiEnable = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected();
+        isMobileNetworkAvailable = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnected();
+
+        if (isWifiEnable || isMobileNetworkAvailable ) {
+        /*Sometime wifi is connected but service provider never connected to internet
+        so cross check one more time*/
+            return true;
+        }
+
+        return false;
+    }
+
 
 }

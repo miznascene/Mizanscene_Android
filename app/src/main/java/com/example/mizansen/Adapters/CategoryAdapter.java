@@ -38,10 +38,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         CategoryModel cm = categoryModels.get(i);
 
-        Picasso.with(holder.imageView.getContext())
-                .load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDVNmDc7B_Y1v9mtvM8ojC3iFVvTM4Q-9BDAZ4GowQiANSEzBtlA")
-                .fit()
-                .into(holder.imageView);
+
 
         holder.title.setText(cm.Title);
 
@@ -61,7 +58,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         public ViewHolder(@NonNull View iv) {
             super(iv);
 
-            imageView = iv.findViewById(R.id.adaptercategory_imageView);
+
             title = iv.findViewById(R.id.adaptercategory_per_title);
 
 

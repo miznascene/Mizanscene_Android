@@ -17,7 +17,7 @@
     <string name="more">More</string>
 
     <!--String Menu -->
-    <string name="search">search</string>
+    <string name="profile">profile</string>
     <string name="my_Movies">my Movies</string>
     <string name="category">category</string>
     <string name="home">home</string>
@@ -42,7 +42,7 @@
     <string name="resetpass_ok">New code sent</string>
     <string name="resetpass_worng">Error submitting new code</string>
     <string name="registered_ok">Your registration has been successful</string>
-
+    <string name="ErrorValidInternet">Please check our connectivity.</string>
 
     <!--String LoginActivity -->
     <string name="Login">Login</string>

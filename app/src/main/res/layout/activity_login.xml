@@ -169,10 +169,10 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="344dp"
+        android:layout_height="300dp"
         android:layout_gravity="bottom"
         android:scaleType="fitXY"
-        android:src="@drawable/pirhan" />
+        android:src="@drawable/ic_pirhan" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

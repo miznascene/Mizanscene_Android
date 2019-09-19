@@ -27,14 +27,16 @@
             android:textSize="16dp"
             android:textColor="@color/green" />
 
-        <Button
+        <com.example.mizansen.CustomView.ButtonCustom
             android:id="@+id/profilemain_extended"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="تمدید"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/colorItem"
+            app:btn_bold_word="تمدید"
+            android:textSize="@dimen/text_size_14sp"
             android:background="@drawable/backgrund_button_green"/>
 
     </LinearLayout>
@@ -167,7 +169,7 @@
         <ImageView
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@drawable/ic_logo_mizansence"/>
+            android:src="@drawable/logo"/>
 
         <com.example.mizansen.CustomView.TextViewCustom
             android:layout_width="0dp"

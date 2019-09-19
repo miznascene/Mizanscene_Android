@@ -12,13 +12,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.mizansen.Fragment.BaseFragment;
 import com.example.mizansen.Fragment.BottomBar.ui.SectionsPagerAdapter;
+import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class MyVideosFragment extends BaseFragment {
 
-    RecyclerView courseRecyclerView;
 
+    RecyclerView courseRecyclerView;
+    LanguageHelper languageHelper = new LanguageHelper();
 
 
     public MyVideosFragment() {
@@ -37,11 +39,7 @@ public class MyVideosFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         TAG = "TAG_MyVideosFragment";
-
-
-//        progressBar = view.findViewById(R.id.progressBar);
-        container = view.findViewById(R.id.container);
-
+        languageHelper.GetLanguage(view.getContext());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getContext(), getActivity().getSupportFragmentManager());
         ViewPager viewPager = view.findViewById(R.id.view_pager);

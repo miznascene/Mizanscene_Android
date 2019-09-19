@@ -126,7 +126,7 @@
         android:layout_height="340dp"
         android:layout_gravity="bottom"
         android:scaleType="fitXY"
-        android:src="@drawable/pirhan" />
+        android:src="@drawable/ic_pirhan" />
 
 
 

@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mizansen.Network.ModelNetwork.MainpageModel;
 import com.example.mizansen.Network.ModelNetwork.TermModel;
 import com.example.mizansen.R;
-import com.example.mizansen.Slider.SliderAdapter;
+import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -47,7 +47,6 @@ public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int i) {
 
-
         holder.sliderView.setVisibility(View.GONE);
         if (i == 0) {
 
@@ -56,31 +55,11 @@ public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHo
             holder.title.setVisibility(View.GONE);
             holder.more.setVisibility(View.GONE);
 
-
-            SliderAdapter adapter = new SliderAdapter(context,mainpageModels.slideshow);
-            adapter.setCount(mainpageModels.slideshow.size());
-
-            holder.sliderView.setSliderAdapter(adapter);
-
-            holder.sliderView.setIndicatorAnimation(IndicatorAnimations.WORM);
-            //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
-            holder.sliderView.setSliderTransformAnimation(SliderAnimations.FADETRANSFORMATION);
-            holder.sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
-            holder.sliderView.setIndicatorSelectedColor(Color.WHITE);
-            holder.sliderView.setIndicatorUnselectedColor(Color.GRAY);
-            holder.sliderView.setScrollTimeInSec(5); //set scroll delay in seconds :
-            holder.sliderView.startAutoCycle();
-
-            holder.sliderView.setOnIndicatorClickListener(new DrawController.ClickListener() {
-                @Override
-                public void onIndicatorClicked(int position) {
-//                    holder.sliderView.setCurrentPagePosition(position);
-                    Log.i(TAG, "position" + position);
-                }
-            });
+            SliderAdapter sliderAdapter = new SliderAdapter(mainpageModels.data.slideshow,context);
+            holder.sliderView.setAdapter(sliderAdapter);
 
         } else {
-            TermModel mm = mainpageModels.terms.get(i - 1);
+            TermModel mm = mainpageModels.data.terms.get(i - 1);
             holder.title.setText(mm.term_name);
 
 
@@ -103,19 +82,20 @@ public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return mainpageModels.terms.size() + 1;
+        return mainpageModels.data.terms.size() + 1;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title, more;
         RecyclerView recyclerView;
-        SliderView sliderView;
+        HorizontalInfiniteCycleViewPager sliderView;
+
 
         public ViewHolder(@NonNull View iv) {
             super(iv);
 
-            sliderView = iv.findViewById(R.id.adapter_showcase_row_imageSlider);
+            sliderView = (HorizontalInfiniteCycleViewPager) iv.findViewById(R.id.slider);
             title = iv.findViewById(R.id.adapter_showcase_row_title);
             more = iv.findViewById(R.id.adapter_showcase_row_more);
             recyclerView = iv.findViewById(R.id.adapter_showcase_row_recycler);

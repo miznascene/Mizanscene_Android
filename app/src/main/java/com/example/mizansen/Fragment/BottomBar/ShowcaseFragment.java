@@ -2,8 +2,7 @@ package com.example.mizansen.Fragment.BottomBar;
 
 
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,30 +12,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.mizansen.Adapters.ShowcaseAdapter;
 import com.example.mizansen.Fragment.BaseFragment;
+import com.example.mizansen.Helper.IndicatorHelper;
+import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Network.ModelNetwork.MainpageModel;
 import com.example.mizansen.Network.RequestBuilder;
 import com.example.mizansen.Network.RequestBuilderClass;
 import com.example.mizansen.OtherClass.OtherMetod;
 import com.example.mizansen.R;
-import com.example.mizansen.Slider.SliderAdapter;
-import com.smarteist.autoimageslider.IndicatorAnimations;
-import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
-import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ShowcaseFragment extends BaseFragment{
+public class ShowcaseFragment extends BaseFragment {
 
     RecyclerView recyclerView;
-    SliderView sliderView;
     OtherMetod om = new OtherMetod();
+    LanguageHelper languageHelper = new LanguageHelper();
 
 
     public ShowcaseFragment() {
@@ -56,42 +50,47 @@ public class ShowcaseFragment extends BaseFragment{
 
         TAG = "TAG_ShowcaseFragment";
 
-//        progressBar = view.findViewById(R.id.progressBar);
+
         container = view.findViewById(R.id.container);
         recyclerView = view.findViewById(R.id.fragment_showcase_recyclerview);
-
-        getData();
+        languageHelper.GetLanguage(view.getContext());
+        getData(view);
 
     }
 
 
-    void getData(){
+    void getData(final View view) {
 
         String Token = om.GetSharedPreferences("Token", "null", getContext());
 
-        Call<MainpageModel> client = RequestBuilderClass.retrofit.create(RequestBuilder.class).GetMovies("Bearer " + Token,"");
+        IndicatorHelper indicatorHelper = new IndicatorHelper();
+
+        indicatorHelper.CreateIndicator(view.getContext());
+        Call<MainpageModel> client = RequestBuilderClass.retrofit.create(RequestBuilder.class).GetMovies("Bearer " + Token, "");
         client.enqueue(new Callback<MainpageModel>() {
             @Override
             public void onResponse(Call<MainpageModel> call, Response<MainpageModel> response) {
                 MainpageModel mainpageModels = response.body();
 
-                Log.i(TAG,"term_name :"+mainpageModels.terms.get(0).term_name);
-                Log.i(TAG,"term_movies.get(0).title :"+mainpageModels.terms.get(0).term_movies.get(0).title);
-                Log.i(TAG,"mainpageModels.slideshow.get(0).slideshow_item_id:"+mainpageModels.slideshow.get(0).slideshow_item_id);
+                indicatorHelper.DismissIndicator();
+//                Log.i(TAG, "term_name :" + mainpageModels.terms.get(0).term_name);
+//                Log.i(TAG, "term_movies.get(0).title :" + mainpageModels.terms.get(0).term_movies.get(0).title);
+//                Log.i(TAG, "mainpageModels.slideshow.get(0).slideshow_item_id:" + mainpageModels.slideshow.get(0).slideshow_item_id);
 
 //                @SuppressLint("WrongConstant")
                 LinearLayoutManager LLM = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(LLM);
                 recyclerView.setHasFixedSize(true);
-                recyclerView.setAdapter(new ShowcaseAdapter(mainpageModels,getActivity()));
+                recyclerView.setAdapter(new ShowcaseAdapter(mainpageModels, getActivity()));
 
             }
 
             @Override
             public void onFailure(Call<MainpageModel> call, Throwable t) {
                 Log.i(TAG, "Movies failed: " + t.toString());
-                if(t.toString().equals("timeout"))
-                    getData();
+                indicatorHelper.DismissIndicator();
+                if (t.toString().equals("timeout"))
+                    getData(view);
 
             }
         });

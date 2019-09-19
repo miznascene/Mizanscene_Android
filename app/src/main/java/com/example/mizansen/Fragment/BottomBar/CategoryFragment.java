@@ -10,8 +10,10 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mizansen.Activity.MainActivity;
 import com.example.mizansen.Adapters.CategoryAdapter;
 import com.example.mizansen.Fragment.BaseFragment;
+import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Network.ModelNetwork.CategoryModel;
 import com.example.mizansen.R;
 
@@ -22,7 +24,7 @@ public class CategoryFragment extends BaseFragment {
 
     RecyclerView _RecyclerView;
     CategoryAdapter categoryAdapter;
-
+    LanguageHelper languageHelper = new LanguageHelper();
 
     public CategoryFragment() {
         // Required empty public constructor
@@ -40,11 +42,9 @@ public class CategoryFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         TAG = "TAG_CategoryFragment";
-        //account = Account.listAll(Account.class).get(0);
 
+        languageHelper.GetLanguage(view.getContext());
 
-//        progressBar = view.findViewById(R.id.progressBar);
-        container = view.findViewById(R.id.container);
         _RecyclerView = view.findViewById(R.id.fragment_category_recycler);
 
 

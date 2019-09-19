@@ -8,14 +8,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.mizansen.Helper.JsonHelper;
 import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Helper.LocaleHelper;
 import com.example.mizansen.Helper.MessageHelper;
 import com.example.mizansen.Helper.RequestHelper;
 import com.example.mizansen.Helper.ValidationHelper;
+import com.example.mizansen.Network.ModelNetwork.AccountModel;
 import com.example.mizansen.OtherClass.OtherMetod;
 import com.example.mizansen.R;
+import com.example.mizansen.SplashScreenActivity;
 
+import java.io.IOException;
 
 
 public class LoginActivity extends Activity {
@@ -60,13 +65,26 @@ public class LoginActivity extends Activity {
             public void onClick(View view) {
                 if (ValidationHelper.validEmail(username.getText().toString())) {
                     if (ValidationHelper.validPasswordByLenght(password.getText().toString(), password.getText().toString())) {
-                        Login(username.getText().toString(), password.getText().toString());
+                        try {
+                            if (ValidationHelper.validInternetConnection(LoginActivity.this)){
+                                Login(username.getText().toString(), password.getText().toString());
+                            }else{
+                                MessageHelper.Snackbar(LoginActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                            MessageHelper.Snackbar(LoginActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            MessageHelper.Snackbar(LoginActivity.this, getResources().getString(R.string.ErrorValidInternet), "",R.color.red,R.drawable.messagestyle);
+                        }
+
                     } else {
-                        MessageHelper.Snackbar(LoginActivity.this, getResources().getString(R.string.password_count), "");
+                        MessageHelper.Snackbar(LoginActivity.this, getResources().getString(R.string.password_count), "",R.color.red,R.drawable.messagestyle);
                     }
 
                 } else {
-                    MessageHelper.Snackbar(LoginActivity.this, getResources().getString(R.string.ErrorValidEmail), "");
+                    MessageHelper.Snackbar(LoginActivity.this, getResources().getString(R.string.ErrorValidEmail), "",R.color.red,R.drawable.messagestyle);
                 }
             }
         });
@@ -104,6 +122,20 @@ public class LoginActivity extends Activity {
         intent.putExtra("typePage", key);
         startActivity(intent);
         finish();
+    }
+
+    public static void ResultRequest(String Json,Context context){
+
+        AccountModel accountModel = JsonHelper.ConvertStringToAccountModel(Json);
+
+        if (ValidationHelper.validStatus(accountModel.status)){
+
+            ((Activity)context).startActivity(new Intent(context,MainActivity.class));
+            ((Activity)context).finish();
+        }else{
+            MessageHelper.Snackbar(context,accountModel.message, "",R.color.red,R.drawable.messagestyle);
+        }
+
     }
 
 }
