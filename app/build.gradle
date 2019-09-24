@@ -74,6 +74,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.0.1'
 
     implementation 'com.github.devlight:infinitecycleviewpager:1.0.2'
+    implementation 'com.dinuscxj:recyclerrefreshlayout:2.0.5'
 
 
 

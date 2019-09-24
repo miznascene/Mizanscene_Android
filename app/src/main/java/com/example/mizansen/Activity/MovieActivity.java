@@ -2,7 +2,6 @@ package com.example.mizansen.Activity;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mizansen.Adapters.AgentMovieAdapter;
 import com.example.mizansen.Adapters.CommentAdapter;
 import com.example.mizansen.Adapters.GalleryAdapter;
-import com.example.mizansen.Adapters.ObjectShowCaseAdapter;
+import com.example.mizansen.Adapters.ObjectHomeAdapter;
 import com.example.mizansen.NetWork;
 import com.example.mizansen.Network.ModelNetwork.IpAddressModel;
 import com.example.mizansen.Network.ModelNetwork.MovieArvanCloudModel;
@@ -240,7 +239,7 @@ public class MovieActivity extends AppCompatActivity {
         LinearLayoutManager LLM3 = new LinearLayoutManager(MovieActivity.this, LinearLayoutManager.HORIZONTAL, false);
         otherMoveRecycler.setLayoutManager(LLM3);
         otherMoveRecycler.setHasFixedSize(true);
-        otherMoveRecycler.setAdapter(new ObjectShowCaseAdapter(term_movies, MovieActivity.this));
+        otherMoveRecycler.setAdapter(new ObjectHomeAdapter(term_movies, MovieActivity.this));
 
 
     }

@@ -1,6 +1,7 @@
 package com.example.mizansen.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.mizansen.Network.ModelNetwork.SlideshowModel;
 import com.example.mizansen.R;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
 
@@ -53,13 +55,14 @@ public class SliderAdapter extends PagerAdapter {
 
         View view = layoutInflater.inflate(R.layout.adapter_slidre, container, false);
 
-//        Log.i("TAG_","image : "+slideshow.get(position).slideshow_image);
-        ImageView imageView = (ImageView) view.findViewById(R.id.image_slider);
+        Log.i("TAG_","image : "+slideshow.get(position).slideshow_image);
+        RoundedImageView imageView = (RoundedImageView) view.findViewById(R.id.image_slider);
         Picasso.with(context)
                 .load(slideshow.get(position).slideshow_image)
                 .fit()
                 .into(imageView);
 
+        imageView.setImageResource(R.drawable.puma_offer);
         container.addView(view);
         return view;
     }

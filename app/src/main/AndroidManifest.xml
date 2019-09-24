@@ -33,8 +33,6 @@
 
         <activity android:name=".Activity.MovieActivity" />
 
-        <activity android:name=".Activity.ProfileActivity" />
-
         <activity android:name=".Activity.ShowShortMovieActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" android:screenOrientation="sensor"/>
 

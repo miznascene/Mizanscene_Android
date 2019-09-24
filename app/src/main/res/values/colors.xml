@@ -28,4 +28,16 @@
     <color name="line_focused">#C4F5C6</color>
     <color name="line_default">#E0E2F1</color>
 
+    <array name="color_category">
+
+        <item name="color_0">#FE6B5E</item>
+        <item name="color_1">#CC564C</item>
+        <item name="color_2">#994039</item>
+        <item name="color_3">#662B26</item>
+        <item name="color_4">#331613</item>
+        <item name="color_5">#662B26</item>
+        <item name="color_6">#994039</item>
+        <item name="color_7">#CC564C</item>
+    </array>
+
 </resources>

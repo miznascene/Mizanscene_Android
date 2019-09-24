@@ -8,15 +8,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mizansen.Network.ModelNetwork.TermMoviesModel;
 import com.example.mizansen.R;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AgentAdapter extends RecyclerView.Adapter<AgentAdapter.ViewHolder> {
 
 
     String TAG = "TAG_AgentAdapter";
     Context context;
+    public List<TermMoviesModel> term_movies = new ArrayList<>();
 
     public AgentAdapter(Context _context) {
         context = _context;
@@ -35,19 +40,10 @@ public class AgentAdapter extends RecyclerView.Adapter<AgentAdapter.ViewHolder> 
 
 
         Picasso.with(context)
-                .load("https://mizanscene.com/wp-content/uploads/2019/08/hamase-ghahreman-wpv_290x430.jpg")
-                .fit()
-                .into(holder.image_right);
+                .load("https://pbs.twimg.com/media/EDEsh0gU4AUTO3P?format=jpg&name=900x900")
+                .placeholder( R.drawable.progress_animation )
+                .into(holder.image);
 
-        Picasso.with(context)
-                .load("https://mizanscene.com/wp-content/uploads/2019/08/hamase-ghahreman-wpv_290x430.jpg")
-                .fit()
-                .into(holder.image_center);
-
-        Picasso.with(context)
-                .load("https://mizanscene.com/wp-content/uploads/2019/08/hamase-ghahreman-wpv_290x430.jpg")
-                .fit()
-                .into(holder.image_left);
     }
 
     @Override
@@ -57,14 +53,12 @@ public class AgentAdapter extends RecyclerView.Adapter<AgentAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        RoundedImageView image_right, image_center, image_left;
+        RoundedImageView image;
 
         public ViewHolder(@NonNull View iv) {
             super(iv);
 
-            image_right = iv.findViewById(R.id.adapter_agent_imagemovieright);
-            image_center = iv.findViewById(R.id.adapter_agent_imagemoviecenter);
-            image_left = iv.findViewById(R.id.adapter_agent_imagemovieleft);
+            image = iv.findViewById(R.id.adapter_agent_imagemovie);
 
         }
 

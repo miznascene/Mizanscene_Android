@@ -3,7 +3,6 @@ package com.example.mizansen.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +14,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.mizansen.CustomView.NonSwipeableViewPager;
 import com.example.mizansen.Fragment.BottomBar.CategoryFragment;
-import com.example.mizansen.Fragment.BottomBar.MyVideosFragment;
-import com.example.mizansen.Fragment.BottomBar.ShowcaseFragment;
+import com.example.mizansen.Fragment.BottomBar.MyMovisFragment;
+import com.example.mizansen.Fragment.BottomBar.HomeFragment;
+import com.example.mizansen.Fragment.BottomBar.ProfileFragment;
 import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Helper.LocaleHelper;
 import com.example.mizansen.R;
@@ -59,7 +59,7 @@ public class MainActivity extends FragmentActivity {
             @Override
             public Unit invoke(MeowBottomNavigation.Model p1) {
                 Log.i(TAG, "model " + p1.getId());
-                MenuAction(p1.getId());
+                viewPager.setCurrentItem(p1.getId());
                 return Unit.INSTANCE;
             }
         });
@@ -67,16 +67,6 @@ public class MainActivity extends FragmentActivity {
 
     }
 
-    void MenuAction(int select) {
-
-        if (select == 3){
-            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-            finish();
-        }
-
-        viewPager.setCurrentItem(select);
-
-    }
 
     @SuppressLint({"ResourceType", "WrongViewCast"})
     void initView() {
@@ -108,13 +98,15 @@ public class MainActivity extends FragmentActivity {
 
         adapter = new BottomBarAdapter(getSupportFragmentManager());
 
-        ShowcaseFragment showcaseFragment = new ShowcaseFragment();
+        HomeFragment showcaseFragment = new HomeFragment();
         CategoryFragment categoryFragment = new CategoryFragment();
-        MyVideosFragment myVideosFragment = new MyVideosFragment();
+        ProfileFragment profileFragment = new ProfileFragment(getSupportFragmentManager());
+        MyMovisFragment myVideosFragment = new MyMovisFragment(getSupportFragmentManager());
 
         adapter.addFragments(showcaseFragment);
         adapter.addFragments(categoryFragment);
         adapter.addFragments(myVideosFragment);
+        adapter.addFragments(profileFragment);
 
         viewPager.setAdapter(adapter);
 
@@ -143,5 +135,6 @@ public class MainActivity extends FragmentActivity {
         }
 
     }
+
 
 }

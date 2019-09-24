@@ -1,18 +1,21 @@
-package com.example.mizansen.Activity;
+package com.example.mizansen.Fragment.BottomBar;
 
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.mizansen.CustomView.NonSwipeableViewPager;
+import com.example.mizansen.Fragment.BaseFragment;
 import com.example.mizansen.Fragment.ProfilePage.AboutusFragment;
 import com.example.mizansen.Fragment.ProfilePage.ExtendedFragment;
 import com.example.mizansen.Fragment.ProfilePage.PaymentFragment;
@@ -24,7 +27,7 @@ import com.example.mizansen.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileActivity extends FragmentActivity {
+public class ProfileFragment extends BaseFragment {
 
 
     static TextView titlePage;
@@ -33,33 +36,38 @@ public class ProfileActivity extends FragmentActivity {
     static NonSwipeableViewPager profileViewPager;
     String TAG = "TAG_ProflieActivity";
     static int page = 0;
+    FragmentManager fragmentManager;
+
+    public ProfileFragment(FragmentManager fm) {
+        fragmentManager = fm;
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
-        initView();
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView(view);
         backPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (page==0){
-                    onBackPressed();
-                }else{
-                    GotoPage(0,"پروفایل");
+                if (page > 0) {
+                    GotoPage(0, "پروفایل");
                 }
 
             }
         });
-
     }
 
-    void initView(){
 
-        titlePage = findViewById(R.id.profile_titlepage);
-        backPage = findViewById(R.id.profile_backpage);
-        profileViewPager = findViewById(R.id.profile_viewPager);
+    void initView(View view) {
+
+        titlePage = view.findViewById(R.id.profile_titlepage);
+        backPage = view.findViewById(R.id.profile_backpage);
+        profileViewPager = view.findViewById(R.id.profile_viewPager);
 
         setupViewPager(profileViewPager);
 
@@ -67,7 +75,7 @@ public class ProfileActivity extends FragmentActivity {
 
     void setupViewPager(NonSwipeableViewPager viewPager) {
 
-        adapter = new ProfilePageAdapter(getSupportFragmentManager());
+        adapter = new ProfilePageAdapter(fragmentManager);
 
         ProfileMainFragment profileMainFragment = new ProfileMainFragment();
         ProfileSettingFragment profileSettingFragment = new ProfileSettingFragment();
@@ -88,7 +96,6 @@ public class ProfileActivity extends FragmentActivity {
         viewPager.setAdapter(adapter);
 
     }
-
 
     public class ProfilePageAdapter extends FragmentPagerAdapter {
 
@@ -115,14 +122,7 @@ public class ProfileActivity extends FragmentActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(ProfileActivity.this, MainActivity.class));
-        finish();
-    }
-
-    public static void GotoPage(int index ,String title){
+    public static void GotoPage(int index, String title) {
         page = index;
         profileViewPager.setCurrentItem(index);
         titlePage.setText(title);

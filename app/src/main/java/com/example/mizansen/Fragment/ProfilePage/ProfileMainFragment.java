@@ -1,7 +1,6 @@
 package com.example.mizansen.Fragment.ProfilePage;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.mizansen.Activity.ProfileActivity;
+import com.example.mizansen.Fragment.BottomBar.ProfileFragment;
 import com.example.mizansen.Fragment.BaseFragment;
 import com.example.mizansen.OtherClass.OtherMetod;
 import com.example.mizansen.R;
@@ -45,35 +44,35 @@ public class ProfileMainFragment extends BaseFragment {
         profileSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProfileActivity.GotoPage(1, "ویرایش پروفایل");
+                ProfileFragment.GotoPage(1, "ویرایش پروفایل");
             }
         });
 
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProfileActivity.GotoPage(2, "پرداخت ها");
+                ProfileFragment.GotoPage(2, "پرداخت ها");
             }
         });
 
         aboutus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProfileActivity.GotoPage(3, "درباره ما");
+                ProfileFragment.GotoPage(3, "درباره ما");
             }
         });
 
         childlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProfileActivity.GotoPage(4, "قفل کودک");
+                ProfileFragment.GotoPage(4, "قفل کودک");
             }
         });
 
         extended.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProfileActivity.GotoPage(5, "تمدید");
+                ProfileFragment.GotoPage(5, "تمدید");
             }
         });
     }

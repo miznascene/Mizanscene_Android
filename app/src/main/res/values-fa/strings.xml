@@ -10,7 +10,6 @@
         لیلا اوتادی دانش‌آموختهٔ کارشناسی معماری داخلی در دانشگاه هنر تهران است. او کار خود را با فیلم سینمایی چشمان سیاه، ساختهٔ ایرج قادری آغاز کرد، اما برای اولین بار با سریال «مهر و ماه» به کارگردانی «سید فیاض موسوی» دیده شد.
     </string>
 
-    <string name="hemase">حماسه قهرمانان</string>
 
 
     <string name="simple_view_behavior">com.zoonref.viewbehavior.SimpleViewBehavior</string>
@@ -55,7 +54,7 @@
     <!--String Tab -->
     <string name="tab_text_1">گالری آفلاین</string>
     <string name="tab_text_2">مشاهده شده ها</string>
-    <string name="tab_text_3">نشانه شده ها</string>
+    <string name="tab_text_3">نشان شده ها</string>
 
     <!--String Message-->
     <string name="ErrorValidEmail">ایمیل معتبر وارد کنید</string>

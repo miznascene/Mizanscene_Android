@@ -1,8 +1,6 @@
 package com.example.mizansen.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,20 +8,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.mizansen.Activity.MovieActivity;
+
 import com.example.mizansen.Network.ModelNetwork.TermMoviesModel;
 import com.example.mizansen.R;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
-public class ObjectShowCaseAdapter extends RecyclerView.Adapter<ObjectShowCaseAdapter.ViewHolder> {
+public class ObjectHomeAdapter extends RecyclerView.Adapter<ObjectHomeAdapter.ViewHolder> {
 
     List<TermMoviesModel> moviesModels;
     String TAG = "TAG_CategoryAdapter";
     Context context;
 
-    public ObjectShowCaseAdapter(List<TermMoviesModel> _moviesModels, Context _context) {
+    public ObjectHomeAdapter(List<TermMoviesModel> _moviesModels, Context _context) {
         moviesModels = _moviesModels;
         context = _context;
     }
@@ -32,7 +30,7 @@ public class ObjectShowCaseAdapter extends RecyclerView.Adapter<ObjectShowCaseAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_showmovies, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_home, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -41,24 +39,21 @@ public class ObjectShowCaseAdapter extends RecyclerView.Adapter<ObjectShowCaseAd
 
         TermMoviesModel mm = moviesModels.get(i);
 
-        if (mm.image.equals(null))
-            mm.image = "https://mizanscene.com/wp-content/uploads/2019/08/hamase-ghahreman-wpv_290x430.jpg";
 
 
         try {
             Picasso.with(holder.image.getContext())
                     .load(mm.image)
-                    .fit()
+                    .placeholder( R.drawable.progress_animation )
                     .into(holder.image);
         } catch (Exception e) {
             Log.i(TAG, "Error :" + e.toString());
             Picasso.with(holder.image.getContext())
                     .load("https://mizanscene.com/wp-content/uploads/2019/09/template-2.png")
-                    .fit()
+                    .placeholder( R.drawable.progress_animation )
                     .into(holder.image);
         }
 
-        holder.title_fa.setText(mm.title);
 
 
     }

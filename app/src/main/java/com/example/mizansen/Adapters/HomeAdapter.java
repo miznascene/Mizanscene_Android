@@ -1,10 +1,6 @@
 package com.example.mizansen.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,20 +14,14 @@ import com.example.mizansen.Network.ModelNetwork.MainpageModel;
 import com.example.mizansen.Network.ModelNetwork.TermModel;
 import com.example.mizansen.R;
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
-import com.smarteist.autoimageslider.IndicatorAnimations;
-import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
 
-import java.util.List;
-
-public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHolder> {
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     MainpageModel mainpageModels;
     String TAG = "TAG_CategoryAdapter";
     Context context;
 
-    public ShowcaseAdapter(MainpageModel _mainpageModels, Context _context) {
+    public HomeAdapter(MainpageModel _mainpageModels, Context _context) {
         mainpageModels = _mainpageModels;
         context = _context;
     }
@@ -40,7 +30,7 @@ public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_showmovis_row, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_home_row, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -74,7 +64,7 @@ public class ShowcaseAdapter extends RecyclerView.Adapter<ShowcaseAdapter.ViewHo
             LinearLayoutManager LLM = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
             holder.recyclerView.setLayoutManager(LLM);
             holder.recyclerView.setHasFixedSize(true);
-            holder.recyclerView.setAdapter(new ObjectShowCaseAdapter(mm.term_movies, context));
+            holder.recyclerView.setAdapter(new ObjectHomeAdapter(mm.term_movies, context));
         }
 
 
