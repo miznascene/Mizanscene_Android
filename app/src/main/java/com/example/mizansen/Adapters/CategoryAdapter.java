@@ -2,8 +2,6 @@ package com.example.mizansen.Adapters;
 
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,19 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mizansen.Helper.WidthAnimationHelper;
+import com.example.mizansen.Network.ModelNetwork.CategoryDataModel;
 import com.example.mizansen.Network.ModelNetwork.CategoryModel;
 import com.example.mizansen.R;
 
-import java.util.List;
-
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
-    List<CategoryModel> categoryModels;
+    CategoryModel categoryModels;
     String TAG = "TAG_CategoryAdapter";
     Context context;
 
 
-    public CategoryAdapter(List<CategoryModel> _categoryModels, Context context) {
+    public CategoryAdapter(CategoryModel _categoryModels, Context context) {
         this.categoryModels = _categoryModels;
         this.context = context;
     }
@@ -44,10 +41,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
 
-        CategoryModel cm = categoryModels.get(i);
+        CategoryDataModel cm = categoryModels.data.get(i);
         int[] color_category = context.getResources().getIntArray(R.array.color_category);
 
-        holder.title.setText(cm.Title);
+        holder.title.setText(cm.term_name);
 
         Log.i(TAG, "i = " + (i % 8));
         int index = i % 8;
@@ -63,10 +60,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
                 if (!cm.anim_status) {
                     cm.anim_status = true;
-                    AnimColor(holder._color, 1000, 500, holder.title, holder.more, R.color.white, cm.anim_status, cm.movie_cat_id);
+                    AnimColor(holder._color, 1000, 500, holder.title, holder.more, R.color.white, cm.anim_status, cm.term_id);
                 } else {
                     cm.anim_status = false;
-                    AnimColor(holder._color, 55, 500, holder.title, holder.more, R.color.colorItem, cm.anim_status, cm.movie_cat_id);
+                    AnimColor(holder._color, 55, 500, holder.title, holder.more, R.color.colorItem, cm.anim_status, cm.term_id);
                 }
 
 
@@ -78,7 +75,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public int getItemCount() {
 
-        return categoryModels.size();
+        return categoryModels.data.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

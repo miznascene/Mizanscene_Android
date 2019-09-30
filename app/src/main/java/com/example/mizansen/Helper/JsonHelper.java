@@ -2,7 +2,9 @@ package com.example.mizansen.Helper;
 
 
 import com.example.mizansen.Network.ModelNetwork.AccountModel;
+import com.example.mizansen.Network.ModelNetwork.CategoryModel;
 import com.example.mizansen.Network.ModelNetwork.ErrorModel;
+import com.example.mizansen.Network.ModelNetwork.MainpageModel;
 import com.example.mizansen.Network.ModelNetwork.RegisterDataModel;
 import com.example.mizansen.Network.ModelNetwork.RegisterModel;
 import com.example.mizansen.Network.ModelNetwork.ResetCodeModel;
@@ -62,6 +64,20 @@ public class JsonHelper {
         Type listType = new TypeToken<AccountModel>() {
         }.getType();
         AccountModel Return  = gson.fromJson(jsonString.toString(), listType);
+        return Return;
+    }
+
+    public static MainpageModel ConvertStringToMainpageModel(String jsonString){
+        Type listType = new TypeToken<MainpageModel>() {
+        }.getType();
+        MainpageModel Return  = gson.fromJson(jsonString.toString(), listType);
+        return Return;
+    }
+
+    public static CategoryModel ConvertStringToCategoryModel(String jsonString){
+        Type listType = new TypeToken<CategoryModel>() {
+        }.getType();
+        CategoryModel Return  = gson.fromJson(jsonString.toString(), listType);
         return Return;
     }
 

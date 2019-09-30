@@ -16,12 +16,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.mizansen.CustomView.NonSwipeableViewPager;
 import com.example.mizansen.Fragment.BaseFragment;
-import com.example.mizansen.Fragment.ProfilePage.AboutusFragment;
-import com.example.mizansen.Fragment.ProfilePage.ExtendedFragment;
-import com.example.mizansen.Fragment.ProfilePage.PaymentFragment;
-import com.example.mizansen.Fragment.ProfilePage.ProfileMainFragment;
-import com.example.mizansen.Fragment.ProfilePage.ProfileSettingFragment;
-import com.example.mizansen.Fragment.ProfilePage.ChildlockFragment;
+import com.example.mizansen.Fragment.BottomBar.ProfilePage.AboutusFragment;
+import com.example.mizansen.Fragment.BottomBar.ProfilePage.ExtendedFragment;
+import com.example.mizansen.Fragment.BottomBar.ProfilePage.PaymentFragment;
+import com.example.mizansen.Fragment.BottomBar.ProfilePage.ProfileMainFragment;
+import com.example.mizansen.Fragment.BottomBar.ProfilePage.ProfileSettingFragment;
+import com.example.mizansen.Fragment.BottomBar.ProfilePage.ChildlockFragment;
 import com.example.mizansen.R;
 
 import java.util.ArrayList;
@@ -31,15 +31,13 @@ public class ProfileFragment extends BaseFragment {
 
 
     static TextView titlePage;
-    ImageView backPage;
     ProfilePageAdapter adapter;
     static NonSwipeableViewPager profileViewPager;
     String TAG = "TAG_ProflieActivity";
     static int page = 0;
-    FragmentManager fragmentManager;
 
-    public ProfileFragment(FragmentManager fm) {
-        fragmentManager = fm;
+    public ProfileFragment() {
+
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,22 +49,11 @@ public class ProfileFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
-        backPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (page > 0) {
-                    GotoPage(0, "پروفایل");
-                }
 
-            }
-        });
     }
-
 
     void initView(View view) {
 
-        titlePage = view.findViewById(R.id.profile_titlepage);
-        backPage = view.findViewById(R.id.profile_backpage);
         profileViewPager = view.findViewById(R.id.profile_viewPager);
 
         setupViewPager(profileViewPager);
@@ -75,7 +62,7 @@ public class ProfileFragment extends BaseFragment {
 
     void setupViewPager(NonSwipeableViewPager viewPager) {
 
-        adapter = new ProfilePageAdapter(fragmentManager);
+        adapter = new ProfilePageAdapter(getChildFragmentManager());
 
         ProfileMainFragment profileMainFragment = new ProfileMainFragment();
         ProfileSettingFragment profileSettingFragment = new ProfileSettingFragment();
@@ -83,7 +70,6 @@ public class ProfileFragment extends BaseFragment {
         AboutusFragment aboutusFragment = new AboutusFragment();
         ChildlockFragment childlockFragment = new ChildlockFragment();
         ExtendedFragment extendedFragment = new ExtendedFragment();
-
 
         adapter.addFragments(profileMainFragment);
         adapter.addFragments(profileSettingFragment);
@@ -94,6 +80,7 @@ public class ProfileFragment extends BaseFragment {
 
 
         viewPager.setAdapter(adapter);
+
 
     }
 
@@ -122,10 +109,5 @@ public class ProfileFragment extends BaseFragment {
 
     }
 
-    public static void GotoPage(int index, String title) {
-        page = index;
-        profileViewPager.setCurrentItem(index);
-        titlePage.setText(title);
-    }
 
 }

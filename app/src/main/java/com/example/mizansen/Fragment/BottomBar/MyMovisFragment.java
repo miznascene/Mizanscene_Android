@@ -24,19 +24,16 @@ import com.google.android.material.tabs.TabLayout;
 public class MyMovisFragment extends BaseFragment {
 
 
-    RecyclerView courseRecyclerView;
     LanguageHelper languageHelper = new LanguageHelper();
     TabLayout mTabs;
     View mIndicator;
     ViewPager mViewPager;
-    FragmentManager fragmentManager;
     int indicatorWidth;
     TabFragmentAdapter adapter;
 
 
 
-    public MyMovisFragment(FragmentManager fm) {
-        fragmentManager = fm;
+    public MyMovisFragment() {
         // Required empty public constructor
     }
 
@@ -54,7 +51,9 @@ public class MyMovisFragment extends BaseFragment {
         TAG = "TAG_MyMovisFragment";
 
 
-        initView(getView());
+        initView();
+        reload();
+
 
         mTabs.post(new Runnable() {
             @Override
@@ -65,7 +64,7 @@ public class MyMovisFragment extends BaseFragment {
                 FrameLayout.LayoutParams indicatorParams = (FrameLayout.LayoutParams) mIndicator.getLayoutParams();
                 indicatorParams.width = indicatorWidth;
                 mIndicator.setLayoutParams(indicatorParams);
-                Log.i(TAG,"indicatorWidth "+indicatorWidth);
+//                Log.i(TAG,"indicatorWidth "+indicatorWidth);
             }
         });
 
@@ -82,7 +81,7 @@ public class MyMovisFragment extends BaseFragment {
                 float translationOffset =  (positionOffset+i) * indicatorWidth ;
                 params.rightMargin = (int) translationOffset;
                 mIndicator.setLayoutParams(params);
-                Log.i(TAG,"translationOffset "+translationOffset);
+//                Log.i(TAG,"translationOffset "+translationOffset);
             }
 
             @Override
@@ -101,29 +100,38 @@ public class MyMovisFragment extends BaseFragment {
 
     }
 
-    void initView(View view){
+    void initView(){
 
-        languageHelper.GetLanguage(view.getContext());
+
+        languageHelper.GetLanguage(getContext());
 
         //Assign view reference
-        mTabs = view.findViewById(R.id.tab);
-        mIndicator = view.findViewById(R.id.indicator);
-        mViewPager = view.findViewById(R.id.view_pager_mymovis);
+        mTabs = getView().findViewById(R.id.tab);
+        mIndicator = getView().findViewById(R.id.indicator);
+        mViewPager = getView().findViewById(R.id.view_pager_mymovis);
 
         //Set up the view pager and fragments
-        adapter = new TabFragmentAdapter(fragmentManager);
+        adapter = new TabFragmentAdapter(getChildFragmentManager());
+
+    }
+
+    void reload(){
         adapter.addFragment(ViewsFragment.newInstance(), getContext().getResources().getString(R.string.tab_text_2));
         adapter.addFragment(WishlistFragment.newInstance(), getContext().getResources().getString(R.string.tab_text_3));
         mViewPager.setAdapter(adapter);
         mTabs.setupWithViewPager(mViewPager);
+
+        mViewPager.setCurrentItem(0);
+        Log.i(TAG,"adapter.getCount() = "+adapter.getCount());
+
     }
-
-
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
+        Log.i(TAG,"onResume");
 
-        initView(getView());
     }
+
+
 }

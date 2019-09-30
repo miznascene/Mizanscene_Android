@@ -1,4 +1,4 @@
-package com.example.mizansen.Fragment.ProfilePage;
+package com.example.mizansen.Fragment.BottomBar.ProfilePage;
 
 import android.app.Dialog;
 import android.content.Context;

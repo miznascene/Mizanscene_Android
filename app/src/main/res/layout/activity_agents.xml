@@ -115,14 +115,14 @@
         </androidx.appcompat.widget.Toolbar>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/agents_image"
-            android:layout_width="@dimen/image_width"
-            android:layout_height="@dimen/image_width"
-            android:layout_gravity="center"
-            android:src="@drawable/puma_offer"
-            app:civ_border_color="@android:color/white"
-            app:civ_border_width="2dp"
-            app:layout_behavior="com.example.mizansen.CustomView.CustomBehaviourForAvatarImg" />
+        android:id="@+id/agents_image"
+        android:layout_width="@dimen/image_width"
+        android:layout_height="@dimen/image_width"
+        android:layout_gravity="center"
+        android:src="@drawable/puma_offer"
+        app:civ_border_color="@android:color/white"
+        app:civ_border_width="2dp"
+        app:layout_behavior="com.example.mizansen.CustomView.CustomBehaviourForAvatarImg" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>

@@ -1,8 +1,6 @@
 package com.example.mizansen.Fragment.BottomBar;
 
-import android.content.ClipData;
-import android.graphics.Canvas;
-import android.graphics.Color;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,34 +9,36 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.mizansen.Activity.MainActivity;
 import com.example.mizansen.Adapters.CategoryAdapter;
 import com.example.mizansen.Fragment.BaseFragment;
+import com.example.mizansen.Helper.JsonHelper;
 import com.example.mizansen.Helper.LanguageHelper;
+import com.example.mizansen.Helper.RequestHelper;
+import com.example.mizansen.Helper.SharedPreferencesHelper;
+import com.example.mizansen.Helper.ValidationHelper;
 import com.example.mizansen.Network.ModelNetwork.CategoryModel;
 import com.example.mizansen.R;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryFragment extends BaseFragment {
 
-    RecyclerView _RecyclerView;
-    CategoryAdapter categoryAdapter;
+    static RecyclerView _RecyclerView;
+    static CategoryAdapter categoryAdapter;
     LanguageHelper languageHelper = new LanguageHelper();
-    List<CategoryModel> categoryModels = new ArrayList<>();
+    static CategoryModel categoryModels = new CategoryModel();
     int pastVisiblesItems, visibleItemCount, totalItemCount;
+    static LinearLayoutManager LLM;
+    RequestHelper requestHelper = new RequestHelper();
+    static SwipeRefreshLayout swipeRefreshLayout;
 
 
     public CategoryFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,20 +55,19 @@ public class CategoryFragment extends BaseFragment {
         languageHelper.GetLanguage(view.getContext());
 
         _RecyclerView = view.findViewById(R.id.fragment_category_recycler);
+        swipeRefreshLayout = view.findViewById(R.id.fragment_home_refresh);
+        LLM = new LinearLayoutManager(getContext());
+
+        swipeRefreshLayout.setRefreshing(true);
+        GetData();
 
 
-        for (int i = 0; i < 18; i++) {
-            CategoryModel cm = new CategoryModel();
-            cm.Title = "عنوان " + i;
-            categoryModels.add(cm);
-        }
-
-
-        LinearLayoutManager LLM = new LinearLayoutManager(getContext());
-        _RecyclerView.setLayoutManager(LLM);
-        _RecyclerView.setHasFixedSize(true);
-        categoryAdapter = new CategoryAdapter(categoryModels,view.getContext());
-        _RecyclerView.setAdapter(categoryAdapter);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                GetData();
+            }
+        });
 
 
         _RecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -89,6 +88,30 @@ public class CategoryFragment extends BaseFragment {
                 }
             }
         });
+
+
+    }
+
+
+    void GetData() {
+        String Token = "Bearer " + SharedPreferencesHelper.GetSharedPreferences("Token", "null", getContext());
+        requestHelper.CategoryByPagenaumbr(Token, getContext().getResources().getString(R.string.API_Category), getContext(), "0");
+
+    }
+
+    public static void resultRequst(String Json, Context context) {
+        swipeRefreshLayout.setRefreshing(false);
+        CategoryModel categoryModel = JsonHelper.ConvertStringToCategoryModel(Json);
+
+        if (ValidationHelper.validStatus(categoryModel.status)) {
+            categoryModels = categoryModel;
+            _RecyclerView.setLayoutManager(LLM);
+            _RecyclerView.setHasFixedSize(true);
+            categoryAdapter = new CategoryAdapter(categoryModels, context);
+            _RecyclerView.setAdapter(categoryAdapter);
+        } else {
+
+        }
 
 
     }

@@ -14,6 +14,7 @@ import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.Helper.LocaleHelper;
 import com.example.mizansen.Helper.MessageHelper;
 import com.example.mizansen.Helper.RequestHelper;
+import com.example.mizansen.Helper.SharedPreferencesHelper;
 import com.example.mizansen.Helper.ValidationHelper;
 import com.example.mizansen.Network.ModelNetwork.AccountModel;
 import com.example.mizansen.OtherClass.OtherMetod;
@@ -129,7 +130,7 @@ public class LoginActivity extends Activity {
         AccountModel accountModel = JsonHelper.ConvertStringToAccountModel(Json);
 
         if (ValidationHelper.validStatus(accountModel.status)){
-
+            SharedPreferencesHelper.SetSharedPreferences("Token",accountModel.data.token,context);
             ((Activity)context).startActivity(new Intent(context,MainActivity.class));
             ((Activity)context).finish();
         }else{

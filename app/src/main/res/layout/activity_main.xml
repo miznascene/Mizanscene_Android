@@ -29,12 +29,37 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:tint="@color/white"
+                android:src="@drawable/ic_menu_black_24dp"/>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal|right"
-                android:padding="2dp"
-                android:src="@drawable/ic_typename" />
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/main_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center_horizontal|right"
+                    android:padding="2dp"
+                    android:src="@drawable/ic_typename" />
+                
+                <EditText
+                    android:id="@+id/main_searchedittext"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/bg_edittext"/>
+
+
+            </LinearLayout>
+
+
 
 
             <ImageView
@@ -54,7 +79,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.example.mizansen.CustomView.NonSwipeableViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/main_viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

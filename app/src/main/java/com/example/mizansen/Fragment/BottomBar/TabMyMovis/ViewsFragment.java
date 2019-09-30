@@ -1,6 +1,7 @@
 package com.example.mizansen.Fragment.BottomBar.TabMyMovis;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,10 +33,23 @@ public class ViewsFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView recyclerView = view.findViewById(R.id.views_recycler);
+        initView();
+
+    }
+
+    void initView(){
+
+        RecyclerView recyclerView = getView().findViewById(R.id.views_recycler);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setAdapter(new AgentAdapter(recyclerView.getContext()));
+        recyclerView.setAdapter(new AgentAdapter(getContext()));
+        Log.i(TAG,"initView ViewsFragment");
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 }

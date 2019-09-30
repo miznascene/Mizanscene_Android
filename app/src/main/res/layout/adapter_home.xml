@@ -8,24 +8,23 @@
     <com.makeramen.roundedimageview.RoundedImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adapter_showmovies_imageView1"
-        android:scaleType="fitEnd"
+        android:scaleType="fitXY"
         app:riv_corner_radius="0dip"
         app:riv_border_width="0dip"
         app:riv_border_color="@color/graylite"
         app:riv_mutate_background="true"
-        app:riv_tile_mode="repeat"
         app:riv_oval="false"
         android:layout_height="230dp"
         android:layout_width="165dp" />
 
 
-    <com.example.mizansen.CustomView.TextViewCustom
-        android:id="@+id/adapter_showmovies_titlefa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text=""/>
+    <!--<com.example.mizansen.CustomView.TextViewCustom-->
+        <!--android:id="@+id/adapter_showmovies_titlefa"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="5dp"-->
+        <!--android:gravity="center_horizontal|center_vertical"-->
+        <!--android:text=""/>-->
 
 
 </LinearLayout>

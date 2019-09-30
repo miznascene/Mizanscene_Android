@@ -1,6 +1,8 @@
 package com.example.mizansen.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mizansen.Activity.MovieActivity;
 import com.example.mizansen.Network.ModelNetwork.TermMoviesModel;
 import com.example.mizansen.R;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -71,7 +74,7 @@ public class ObjectHomeAdapter extends RecyclerView.Adapter<ObjectHomeAdapter.Vi
         public ViewHolder(@NonNull View iv) {
             super(iv);
 
-            title_fa = iv.findViewById(R.id.adapter_showmovies_titlefa);
+//            title_fa = iv.findViewById(R.id.adapter_showmovies_titlefa);
             image = iv.findViewById(R.id.adapter_showmovies_imageView1);
 
 
@@ -82,14 +85,14 @@ public class ObjectHomeAdapter extends RecyclerView.Adapter<ObjectHomeAdapter.Vi
 
         @Override
         public void onClick(View view) {
-//            int i = getAdapterPosition();
+            int i = getAdapterPosition();
+
+            Intent intent = new Intent(((Activity) context), MovieActivity.class);
+            intent.putExtra("movie_id", String.valueOf(moviesModels.get(i).id));
+            context.startActivity(intent);
+            ((Activity) context).finish();
 //
-//            Intent intent = new Intent(((Activity) context), MovieActivity.class);
-//            intent.putExtra("movie_id", String.valueOf(moviesModels.get(i).id));
-//            context.startActivity(intent);
-//            ((Activity) context).finish();
-//
-//            Log.i(TAG, "Clicked item title is " + moviesModels.get(i).id);
+            Log.i(TAG, "Clicked item title is " + moviesModels.get(i).id);
 
 
         }

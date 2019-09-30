@@ -73,6 +73,13 @@
 
 
     <!--String MainActivity -->
+    <!--String profile menu -->
+    <string name="_profile">profile</string>
+    <string name="message">message</string>
+    <string name="subscription">subscription</string>
+    <string name="transaction">transaction</string>
+    <string name="online_support">online support</string>
+    <string name="phyisical_version">phyisical version</string>
     <!--String ... -->
 
 
@@ -85,6 +92,8 @@
     <string name="API_ReSendCode">https://mizanscene.com/wp-json/mobile/v1/profile/reset-code</string>
     <string name="API_Register">https://mizanscene.com/wp-json/mobile/v1/profile/register</string>
     <string name="API_ResetPassword">https://mizanscene.com/wp-json/mobile/v1/profile/reset-password</string>
+    <string name="API_HomePage">https://mizanscene.com/wp-json/mobile/v1/mainpage/</string>
+    <string name="API_Category">https://mizanscene.com/wp-json/mobile/v1/category</string>
 
 
 </resources>

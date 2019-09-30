@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,117 +7,226 @@
     android:fitsSystemWindows="true"
     tools:context=".Activity.MovieActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/sapp_bar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/stoolbar_layout"
+        <RelativeLayout
+            android:id="@+id/rel"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            android:layout_height="370dp">
 
 
-            <ImageView
-                android:id="@+id/movie_bimage"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/movie_fabplaye"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/sapp_bar"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="bottom|center"
+                android:layout_marginStart="179dp"
+                android:layout_marginEnd="176dp"
+                android:layout_marginBottom="15dp"
+                app:srcCompat="@android:drawable/ic_media_play" />
+
+            <com.github.florent37.shapeofview.shapes.ArcView
+                android:id="@+id/sapp_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/puma_offer" />
+                android:layout_height="280dp"
+                android:elevation="5dp"
+                app:shape_arc_cropDirection="inside"
+                app:shape_arc_height="40dp"
+                app:shape_arc_position="bottom">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#8D000000">
 
-                <LinearLayout
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/puma_offer" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/bg_overlay" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="left|bottom"
+                    android:layout_marginLeft="@dimen/text_size_20sp"
+                    android:layout_marginBottom="50dp"
+                    android:src="@drawable/ic_bookmark_border_black_24dp"
+                    android:tint="@color/white" />
+
+                <com.example.mizansen.CustomView.TextViewCustom
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="25dp"
-                    android:layout_marginBottom="105dp"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal|center_vertical|right">
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="50dp"
+                    android:text="سیزده"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/layout_padding_24dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_back"
+                    android:tint="@color/white" />
+
+
+            </com.github.florent37.shapeofview.shapes.ArcView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/movie_fabplaye"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="-11dp"
+                android:layout_marginBottom="1dp"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.example.mizansen.CustomView.TextViewCustom
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="زمان" />
 
 
                     <com.example.mizansen.CustomView.TextViewCustom
-                        android:id="@+id/movie_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical|center_horizontal|right"
-                        android:padding="5dp"
-                        android:text="@string/app_name"
-                        android:textColor="@color/white"
-                        android:textSize="25dp" />
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="کارگردان" />
 
 
                     <com.example.mizansen.CustomView.TextViewCustom
-                        android:id="@+id/movie_category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical|center_horizontal|right"
-                        android:padding="5dp"
-                        android:layoutDirection="rtl"
-                        android:textColor="@color/white"
-                        android:textSize="14dp" />
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="تولید" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.example.mizansen.CustomView.TextViewCustom
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="۹۳ دقیقه" />
+
+                    <com.example.mizansen.CustomView.TextViewCustom
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="هومن سیدی" />
+
+
+                    <com.example.mizansen.CustomView.TextViewCustom
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="۱۳۹۳" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:rotation="180"
+                            android:src="@drawable/ic_hande"
+                            android:tint="@color/red" />
+
+                        <com.example.mizansen.CustomView.TextViewCustom
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="۹۳" />
+                    </LinearLayout>
+
+
+                    <com.example.mizansen.CustomView.TextViewCustom
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_hande" />
+
+                        <com.example.mizansen.CustomView.TextViewCustom
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="۹۳" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+        </RelativeLayout>
 
-    <include layout="@layout/content_movie" />
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/movie_fabplaye"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchorGravity="bottom|end"
-        app:layout_anchor="@id/sapp_bar"
-        app:srcCompat="@android:drawable/ic_media_play" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/movie_mark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="90dp"
-        android:tint="@color/white"
-        app:layout_anchorGravity="bottom|end"
-        app:layout_anchor="@id/sapp_bar"
-        app:srcCompat="@drawable/ic_like_off"
-        tools:ignore="VectorDrawableCompat" />
-
-    <LinearLayout
-        android:id="@+id/llimage"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        app:layout_anchor="@id/sapp_bar"
-        app:layout_anchorGravity="bottom|start">
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/movie_imageview"
+        <include
+            layout="@layout/content_movie"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/fab_margin"
-            android:scaleType="fitCenter"
-            android:src="@drawable/puma_offer"
-            app:riv_border_color="#F1E1E1"
-            app:riv_border_width="2dip"
-            app:riv_corner_radius="5dip"
-            app:riv_mutate_background="true"
-            app:riv_oval="false"
-            app:riv_tile_mode="repeat" />
-    </LinearLayout>
+            android:layout_below="@+id/rel"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

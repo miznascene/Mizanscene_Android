@@ -1,278 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:orientation="vertical">
+
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:orientation="vertical"
-        android:gravity="center_vertical|center_horizontal">
-
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:src="@drawable/ic_ticket"/>
-
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:padding="8dp"
-            android:text="۱۰ روز از اشتراک شما باقی مانده است"
-            android:textSize="16dp"
-            android:textColor="@color/green" />
-
-        <com.example.mizansen.CustomView.ButtonCustom
-            android:id="@+id/profilemain_extended"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="تمدید"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/colorItem"
-            app:btn_bold_word="تمدید"
-            android:textSize="@dimen/text_size_14sp"
-            android:background="@drawable/backgrund_button_green"/>
-
-    </LinearLayout>
-
-    <com.example.mizansen.CustomView.TextViewCustom
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
-
-    <LinearLayout
-        android:id="@+id/profilemain_setting"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal|center_vertical|right"
-        android:layoutDirection="rtl">
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_user"
-            app:riv_border_color="#F1E1E1"
-            app:riv_border_width="2dip"
-            app:riv_corner_radius="5dip"
-            android:padding="4dp"
-            app:riv_mutate_background="true"
-            app:riv_oval="true" />
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_marginRight="8dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <com.example.mizansen.CustomView.TextViewCustom
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="UserID"
-                android:textColor="@color/white"
-                android:gravity="center_horizontal|right|bottom"/>
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محمد امین صادقی" />
+
+
             <com.example.mizansen.CustomView.TextViewCustom
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="UserName"
-                android:textColor="@color/white"
-                android:gravity="center_horizontal|center_vertical|right|top"/>
+                android:id="@+id/profile_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mohama@gmail.com" />
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:id="@+id/profile_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="تاریخ عضویت:2019/01/28" />
 
         </LinearLayout>
 
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/white"
-            android:text="تنطیمات پروفایل"
-            android:gravity="center_horizontal|center_vertical"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:tint="@color/white"
-            android:padding="8dp"
-            android:src="@drawable/ic_left_arrow"/>
-
-
-    </LinearLayout>
-
-    <com.example.mizansen.CustomView.TextViewCustom
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
-
-    <LinearLayout
-        android:id="@+id/profilemain_payment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:gravity="center_vertical|center_horizontal">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_bill"/>
-
-        <com.example.mizansen.CustomView.TextViewCustom
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:textColor="@color/white"
-            android:text="پرداخت ها"
-            android:gravity="center_horizontal|center_vertical|right"/>
+            android:layout_weight="1">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:tint="@color/white"
-            android:padding="8dp"
-            android:src="@drawable/ic_left_arrow"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <xyz.schwaab.avvylib.AvatarView
+                    android:id="@+id/profilemain_imageuser"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="27dp"
+                    android:src="@drawable/puma_offer"
+                    app:avvy_border_color="@color/gray"
+                    app:avvy_border_highlight_color="@color/green"
+                    app:avvy_border_highlight_color_end="@color/green"
+                    app:avvy_border_thickness="2dp"
+                    app:avvy_border_thickness_highlight="3dp"
+                    app:avvy_distance_to_border="5dp"
+                    app:avvy_highlighted="true"
+                    app:avvy_loading_arches="5"
+                    app:avvy_loading_arches_degree_area="90" />
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="126dp"
+                    android:layout_height="24dp"
+                    android:layout_below="@+id/profilemain_imageuser"
+                    android:layout_marginTop="7dp"
+                    android:text="28 روز تا پایان اعتبار" />
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
 
     <LinearLayout
-        android:id="@+id/profilemain_aboutus"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:gravity="center_vertical|center_horizontal">
-
-        <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/logo"/>
-
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:textColor="@color/white"
-            android:text="درباره ما"
-            android:gravity="center_horizontal|center_vertical|right"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:tint="@color/white"
-            android:padding="8dp"
-            android:src="@drawable/ic_left_arrow"/>
+        android:layout_height="wrap_content">
 
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:gravity="center_vertical|center_horizontal">
+        android:layout_weight="1.5"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_theme"/>
 
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:gravity="center_horizontal|center_vertical|right"
-            android:text="تم تیره"
-            android:textColor="@color/white" />
+            android:gravity="center_vertical">
 
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SwitchCompatStyle" />
+            <LinearLayout
+                android:id="@+id/profile_subscription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circleimageview"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_subscription"
+                    android:tint="@color/colorBgItem" />
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subscription" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/profile_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circleimageview"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_mail2"
+                    android:tint="@color/colorBgItem" />
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/message" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_profile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circleimageview"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_user2"
+                    android:tint="@color/colorBgItem" />
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_profile" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:id="@+id/profile_phyisical_version"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circleimageview"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_phyisical_version"
+                    android:tint="@color/colorBgItem" />
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phyisical_version" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/profile_online_support"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circleimageview"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_online_support"
+                    android:tint="@color/colorBgItem" />
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/online_support" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_transaction"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/circleimageview"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_transaction"
+                    android:tint="@color/colorBgItem" />
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/transaction" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <com.example.mizansen.CustomView.TextViewCustom
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
-
-    <LinearLayout
-        android:id="@+id/profilemain_childlock"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:gravity="center_vertical|center_horizontal">
-
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_theme"/>
-
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:textColor="@color/white"
-            android:text="قفل کودک"
-            android:gravity="center_horizontal|center_vertical|right"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:tint="@color/white"
-            android:padding="8dp"
-            android:src="@drawable/ic_left_arrow"/>
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
 
 </LinearLayout>
