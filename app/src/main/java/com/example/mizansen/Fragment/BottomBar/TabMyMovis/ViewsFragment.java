@@ -1,5 +1,6 @@
 package com.example.mizansen.Fragment.BottomBar.TabMyMovis;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,9 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mizansen.Adapters.AgentAdapter;
 import com.example.mizansen.Fragment.BaseFragment;
 import com.example.mizansen.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class ViewsFragment extends BaseFragment {
+
+    FloatingActionButton floatingActionDown;
+    RecyclerView recyclerView;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
+    GridLayoutManager gridLayoutManager;
 
     public static ViewsFragment newInstance() {
         return new ViewsFragment();
@@ -35,16 +42,53 @@ public class ViewsFragment extends BaseFragment {
 
         initView();
 
+        floatingActionDown.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View view) {
+
+                recyclerView.smoothScrollToPosition(10);
+                floatingActionDown.setVisibility(View.GONE);
+
+            }
+        });
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) //check for scroll down
+                {
+
+                    visibleItemCount = gridLayoutManager.getChildCount();
+                    totalItemCount = gridLayoutManager.getItemCount();
+                    pastVisiblesItems = gridLayoutManager.findFirstVisibleItemPosition();
+
+                    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                        Log.i(TAG, "check for scroll down");
+                        floatingActionDown.setVisibility(View.GONE);
+                    } else {
+                        floatingActionDown.setVisibility(View.VISIBLE);
+                    }
+
+
+                } else {
+                    floatingActionDown.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
     }
 
-    void initView(){
+    void initView() {
 
-        RecyclerView recyclerView = getView().findViewById(R.id.views_recycler);
+        recyclerView = getView().findViewById(R.id.views_recycler);
+        floatingActionDown = getView().findViewById(R.id.views_floating);
+
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+        gridLayoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(new AgentAdapter(getContext()));
-        Log.i(TAG,"initView ViewsFragment");
+        Log.i(TAG, "initView ViewsFragment");
 
     }
 

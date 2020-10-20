@@ -9,24 +9,28 @@
     </string>
 
 
-
     <string name="simple_view_behavior">com.zoonref.viewbehavior.SimpleViewBehavior</string>
     <string name="animation_view_behavior">com.example.mizansen.CustomView.AnimationViewBehavior</string>
-
-
-
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!--String App -->
     <string name="app_name">میزانسن</string>
     <string name="password">رمز عبور خود را وارد کنید</string>
     <string name="confirm_password">تکرار رمزعبور</string>
     <string name="more">بیشتر</string>
+    <string name="category">دسته بندی</string>
 
     <!--String Menu -->
-    <string name="profile">پروفایل</string>
-    <string name="my_Movies">آرشیو من</string>
-    <string name="category">دسته بندی</string>
-    <string name="home">خانه</string>
+    <string name="theme">تم تیره</string>
+    <string name="language">زبان</string>
+    <string name="support">پشتیبانی</string>
+    <string name="introduction">معرفی به دوستان</string>
+
+    <string name="criticsSndSuggestions">انتقادات و پیشنهادات</string>
+    <string name="FrequentlyAskedQuestions">سوالات متداول</string>
+    <string name="aboutUs">درباره ما</string>
+    <string name="exit">خروج</string>
 
 
     <!--String Tab -->
@@ -88,7 +92,37 @@
     <string name="transaction">تراکنش مالی</string>
     <string name="online_support">پشتیبان آنلاین</string>
     <string name="phyisical_version">نسخه فیزیکی</string>
-    <!--String ... -->
+
+    <!--String movie -->
+    <string name="time">زمان</string>
+    <string name="Director">کارگردان</string>
+    <string name="Production">تولید</string>
+    <string name="Minutes">دقیقه</string>
+    <string name="synopsis">خلاصه فیلم</string>
+    <string name="agents">عوامل</string>
+    <string name="the_writer">نویسنده</string>
+    <string name="cameraman">فیلم بردار</string>
+    <string name="producer">تهیه کننده</string>
+    <string name="actors">بازیگران</string>
+    <string name="gallery">گالری</string>
+    <string name="Similar_movie">فیلم مشابه</string>
+    <string name="Other_chapters">دیگر فصل ها</string>
+    <string name="Season">فصل</string>
+    <string name="textComment">عزیز لطفا نظر خود را بنویسید</string>
+    <string name="send">ارسال</string>
+
+    <!--String Profile-->
+    <string name="profile1">حساب کاربری</string>
+    <string name="birthday">تاریخ تولد</string>
+    <string name="setting_pass">تنطیمات رمز عبور</string>
+    <string name="setting_newpass">رمز عبور جدید</string>
+    <string name="setting_checkbox">آیا تمامی دستگاه های  شما با پسورد جدید همگام سازی شود ؟</string>
+    <string name="setting_save">ذخیره</string>
+    <string name="transaction_paypalaccount">حساب پی پال</string>
+    <string name="transactionـLast_account_debit_date">اخرین تاریخ کسر از حساب</string>
+    <string name="transaction_turnover">گردش مالی</string>
+    <string name="message_messages">پیام ها</string>
+    <string name="message_enterbirthday">لطفا تاریخ تولد را وارد کنید</string>
 
 
     <!--String Url Api-->
@@ -102,6 +136,10 @@
     <string name="API_ResetPassword">https://mizanscene.com/wp-json/mobile/v1/profile/reset-password</string>
     <string name="API_HomePage">https://mizanscene.com/wp-json/mobile/v1/mainpage/</string>
     <string name="API_Category">https://mizanscene.com/wp-json/mobile/v1/category</string>
+    <string name="API_Movie">https://mizanscene.com/wp-json/mobile/v1/movies/</string>
+    <string name="API_IP">https://ifconfig.me/all.json</string>
+    <string name="API_KeyArvan">Apikey 8f91b792-6aa7-46c9-86db-dbbc25d2c4b8</string>
+    <string name="API_ArvanDataMovie">https://napi.arvancloud.com/vod/2.0/videos/</string>
 
 
 </resources>

@@ -34,11 +34,11 @@ public class HintroFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_intro, container, false);
 
         title = (TextView) root.findViewById(R.id.number_fragment_title_holder);
-//        description = (TextView) root.findViewById(R.id.number_fragment_title_holder);
+        description = (TextView) root.findViewById(R.id.number_fragment_title_holder);
 
-        Log.d("test", "" + number);
+        Log.d("TAG_Hintro", "" + number);
         title.setText(Integer.toString(number));
-//        description.setText(Integer.toString(number));
+        description.setText(Integer.toString(number));
 
         return root;
     }

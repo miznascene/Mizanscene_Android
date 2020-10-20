@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,10 +16,10 @@ import com.example.mizansen.CustomView.NonSwipeableViewPager;
 import com.example.mizansen.Fragment.BaseFragment;
 import com.example.mizansen.Fragment.BottomBar.ProfilePage.AboutusFragment;
 import com.example.mizansen.Fragment.BottomBar.ProfilePage.ExtendedFragment;
-import com.example.mizansen.Fragment.BottomBar.ProfilePage.PaymentFragment;
+import com.example.mizansen.Fragment.BottomBar.ProfilePage.TransactionFragment;
 import com.example.mizansen.Fragment.BottomBar.ProfilePage.ProfileMainFragment;
 import com.example.mizansen.Fragment.BottomBar.ProfilePage.ProfileSettingFragment;
-import com.example.mizansen.Fragment.BottomBar.ProfilePage.ChildlockFragment;
+import com.example.mizansen.Fragment.BottomBar.ProfilePage.MessageFragment;
 import com.example.mizansen.R;
 
 import java.util.ArrayList;
@@ -30,7 +28,6 @@ import java.util.List;
 public class ProfileFragment extends BaseFragment {
 
 
-    static TextView titlePage;
     ProfilePageAdapter adapter;
     static NonSwipeableViewPager profileViewPager;
     String TAG = "TAG_ProflieActivity";
@@ -66,16 +63,16 @@ public class ProfileFragment extends BaseFragment {
 
         ProfileMainFragment profileMainFragment = new ProfileMainFragment();
         ProfileSettingFragment profileSettingFragment = new ProfileSettingFragment();
-        PaymentFragment paymentFragment = new PaymentFragment();
+        TransactionFragment transactionFragment = new TransactionFragment();
         AboutusFragment aboutusFragment = new AboutusFragment();
-        ChildlockFragment childlockFragment = new ChildlockFragment();
+        MessageFragment messageFragment = new MessageFragment();
         ExtendedFragment extendedFragment = new ExtendedFragment();
 
         adapter.addFragments(profileMainFragment);
         adapter.addFragments(profileSettingFragment);
-        adapter.addFragments(paymentFragment);
+        adapter.addFragments(transactionFragment);
         adapter.addFragments(aboutusFragment);
-        adapter.addFragments(childlockFragment);
+        adapter.addFragments(messageFragment);
         adapter.addFragments(extendedFragment);
 
 
@@ -107,6 +104,10 @@ public class ProfileFragment extends BaseFragment {
             return fragments.size();
         }
 
+    }
+
+    public static void setPageByItem(int item) {
+        profileViewPager.setCurrentItem(item);
     }
 
 

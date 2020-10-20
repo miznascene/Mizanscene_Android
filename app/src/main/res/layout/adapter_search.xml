@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:padding="15dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:alpha="0.9"
+        android:elevation="8dp"
+        android:padding="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/bg_search"
+        android:orientation="vertical">
+
+        <com.example.mizansen.CustomView.TextViewCustom
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="سیزده"/>
+
+        <com.example.mizansen.CustomView.TextViewCustom
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/colorItem"
+            android:drawableRight="@drawable/ic_director"
+            android:text="هومن سیدی"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/colorItem"
+                android:drawableRight="@drawable/ic_date"
+                android:text="تولید ۱۳۹۲"/>
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/colorItem"
+                android:drawableRight="@drawable/ic_categoryicon"
+                android:text="خانوادگی"/>
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/colorItem"
+                android:drawableRight="@drawable/ic_time"
+                android:text="۹۳ دقیقه"/>
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/colorItem"
+                android:drawableRight="@drawable/ic_categoryicon"
+                android:text="جناحی"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/adapter_search_imagemovie"
+        android:layout_width="125dp"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        app:riv_corner_radius_top_right="10dp"
+        app:riv_corner_radius_top_left="10dp"
+        app:riv_corner_radius_bottom_right="10dp"
+        app:riv_corner_radius_bottom_left="10dp"
+        app:riv_border_color="#F1E1E1"
+        android:src="@drawable/puma_offer"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="10dip"
+        app:riv_mutate_background="true"
+        app:riv_oval="false"
+        />
+
+</LinearLayout>

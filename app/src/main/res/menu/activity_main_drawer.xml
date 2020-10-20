@@ -1,0 +1,55 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_theme"
+        android:icon="@drawable/ic_teme"
+        android:title="@string/theme"
+        android:iconTint="@color/colorItem"
+        app:actionLayout="@layout/nav_switch" />
+
+    <item
+        android:id="@+id/action_language"
+        android:icon="@drawable/ic_language"
+        android:title="@string/language"
+        android:iconTint="@color/colorItem"/>
+
+    <item
+        android:id="@+id/action_support"
+        android:icon="@drawable/ic_online_support"
+        android:title="@string/support"
+        android:iconTint="@color/colorItem"/>
+
+
+    <item
+        android:id="@+id/action_introduction"
+        android:icon="@drawable/ic_sendfreands"
+        android:title="@string/introduction"
+        android:iconTint="@color/colorItem"/>
+
+
+    <item
+        android:id="@+id/action_critics"
+        android:icon="@drawable/ic_critics_and_suggestions"
+        android:title="@string/criticsSndSuggestions"
+        android:iconTint="@color/colorItem"/>
+
+    <item
+        android:id="@+id/action_faq"
+        android:icon="@drawable/ic_faq"
+        android:title="@string/FrequentlyAskedQuestions"
+        android:iconTint="@color/colorItem"/>
+
+
+    <item
+        android:id="@+id/action_aboutus"
+        android:icon="@drawable/ic_aboutus"
+        android:title="@string/aboutUs"
+        android:iconTint="@color/colorItem"/>
+
+    <item
+        android:id="@+id/action_exit_account"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/exit"
+        android:iconTint="@color/colorItem"/>
+</menu>

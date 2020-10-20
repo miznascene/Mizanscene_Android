@@ -17,6 +17,11 @@
         <item name="trackTint">@color/gray</item>
     </style>
 
+    <style name="NumberPickerStyle">
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/colorAccent</item>
+    </style>
 
     <style name="NewDialog">
         <item name="android:windowFrame">@null</item>

@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.mizansen.R;
 import com.khizar1556.mkvideoplayer.MKPlayer;
 
@@ -17,7 +15,7 @@ public class ShowmovieActivity extends Activity {
 
 
     MKPlayer player;
-    String TAG = "ShowmovieActivity",Link="";
+    String TAG = "ShowmovieActivity", Link = "";
 
 
     @Override
@@ -29,28 +27,27 @@ public class ShowmovieActivity extends Activity {
         initView();
 
 
-
         player.onComplete(new Runnable() {
             @Override
             public void run() {
                 //callback when video is finish
-                Toast.makeText(getApplicationContext(), "video play completed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "video play completed", Toast.LENGTH_SHORT).show();
             }
         }).onInfo(new MKPlayer.OnInfoListener() {
             @Override
             public void onInfo(int what, int extra) {
                 switch (what) {
                     case IMediaPlayer.MEDIA_INFO_BUFFERING_START:
-                        Log.i(TAG,"MEDIA_INFO_BUFFERING_START");
+                        Log.i(TAG, "MEDIA_INFO_BUFFERING_START");
                         break;
                     case IMediaPlayer.MEDIA_INFO_BUFFERING_END:
-                        Log.i(TAG,"MEDIA_INFO_BUFFERING_END");
+                        Log.i(TAG, "MEDIA_INFO_BUFFERING_END");
                         break;
                     case IMediaPlayer.MEDIA_INFO_NETWORK_BANDWIDTH:
-                        Log.i(TAG,"MEDIA_INFO_NETWORK_BANDWIDTH");
+                        Log.i(TAG, "MEDIA_INFO_NETWORK_BANDWIDTH");
                         break;
                     case IMediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START:
-                        Log.i(TAG,"MEDIA_INFO_VIDEO_RENDERING_START");
+                        Log.i(TAG, "MEDIA_INFO_VIDEO_RENDERING_START");
                         break;
                 }
             }
@@ -75,15 +72,13 @@ public class ShowmovieActivity extends Activity {
         });
 
 
-
-
     }
 
 
-    void initView(){
+    void initView() {
 
 
-        player=new MKPlayer(this);
+        player = new MKPlayer(this);
 
 
         Bundle bundle = getIntent().getExtras();
@@ -91,7 +86,6 @@ public class ShowmovieActivity extends Activity {
 
         player.play(Link);
 //        player.setTitle(Link);
-
 
 
     }
@@ -136,7 +130,6 @@ public class ShowmovieActivity extends Activity {
         }
         super.onBackPressed();
     }
-
 
 
 }

@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mizansen.Activity.MainActivity;
+import com.example.mizansen.Fragment.BottomBar.CategorySelectedFragment;
 import com.example.mizansen.Helper.WidthAnimationHelper;
 import com.example.mizansen.Network.ModelNetwork.CategoryDataModel;
 import com.example.mizansen.Network.ModelNetwork.CategoryModel;
@@ -63,7 +65,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                     AnimColor(holder._color, 1000, 500, holder.title, holder.more, R.color.white, cm.anim_status, cm.term_id);
                 } else {
                     cm.anim_status = false;
-                    AnimColor(holder._color, 55, 500, holder.title, holder.more, R.color.colorItem, cm.anim_status, cm.term_id);
+                    AnimColor(holder._color, 55, 500, holder.title, holder.more, holder._color.getSolidColor(), cm.anim_status, cm.term_id);
                 }
 
 
@@ -106,12 +108,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             @Override
             public void onAnimationStart(Animation animation) {
                 Title.setTextColor(Title.getContext().getResources().getColor(Color));
-//                More.setColorFilter(More.getContext().getResources().getColor(Color));
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
+                MainActivity.setViewById(4);
+                CategorySelectedFragment.getIdAndTitleCategory(0,Title.getText().toString());
             }
 
             @Override

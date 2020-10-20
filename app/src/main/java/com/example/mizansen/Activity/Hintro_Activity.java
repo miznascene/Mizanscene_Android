@@ -20,10 +20,11 @@ import java.util.Collection;
 
 
 public class Hintro_Activity extends IntroActivity {
+
     /**
      * Colors to use for the blended background: blue, pink, purple.
      */
-    private static final int[] BACKGROUND_COLORS = {0xff304FFE, 0xffcc0066, 0xff9900ff, 0xff0099ff};
+    private static final int[] BACKGROUND_COLORS = {0xff304FFE, 0xffcc0066, 0xff9900ff};
 
     /**
      * Name of the shared preferences which hold a key for preventing the intro screen from

@@ -46,7 +46,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 4;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

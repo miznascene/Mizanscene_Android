@@ -19,6 +19,7 @@ import com.example.mizansen.Fragment.BottomBar.TabMyMovis.ViewsFragment;
 import com.example.mizansen.Fragment.BottomBar.TabMyMovis.WishlistFragment;
 import com.example.mizansen.Helper.LanguageHelper;
 import com.example.mizansen.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class MyMovisFragment extends BaseFragment {

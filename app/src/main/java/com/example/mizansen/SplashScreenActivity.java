@@ -35,7 +35,7 @@ public class SplashScreenActivity extends Activity {
 
     void ValiDateToken() {
 
-        String Token = "Bearer " + SharedPreferencesHelper.GetSharedPreferences("Token", "null", SplashScreenActivity.this);
+        String Token = SharedPreferencesHelper.GetSharedPreferences("Token", "null", SplashScreenActivity.this);
 
         Log.i(TAG, "Token " + Token);
         if (Token.equals("null")) {
@@ -50,6 +50,7 @@ public class SplashScreenActivity extends Activity {
 
         } else {
             Intent intent;
+            Token = "Bearer " + Token;
             try {
 
                 if (ValidationHelper.validInternetConnection(SplashScreenActivity.this)) {

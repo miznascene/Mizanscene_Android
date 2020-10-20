@@ -7,20 +7,25 @@
     <string name="animation_view_behavior">com.example.mizansen.CustomView.AnimationViewBehavior</string>
 
 
-
-
-
     <!--String App -->
     <string name="app_name">Mizansen</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="more">More</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="category">category</string>
 
     <!--String Menu -->
-    <string name="profile">profile</string>
-    <string name="my_Movies">my Movies</string>
-    <string name="category">category</string>
-    <string name="home">home</string>
+    <string name="theme">Dark Theme</string>
+    <string name="language">Language</string>
+    <string name="support">Support</string>
+    <string name="introduction">introduce to friends</string>
+
+    <string name="criticsSndSuggestions">critics and suggestions</string>
+    <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
+    <string name="aboutUs">About Us</string>
+    <string name="exit">Exit</string>
 
 
     <!--String Tab -->
@@ -81,6 +86,37 @@
     <string name="online_support">online support</string>
     <string name="phyisical_version">phyisical version</string>
 
+    <!--String movie -->
+    <string name="time">time</string>
+    <string name="Director">Director</string>
+    <string name="Production">production</string>
+    <string name="Minutes">Minutes</string>
+    <string name="synopsis">synopsis</string>
+    <string name="agents">Agents</string>
+    <string name="the_writer">the writer</string>
+    <string name="cameraman">cameraman</string>
+    <string name="producer">producer</string>
+    <string name="actors">Actors</string>
+    <string name="gallery">gallery</string>
+    <string name="Similar_movie">Similar movie</string>
+    <string name="Other_chapters">Other chapters</string>
+    <string name="Season">Season</string>
+    <string name="textComment">Please write your comment</string>
+    <string name="send">Send</string>
+
+    <!--String Profile-->
+    <string name="profile1">profile</string>
+    <string name="birthday">birthday</string>
+    <string name="setting_pass">password Setting</string>
+    <string name="setting_newpass">new password</string>
+    <string name="setting_checkbox">Do all your devices sync with the new password?</string>
+    <string name="setting_save">save</string>
+    <string name="transaction_paypalaccount">Paypal account</string>
+    <string name="transactionـLast_account_debit_date">Last account debit date</string>
+    <string name="transaction_turnover">Turnover</string>
+    <string name="message_messages">Messages</string>
+    <string name="message_enterbirthday">please enter date birthday</string>
+
 
     <!--String Url Api-->
     <string name="API_Validation">https://mizanscene.com/wp-json/mobile/v1/profile/login/validate</string>
@@ -94,6 +130,11 @@
 
     <string name="API_HomePage">https://mizanscene.com/wp-json/mobile/v1/mainpage/</string>
     <string name="API_Category">https://mizanscene.com/wp-json/mobile/v1/category</string>
+    <string name="API_Movie">https://mizanscene.com/wp-json/mobile/v1/movies/</string>
+    <string name="API_IP">https://ifconfig.me/all.json</string>
+    <string name="API_KeyArvan">Apikey 8f91b792-6aa7-46c9-86db-dbbc25d2c4b8</string>
+    <string name="API_ArvanDataMovie">https://napi.arvancloud.com/vod/2.0/videos/</string>
+
 
 
 </resources>

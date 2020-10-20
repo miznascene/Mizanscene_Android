@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.mizansen.Activity.LoginActivity;
+import com.example.mizansen.Activity.MovieActivity;
 import com.example.mizansen.Activity.ResetPasswordActivity;
 import com.example.mizansen.Activity.RegisterActivity;
 import com.example.mizansen.Activity.SendEmailActivity;
@@ -45,7 +46,7 @@ public class RequestHelper {
                 super.onPostExecute(result);
                 Log.i(TAG, "Validation result: " + result);
 
-                SplashScreenActivity.ResultRequst(result.replace("?>",""), context);
+                SplashScreenActivity.ResultRequst(result.replace("?>", ""), context);
             }
 
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -70,7 +71,7 @@ public class RequestHelper {
                 loadingHelper.DismissIndicator();
                 Log.i(TAG, "Login result: " + result);
 
-                LoginActivity.ResultRequest(result.replace("?>",""), context);
+                LoginActivity.ResultRequest(result.replace("?>", ""), context);
             }
 
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -96,12 +97,12 @@ public class RequestHelper {
                 Log.i(TAG, "SendCodeRegisterByMail result: " + result);
 
                 loadingHelper.DismissIndicator();
-                ValidationModel validationModel = jsonHelper.ConvertStringToValidationModel(result.replace("?>",""));
+                ValidationModel validationModel = jsonHelper.ConvertStringToValidationModel(result.replace("?>", ""));
 
                 if (ValidationHelper.validStatus(validationModel.status)) {
-                    SendEmailActivity.ResualtReqeustRegisterValidationEmail(validationModel, result.replace("?>",""), context);
+                    SendEmailActivity.ResualtReqeustRegisterValidationEmail(validationModel, result.replace("?>", ""), context);
                 } else {
-                    SendEmailActivity.ResualtReqeustRegisterValidationEmail(validationModel, result.replace("?>",""), context);
+                    SendEmailActivity.ResualtReqeustRegisterValidationEmail(validationModel, result.replace("?>", ""), context);
                 }
 
 
@@ -130,13 +131,13 @@ public class RequestHelper {
                 Log.i(TAG, "SendCodeResetpasswordByMail result: " + result);
                 loadingHelper.DismissIndicator();
 
-                ValidationModel validationModel = jsonHelper.ConvertStringToValidationModel(result.replace("?>",""));
+                ValidationModel validationModel = jsonHelper.ConvertStringToValidationModel(result.replace("?>", ""));
 
                 if (ValidationHelper.validStatus(validationModel.status)) {
-                    SendEmailActivity.ResualtReqeustResetPasswordValidationEmail(validationModel, result.replace("?>",""), context);
+                    SendEmailActivity.ResualtReqeustResetPasswordValidationEmail(validationModel, result.replace("?>", ""), context);
                 } else {
                     Log.i(TAG, "message: " + validationModel.message);
-                    SendEmailActivity.ResualtReqeustResetPasswordValidationEmail(validationModel, result.replace("?>",""), context);
+                    SendEmailActivity.ResualtReqeustResetPasswordValidationEmail(validationModel, result.replace("?>", ""), context);
                 }
 
             }
@@ -165,7 +166,7 @@ public class RequestHelper {
                 loadingHelper.DismissIndicator();
                 Log.i(TAG, "verify_code result: " + result);
 
-                VerifiyCodeActivity.ResualtValidationCode(result.replace("?>",""), context);
+                VerifiyCodeActivity.ResualtValidationCode(result.replace("?>", ""), context);
 
             }
 
@@ -190,7 +191,7 @@ public class RequestHelper {
                 super.onPostExecute(result);
                 loadingHelper.DismissIndicator();
                 Log.i(TAG, "Register result: " + result);
-                VerifiyCodeActivity.ResualtResetCode(result.replace("?>",""), context);
+                VerifiyCodeActivity.ResualtResetCode(result.replace("?>", ""), context);
 
 
             }
@@ -217,7 +218,7 @@ public class RequestHelper {
 
                 loadingHelper.DismissIndicator();
                 Log.i(TAG, "Register result: " + result);
-                RegisterActivity.resultRequst(result.replace("?>",""), context);
+                RegisterActivity.resultRequst(result.replace("?>", ""), context);
 
 
             }
@@ -243,7 +244,7 @@ public class RequestHelper {
                 super.onPostExecute(result);
                 loadingHelper.DismissIndicator();
                 Log.i(TAG, "Register result: " + result);
-                ResetPasswordActivity.resultRequst(result.replace("?>",""), context);
+                ResetPasswordActivity.resultRequst(result.replace("?>", ""), context);
 
 
             }
@@ -255,7 +256,7 @@ public class RequestHelper {
 
     //Request is MainActivity => HomePage | Category |
 
-    public void HomePage(final String token, final String url, final Context context,String pagenumber) {
+    public void HomePage(final String token, final String url, final Context context, String pagenumber) {
 
 
         new AsyncTask<String, Void, String>() {
@@ -270,7 +271,7 @@ public class RequestHelper {
                 super.onPostExecute(result);
 
                 Log.i(TAG, "HomePage result: " + result);
-                HomeFragment.resultRequst(result.replace("?>",""), context);
+                HomeFragment.resultRequst(result.replace("?>", ""), context);
 
 
             }
@@ -280,7 +281,7 @@ public class RequestHelper {
 
     }
 
-    public void CategoryByPagenaumbr(final String token, final String url, final Context context,String pagenumber) {
+    public void CategoryByPagenaumbr(final String token, final String url, final Context context, String pagenumber) {
 
 
         new AsyncTask<String, Void, String>() {
@@ -295,7 +296,7 @@ public class RequestHelper {
                 super.onPostExecute(result);
 
                 Log.i(TAG, "CategoryByPagenaumbr result: " + result);
-                CategoryFragment.resultRequst(result.replace("?>",""), context);
+                CategoryFragment.resultRequst(result.replace("?>", ""), context);
 
 
             }
@@ -306,8 +307,79 @@ public class RequestHelper {
     }
 
 
+    //Request is Movie =>
+    public void movieDataById(final String token, final String url, final Context context) {
 
-    //Request is ... =>
+        new AsyncTask<String, Void, String>() {
+
+            @Override
+            protected String doInBackground(String... p) {
+                return netWork.GetData(url, "Authorization", token, "", "", "", "");
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+                Log.i(TAG, "movieDataById result: " + result);
+                MovieActivity.ResualtDataMovie(result.replace("?>",""), context);
+
+
+            }
+
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+
+    }
+
+    public void IpNetWork(final String url, final Context context) {
+
+        new AsyncTask<String, Void, String>() {
+
+            @Override
+            protected String doInBackground(String... p) {
+                return netWork.GetData(url, "Authorization", "", "", "", "", "");
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+                Log.i(TAG, "IpNetWork result: " + result);
+                MovieActivity.ResualtDataIp(result.replace("?>",""), context);
+
+
+            }
+
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+
+    }
+
+    public void ArvanMovie(final String Key, final String url, final Context context) {
+
+        new AsyncTask<String, Void, String>() {
+
+            @Override
+            protected String doInBackground(String... p) {
+                return netWork.GetData(url, "Authorization", Key, "", "", "", "");
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+                Log.i(TAG, "ArvanMovie result: " + result);
+//                MovieActivity.ResualtDataIp(result.replace("?>",""), context);
+
+
+            }
+
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+
+    }
+
 
     //Request is ... =>
 

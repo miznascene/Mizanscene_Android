@@ -114,6 +114,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/fragment_profilemain_subscription"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/circleimageview"
@@ -137,7 +138,9 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:orientation="vertical">
 
+
                 <ImageView
+                    android:id="@+id/fragment_profilemain_message"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/circleimageview"
@@ -161,6 +164,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/fragment_profilemain_profile"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/circleimageview"
@@ -192,6 +196,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/fragment_profilemain_phyisicalversion"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/circleimageview"
@@ -216,6 +221,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/fragment_profilemain_onlinesupport"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/circleimageview"
@@ -239,6 +245,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/fragment_profilemain_transaction"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/circleimageview"

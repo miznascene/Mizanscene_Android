@@ -10,8 +10,8 @@
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/adapter_agent_imagemovie"
-        android:layout_width="150dp"
         android:layout_height="200dp"
+        android:layout_width="150dp"
         android:scaleType="fitXY"
         app:riv_corner_radius_top_right="10dp"
         app:riv_corner_radius_top_left="10dp"

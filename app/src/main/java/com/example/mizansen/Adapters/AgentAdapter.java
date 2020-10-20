@@ -40,7 +40,7 @@ public class AgentAdapter extends RecyclerView.Adapter<AgentAdapter.ViewHolder> 
 
 
         Picasso.with(context)
-                .load("https://pbs.twimg.com/media/EDEsh0gU4AUTO3P?format=jpg&name=900x900")
+                .load("https://www.uptvs.net/wp-content/uploads/2018/04/texas-min.jpg")
                 .placeholder( R.drawable.progress_animation )
                 .into(holder.image);
 

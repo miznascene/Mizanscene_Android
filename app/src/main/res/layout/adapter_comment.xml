@@ -1,76 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
 
-
-
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="right"
-        android:layoutDirection="rtl"
-        android:padding="10dp">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/adapter_agentmovie_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_user"
-            app:civ_circle_background_color="@color/graylite"
-            app:civ_border_color="@color/graylite"
-            app:civ_border_width="2dp" />
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_margin="5dp"
+        android:alpha="0.9"
+        android:elevation="8dp"
+        android:paddingBottom="12dp"
+        app:cardBackgroundColor="@color/colorbgeditprofile"
+        app:cardCornerRadius="10dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="right|center_vertical"
-            android:layout_marginRight="5dp">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/adapter_agentmovie_image"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_user"
+                    app:civ_border_color="@color/graylite"
+                    app:civ_border_width="2dp"
+                    app:civ_circle_background_color="@color/graylite" />
+
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/colorItem"
+                    android:text="امین سیاهی"
+                    android:textSize="14dp" />
+
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|top"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/colorItem"
+                    android:text="۱شهریور ۱۳۹۸"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
 
             <com.example.mizansen.CustomView.TextViewCustom
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:textSize="14dp"
-                android:text="امین سیاهی"/>
-
-            <com.example.mizansen.CustomView.TextViewCustom
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:textSize="10dp"
-                android:text="۱شهریور ۱۳۹۸"/>
+                android:padding="8dp"
+                android:drawableRight="@drawable/ic_comment"
+                android:drawablePadding="5dp"
+                android:textColor="@color/colorItem"
+                android:text="بسیار عالییییییییییی" />
 
         </LinearLayout>
 
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="left|top"
-            android:textSize="14dp"
-            android:text="امتیاز به فیلم 5"
-            android:drawableTint="@color/graylite_"
-            android:drawableLeft="@drawable/ic_star_black_24dp"
-            />
-
-    </LinearLayout>
-
-    <com.example.mizansen.CustomView.TextViewCustom
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="بسیار عالییییییییییی"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/graylite_" />
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

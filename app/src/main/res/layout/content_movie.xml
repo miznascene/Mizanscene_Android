@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="خلاصه فیلم" />
+            android:text="@string/synopsis" />
 
         <TextView
             android:layout_width="0dp"
@@ -43,8 +43,6 @@
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:text="@string/lorem" />
-
-
 
 
     <LinearLayout
@@ -64,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="دسته بندی" />
+            android:text="@string/category" />
 
         <TextView
             android:layout_width="0dp"
@@ -87,16 +85,16 @@
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_categoryicon" />
+
             <com.example.mizansen.CustomView.TextViewCustom
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dp"
                 android:text="@string/category" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_categoryicon" />
 
 
         </LinearLayout>
@@ -107,16 +105,16 @@
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_categoryicon" />
+
             <com.example.mizansen.CustomView.TextViewCustom
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dp"
                 android:text="@string/category" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_categoryicon" />
 
 
         </LinearLayout>
@@ -127,22 +125,21 @@
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_categoryicon" />
+
             <com.example.mizansen.CustomView.TextViewCustom
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dp"
                 android:text="@string/category" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_categoryicon" />
 
 
         </LinearLayout>
 
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -162,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="عوامل" />
+            android:text="@string/agents" />
 
         <TextView
             android:layout_width="0dp"
@@ -187,16 +184,16 @@
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal">
 
-            <com.example.mizansen.CustomView.TextViewCustom
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="3dp"
-                android:text="نویسنده" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_nevisande" />
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@string/the_writer" />
 
 
         </LinearLayout>
@@ -207,11 +204,6 @@
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal">
 
-            <com.example.mizansen.CustomView.TextViewCustom
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="3dp"
-                android:text="فیلم بردار" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -219,6 +211,13 @@
                 android:src="@drawable/ic_film_bardar" />
 
 
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@string/cameraman" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -227,16 +226,16 @@
             android:layout_weight="1"
             android:gravity="center_vertical|center_horizontal">
 
-            <com.example.mizansen.CustomView.TextViewCustom
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="3dp"
-                android:text="تهیه کننده" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_mony" />
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@string/producer" />
 
 
         </LinearLayout>
@@ -298,8 +297,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -314,17 +311,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <com.example.mizansen.CustomView.TextViewCustom
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="3dp"
-                android:text="نویسنده" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_bazigar" />
 
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@string/actors" />
 
         </LinearLayout>
 
@@ -346,6 +342,7 @@
             android:gravity="center_vertical|center_horizontal">
 
             <com.example.mizansen.CustomView.TextViewCustom
+                android:id="@+id/movie_actor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="3dp"
@@ -405,7 +402,73 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="گالری" />
+            android:text="@string/gallery" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="@color/colorBgItem" />
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="@color/colorBgItem" />
+
+        <com.example.mizansen.CustomView.TextViewCustom
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/Similar_movie" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="@color/colorBgItem" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_SimilarMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="@color/colorBgItem" />
+
+        <com.example.mizansen.CustomView.TextViewCustom
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/Other_chapters" />
 
         <TextView
             android:layout_width="0dp"
@@ -417,164 +480,74 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp">
 
-            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/movie_tabSeason"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@null"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@null"
+                app:tabMode="fixed"
+                app:tabRippleColor="@null"
+                app:tabSelectedTextColor="@color/colorBgItem" />
+
+            <View
+                android:id="@+id/movie_indicatorSeason"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:scaleType="fitXY"
-                android:src="@drawable/puma_offer"
-                app:riv_border_color="@color/graylite"
-                app:riv_border_width="0dip"
-                app:riv_corner_radius="0dip"
-                app:riv_corner_radius_bottom_left="10dp"
-                app:riv_corner_radius_bottom_right="10dp"
-                app:riv_corner_radius_top_left="10dp"
-                app:riv_corner_radius_top_right="10dp"
-                app:riv_mutate_background="true"
-                app:riv_oval="false" />
+                android:layout_height="5dp"
+                android:layout_marginTop="45dp"
+                android:background="@color/colorBgItem" />
 
-            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:scaleType="fitXY"
-                android:src="@drawable/puma_offer"
-                app:riv_border_color="@color/graylite"
-                app:riv_border_width="0dip"
-                app:riv_corner_radius="0dip"
-                app:riv_corner_radius_bottom_left="10dp"
-                app:riv_corner_radius_bottom_right="10dp"
-                app:riv_corner_radius_top_left="10dp"
-                app:riv_corner_radius_top_right="10dp"
-                app:riv_mutate_background="true"
-                app:riv_oval="false" />
 
-        </LinearLayout>
+        </FrameLayout>
 
-        <LinearLayout
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/movie_viewSeason"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_height="250dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:scaleType="fitXY"
-                android:src="@drawable/puma_offer"
-                app:riv_border_color="@color/graylite"
-                app:riv_border_width="0dip"
-                app:riv_corner_radius="0dip"
-                app:riv_corner_radius_bottom_left="10dp"
-                app:riv_corner_radius_bottom_right="10dp"
-                app:riv_corner_radius_top_left="10dp"
-                app:riv_corner_radius_top_right="10dp"
-                app:riv_mutate_background="true"
-                app:riv_oval="false" />
-
-            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:scaleType="fitXY"
-                android:src="@drawable/puma_offer"
-                app:riv_border_color="@color/graylite"
-                app:riv_border_width="0dip"
-                app:riv_corner_radius="0dip"
-                app:riv_corner_radius_bottom_left="10dp"
-                app:riv_corner_radius_bottom_right="10dp"
-                app:riv_corner_radius_top_left="10dp"
-                app:riv_corner_radius_top_right="10dp"
-                app:riv_mutate_background="true"
-                app:riv_oval="false" />
-
-        </LinearLayout>
 
     </LinearLayout>
 
-
-
-    <LinearLayout
+    <com.example.mizansen.CustomView.TextViewCustom
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:padding="5dp"
+        android:text="@string/textComment"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_weight="1"
-            android:background="@color/colorBgItem" />
-
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="فیلم مشابه" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_weight="1"
-            android:background="@color/colorBgItem" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-
-    <LinearLayout
+    <com.example.mizansen.CustomView.EditTextCustom
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:padding="5dp"
+        android:layout_margin="8dp"
+        android:drawablePadding="5dp"
+        android:background="@drawable/bg_edittextprofile"
+        android:drawableRight="@drawable/ic_comment"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_weight="1"
-            android:background="@color/colorBgItem" />
 
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="دیگر فصل ها" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_weight="1"
-            android:background="@color/colorBgItem" />
-
-    </LinearLayout>
+    <com.example.mizansen.CustomView.ButtonCustom
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/send"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movie_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

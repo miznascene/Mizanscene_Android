@@ -1,132 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:layout_height="match_parent">
 
 
-    <LinearLayout
-        android:id="@+id/fragment_progilesetting_changepassword"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/fragment_profilesetting_backpage"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
-        android:padding="9dp"
-        android:gravity="center_vertical|center_horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:tint="@color/white"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:src="@drawable/ic_vpn_key_black_24dp"/>
-
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:textColor="@color/white"
-            android:text="تغییر رمزعبور"
-            android:textSize="16dp"
-            android:gravity="center_horizontal|center_vertical|right"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:tint="@color/white"
-            android:padding="8dp"
-            android:src="@drawable/ic_left_arrow"/>
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
-
-    <LinearLayout
-        android:id="@+id/fragment_progilesetting_changeusername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
+        android:layout_margin="10dp"
         android:padding="10dp"
-        android:gravity="center_vertical|center_horizontal">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:tint="@color/white"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:src="@drawable/ic_theme"/>
-
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:textSize="16dp"
-            android:gravity="center_horizontal|center_vertical|right"
-            android:text="تغییر نام کاربری"
-            android:textColor="@color/white" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:tint="@color/white"
-            android:padding="8dp"
-            android:src="@drawable/ic_left_arrow"/>
+        android:layout_gravity="left"
+        android:tint="@color/colorBgItemDark"
+        android:src="@drawable/ic_back"/>
 
 
-    </LinearLayout>
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
-
-    <LinearLayout
-        android:id="@+id/fragment_progilesetting_outaccunt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
-        android:padding="10dp"
-        android:gravity="center_vertical|center_horizontal">
-
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:tint="@color/white"
-            android:src="@drawable/ic_exit_to_app_black_24dp"/>
-
-        <com.example.mizansen.CustomView.TextViewCustom
-            android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:textColor="@color/white"
-            android:text="خروج"
-            android:textSize="16dp"
-            android:gravity="center_horizontal|center_vertical|right"/>
+            android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:tint="@color/white"
-            android:padding="8dp"
-            android:src="@drawable/ic_left_arrow"/>
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="18dp"
+                android:text="@string/profile1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|center_horizontal">
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/name"/>
+
+                <com.example.mizansen.CustomView.EditTextCustom
+                    android:id="@+id/fragment_profilesetting_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edittextprofile"
+                    android:layout_margin="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|center_horizontal">
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/family"/>
+
+                <com.example.mizansen.CustomView.EditTextCustom
+                    android:id="@+id/fragment_profilesetting_family"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edittextprofile"
+                    android:layout_margin="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|center_horizontal">
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/birthday"/>
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:id="@+id/fragment_profilesetting_birthday"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edittextprofile"
+                    android:layout_margin="8dp"/>
+
+            </LinearLayout>
+
+            <com.example.mizansen.CustomView.TextViewCustom
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="18dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/setting_pass"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|center_horizontal">
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/setting_newpass"/>
+
+                <com.example.mizansen.CustomView.EditTextCustom
+                    android:id="@+id/fragment_profilesetting_newpass"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="textPassword"
+                    android:background="@drawable/bg_edittextprofile"
+                    android:layout_margin="8dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|center_horizontal">
+
+                <com.example.mizansen.CustomView.TextViewCustom
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/confirm_password"/>
+
+                <com.example.mizansen.CustomView.EditTextCustom
+                    android:id="@+id/fragment_profilesetting_confirmpass"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="textPassword"
+                    android:background="@drawable/bg_edittextprofile"
+                    android:layout_margin="8dp"/>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/setting_checkbox"/>
+
+            <com.example.mizansen.CustomView.ButtonCustom
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/setting_save"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gray"/>
 
 </LinearLayout>

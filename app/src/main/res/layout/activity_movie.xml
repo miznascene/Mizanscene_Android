@@ -18,7 +18,7 @@
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/movie_fabplaye"
+                android:id="@+id/movie_playmovie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/sapp_bar"
@@ -28,6 +28,7 @@
                 android:layout_marginStart="179dp"
                 android:layout_marginEnd="176dp"
                 android:layout_marginBottom="15dp"
+                app:borderWidth="5dp"
                 app:srcCompat="@android:drawable/ic_media_play" />
 
             <com.github.florent37.shapeofview.shapes.ArcView
@@ -41,6 +42,7 @@
 
 
                 <ImageView
+                    android:id="@+id/movie_posterimage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
@@ -53,6 +55,7 @@
                     android:background="@drawable/bg_overlay" />
 
                 <ImageView
+                    android:id="@+id/movie_bookmark"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="left|bottom"
@@ -62,6 +65,7 @@
                     android:tint="@color/white" />
 
                 <com.example.mizansen.CustomView.TextViewCustom
+                    android:id="@+id/movie_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|right"
@@ -72,6 +76,7 @@
                     android:textSize="@dimen/layout_padding_24dp" />
 
                 <ImageView
+                    android:id="@+id/movie_backpage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
@@ -85,7 +90,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/movie_fabplaye"
+                android:layout_below="@+id/movie_playmovie"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="-11dp"
                 android:layout_marginBottom="1dp"
@@ -104,7 +109,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="زمان" />
+                        android:text="@string/time" />
 
 
                     <com.example.mizansen.CustomView.TextViewCustom
@@ -112,7 +117,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="کارگردان" />
+                        android:text="@string/Director" />
 
 
                     <com.example.mizansen.CustomView.TextViewCustom
@@ -120,7 +125,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="تولید" />
+                        android:text="@string/Production" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -130,6 +135,7 @@
                     android:orientation="horizontal">
 
                     <com.example.mizansen.CustomView.TextViewCustom
+                        android:id="@+id/movie_minutes"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -137,6 +143,7 @@
                         android:text="۹۳ دقیقه" />
 
                     <com.example.mizansen.CustomView.TextViewCustom
+                        android:id="@+id/movie_director"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -145,6 +152,7 @@
 
 
                     <com.example.mizansen.CustomView.TextViewCustom
+                        android:id="@+id/movie_production"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
